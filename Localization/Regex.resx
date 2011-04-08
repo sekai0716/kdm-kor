@@ -186,6 +186,9 @@
   <data name="SummonedDelayRegex" xml:space="preserve">
     <value>(?&lt;pet&gt;.+)[이가] (?&lt;skill&gt;.+) 효과를 사용해 (?&lt;target&gt;.+)[이가] 중독 상태가 됐습니다\.</value>
   </data>
+  <data name="SummonedTrapRegex" xml:space="preserve">
+    <value>(?&lt;pet&gt;.+)[이가] (?&lt;skill&gt;.+) 효과를 사용해 (?&lt;target&gt;.+)에게 (?&lt;damage&gt;[^a-zA-Z]+)의 대미지를 줬습니다\.</value>
+  </data>
   <data name="TimestampRegex" xml:space="preserve">
     <value>(?&lt;time&gt;[^a-zA-Z]+) : </value>
   </data>

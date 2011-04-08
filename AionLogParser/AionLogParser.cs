@@ -132,6 +132,7 @@ namespace KingsDamageMeter
         private Regex _OtherInflictedSkillCureEx;
 
         private Regex _SummonedDelayRegex;
+        private Regex _SummonedTrapRegex;
         private Regex _CommonDelayedTrapDamageRegex;
 
         private string  _OtherPrevSkill;
@@ -260,6 +261,8 @@ namespace KingsDamageMeter
             _OtherInflictedSkillCureEx = new Regex(_TimestampRegex + Localization.Regex.OtherInflictedSkillCureEx, RegexOptions.Compiled);
             
             _SummonedDelayRegex = new Regex(_TimestampRegex + Localization.Regex.SummonedDelayRegex, RegexOptions.Compiled);
+            _SummonedTrapRegex = new Regex(_TimestampRegex + Localization.Regex.SummonedTrapRegex, RegexOptions.Compiled);
+            
             _CommonDelayedTrapDamageRegex = new Regex(_TimestampRegex + Localization.Regex.CommonDelayedTrapDamageRegex, RegexOptions.Compiled);
         }
 
@@ -489,6 +492,32 @@ namespace KingsDamageMeter
 
                     matched = true;
                     regex = "_OtherInflictedSkillRegex";
+                    return;
+                }
+
+                matches = _SummonedTrapRegex.Matches(line);
+                if (matches.Count > 0)
+                {
+                    DateTime time = matches[0].Groups[_TimeGroupName].Value.GetTime(_TimeFormat);
+                    string target = matches[0].Groups[_TargetGroupName].Value;
+                    string skill = matches[0].Groups[_SkillGroupName].Value;
+                    int damage = matches[0].Groups[_DamageGroupName].Value.GetDigits();
+                    string pet = matches[0].Groups[_PetGroupName].Value;
+
+                    if (_Pets.ContainsKey(skill + pet))
+                    {
+
+                        SkillDamageInflicted(this,
+                                             new PlayerSkillDamageEventArgs(time, _Pets[skill + pet].Split('^')[0], damage,
+                                                                            skill));
+                    }
+                    else
+                    {
+                        return;
+                    }
+
+                    matched = true;
+                    regex = "_SummonedTrapRegex";
                     return;
                 }
 
@@ -1119,14 +1148,14 @@ namespace KingsDamageMeter
 
                     if (_Pets.ContainsKey(skill + pet))
                     {
-                        if (_Pets[skill + pet] != Settings.Default.YouAlias)
+                        if (_Pets[skill + pet] != Settings.Default.YouAlias + "^" + time.ToString())
                         {
-                            _Pets[skill + pet] = Settings.Default.YouAlias;
+                            _Pets[skill + pet] = Settings.Default.YouAlias + "^" + time.ToString();
                         }
                     }
                     else
                     {
-                        _Pets.Add(skill + pet, Settings.Default.YouAlias);
+                        _Pets.Add(skill + pet, Settings.Default.YouAlias + "^" + time.ToString());
                     }
 
                     matched = true;
@@ -1155,25 +1184,6 @@ namespace KingsDamageMeter
                     {
                         _Dots.Add(skill + "^" + target, name + "^" + time.ToString());
                     }
-                /*
-                if (matches.Count > 0)
-                {
-                    DateTime time = matches[0].Groups[_TimeGroupName].Value.GetTime(_TimeFormat);
-                    string target = matches[0].Groups[_TargetGroupName].Value;
-                    string skill = matches[0].Groups[_SkillGroupName].Value;
-
-                    if (_Dots.ContainsKey(skill))
-                    {
-                        if (_Dots[skill] != Settings.Default.YouAlias)
-                        {
-                            _Dots[skill] = Settings.Default.YouAlias;
-                        }
-                    }
-                    else
-                    {
-                        _Dots.Add(skill, Settings.Default.YouAlias);
-                    }
-                */
                     matched = true;
                     regex = "_YouDelayedRegex";
                     return;
@@ -1188,7 +1198,7 @@ namespace KingsDamageMeter
                     string pet = matches[0].Groups[_PetGroupName].Value;
                     if (_Pets.ContainsKey(skill + pet))
                     {
-                        string strplayer = _Pets[skill + pet];
+                        string strplayer = _Pets[skill + pet].Split('^')[0];
                         if (_Dots.ContainsKey(skill + "^" + target))
                         {
                             if (!_Dots[skill + "^" + target].Contains(strplayer))
@@ -1347,16 +1357,24 @@ namespace KingsDamageMeter
                     }
 
                     // Pets 정리 : 덫종류는 1분이 지나면 Dic에서 삭제
-                    /*foreach (KeyValuePair<string, string> each in _Pets)
+                    foreach (KeyValuePair<string, string> each in _Pets)
                     {
                         string strkey = each.Key;
                         string strvalue = each.Value;
-                        if (strkey.Substring(strkey.Length - 1) == "")
+                        string[] strvaluesplit = strvalue.Split('^');
+                        if (strkey.Substring(strkey.Length-1, 1) == "덫")
                         {
-                            _Pets.Remove(strkey);
-                            break;
+                            DateTime chktime = Convert.ToDateTime(strvaluesplit[1]);
+                            DateTime chknow = matches[0].Groups[_TimeGroupName].Value.GetTime(_TimeFormat);
+
+                            chktime = chktime.AddMinutes(1);
+                            if (chktime < chknow)
+                            {
+                                _Dots.Remove(strkey);
+                                break;
+                            }
                         }
-                    }*/
+                    }
                 }
             }
         }

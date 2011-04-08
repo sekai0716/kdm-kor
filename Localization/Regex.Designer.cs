@@ -268,6 +268,15 @@ namespace KingsDamageMeter.Localization {
         }
         
         /// <summary>
+        ///   (?&lt;pet&gt;.+)[이가] (?&lt;skill&gt;.+) 효과를 사용해 (?&lt;target&gt;.+)에게 (?&lt;damage&gt;[^a-zA-Z]+)의 대미지를 줬습니다\.과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string SummonedTrapRegex {
+            get {
+                return ResourceManager.GetString("SummonedTrapRegex", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   (?&lt;time&gt;[^a-zA-Z]+) : 과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string TimestampRegex {
