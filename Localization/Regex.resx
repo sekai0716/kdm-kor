@@ -189,7 +189,8 @@
     <value>(?&lt;name&gt;.+) has summoned (?&lt;pet&gt;.+) to attack (?&lt;target&gt;.+) by using (?&lt;skill&gt;.+)\.</value>
   </data>
   <data name="OtherSummonedRegex" xml:space="preserve">
-    <value>(?&lt;name&gt;.+) summoned (?&lt;pet&gt;.+) by using (?&lt;skill&gt;.+)\.</value>
+    <value>(?&lt;name&gt;.+)[이가] 소환: (?&lt;skill&gt;.+)을 사용해 (?&lt;pet&gt;.+)을 소환했습니다\.</value>
+    <comment>타 유저 정령류 소환</comment>
   </data>
   <data name="SummonedDelayRegex" xml:space="preserve">
     <value>(?&lt;pet&gt;.+)[이가] (?&lt;skill&gt;.+) 효과를 사용해 (?&lt;target&gt;.+)[이가] 중독 상태가 됐습니다\.</value>

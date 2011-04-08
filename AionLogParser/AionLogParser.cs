@@ -603,9 +603,8 @@ namespace KingsDamageMeter
                             return;
                         }
                         
-                        // 일반 유저 대미지 처리
                         if (name.Contains(" "))
-                        {
+                        {   // 펫이 공격하는지 체크
                             if (_Pets.ContainsKey(name))
                             {
                                 string pet = name;
@@ -616,15 +615,17 @@ namespace KingsDamageMeter
                                     SkillDamageInflicted(this, new PlayerSkillDamageEventArgs(time, name, damage, pet));
                                 }
                             }
+                            regex = "_PetAttack";
                         }
                         else
                         {
+                            // 일반 유저 대미지 처리
                             if (DamageInflicted != null)
                             {
                                 DamageInflicted(this, new PlayerDamageEventArgs(time, name, damage));
                             }
-                        }                
-                        regex = "_OtherInflictedRegex";                        
+                            regex = "_OtherInflictedRegex";
+                        }
                     }
                     matched = true;
                     return;
