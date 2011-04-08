@@ -268,7 +268,7 @@ namespace KingsDamageMeter.Localization {
         }
         
         /// <summary>
-        ///   (?&lt;name&gt;.+) summoned (?&lt;pet&gt;.+) by using (?&lt;skill&gt;.+)\.과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   (?&lt;name&gt;.+)[이가] 소환: (?&lt;skill&gt;.+)을 사용해 (?&lt;pet&gt;.+)을 소환했습니다\.과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string OtherSummonedRegex {
             get {
