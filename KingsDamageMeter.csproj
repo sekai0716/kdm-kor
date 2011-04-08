@@ -86,7 +86,7 @@
     </Reference>
     <Reference Include="WPFLocalizeExtension, Version=1.0.0.0, Culture=neutral, PublicKeyToken=944ebedf95bf2bc5, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Libs\WPFLocalizeExtension.dll</HintPath>
+      <HintPath>Libs\WPFLocalizeExtension.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

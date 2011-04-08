@@ -130,7 +130,7 @@
     <value> Effect</value>
   </data>
   <data name="JoinedGroupRegex" xml:space="preserve">
-    <value>(?&lt;name&gt;.+) 님을 파티에 초대했습니다\.</value>
+    <value>(?&lt;name&gt;.+) 님이 파티에 참가했습니다\.</value>
   </data>
   <data name="KickedFromGroupRegex" xml:space="preserve">
     <value>(?&lt;name&gt;.+) has been kicked out of your group\.</value>

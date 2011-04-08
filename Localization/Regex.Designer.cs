@@ -97,7 +97,7 @@ namespace KingsDamageMeter.Localization {
         }
         
         /// <summary>
-        ///   (?&lt;name&gt;.+) 님을 파티에 초대했습니다\.과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   (?&lt;name&gt;.+) 님이 파티에 참가했습니다\.과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string JoinedGroupRegex {
             get {
