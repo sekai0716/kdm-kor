@@ -88,11 +88,29 @@ namespace KingsDamageMeter.Localization {
         }
         
         /// <summary>
+        ///   (?&lt;pet&gt;.+)[이가] 소환: (?&lt;skill&gt;.+) 효과를 사용해 (?&lt;target&gt;.+)에게 (?&lt;damage&gt;[^a-zA-Z]+)의 대미지를 줬습니다\.과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string CommonSummonedSumAtk {
+            get {
+                return ResourceManager.GetString("CommonSummonedSumAtk", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///    Effect과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string Effect {
             get {
                 return ResourceManager.GetString("Effect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   (?&lt;name&gt;.+)[이가] 소환: (?&lt;skill&gt;.+)을 사용해 (?&lt;target&gt;.+)[을를] 공격할 (?&lt;pet&gt;.+)[을를] 소환했습니다\.과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string EnergySummonedRegex {
+            get {
+                return ResourceManager.GetString("EnergySummonedRegex", resourceCulture);
             }
         }
         
