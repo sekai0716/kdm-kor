@@ -66,6 +66,7 @@ namespace KingsDamageMeter
         private Dictionary<string, string> _Dots = new Dictionary<string, string>();
         private Dictionary<string, string> _Pets = new Dictionary<string, string>();
         private Dictionary<string, string> _Effects = new Dictionary<string, string>();
+        private Dictionary<string, string> _Energy = new Dictionary<string, string>();
 
         private Thread _Worker;
         private object _LockObject = new object();
@@ -88,6 +89,7 @@ namespace KingsDamageMeter
         private string _TimestampRegex;
         private Regex _ChatRegex;
         private Regex _CommonDelayedPoisonDamageRegex;
+        private Regex _CommonSummonedSumAtk;
 
         private Regex _YouInflictedRegex;
         private Regex _YouInflictedSkillRegex;
@@ -127,13 +129,13 @@ namespace KingsDamageMeter
         private Regex _OtherInflictedSkillRegex2;
         private Regex _OtherInflictedRegex;
         private Regex _OtherReceivedRegex;
-        //private Regex _OtherReceivedRegex1;
         private Regex _OtherInflictedSkillEx;
         private Regex _OtherInflictedSkillCureEx;
 
         private Regex _SummonedDelayRegex;
         private Regex _SummonedTrapRegex;
         private Regex _CommonDelayedTrapDamageRegex;
+        private Regex _EnergySummonedRegex;
 
         private string  _OtherPrevSkill;
         private int     _OtherPrevSkillDamage;
@@ -218,7 +220,8 @@ namespace KingsDamageMeter
             _ChatRegex = new Regex(Localization.Regex.Chat, RegexOptions.Compiled);
 
             _CommonDelayedPoisonDamageRegex = new Regex(_TimestampRegex + Localization.Regex.CommonDelayedPoisonDamageRegex, RegexOptions.Compiled);
-
+            _CommonSummonedSumAtk = new Regex(_TimestampRegex + Localization.Regex.CommonSummonedSumAtk, RegexOptions.Compiled);
+            
             _YouInflictedRegex = new Regex(_TimestampRegex + Localization.Regex.YouInflictedRegex, RegexOptions.Compiled);
             _YouInflictedSkillRegex = new Regex(_TimestampRegex + Localization.Regex.YouInflictedSkillRegex, RegexOptions.Compiled);
             _YouInflictedSkillRegex1 = new Regex(_TimestampRegex + Localization.Regex.YouInflictedSkillRegex1, RegexOptions.Compiled);
@@ -264,6 +267,8 @@ namespace KingsDamageMeter
             _SummonedTrapRegex = new Regex(_TimestampRegex + Localization.Regex.SummonedTrapRegex, RegexOptions.Compiled);
             
             _CommonDelayedTrapDamageRegex = new Regex(_TimestampRegex + Localization.Regex.CommonDelayedTrapDamageRegex, RegexOptions.Compiled);
+            _EnergySummonedRegex = new Regex(_TimestampRegex + Localization.Regex.EnergySummonedRegex, RegexOptions.Compiled);
+
         }
 
         /// <summary>
@@ -495,6 +500,43 @@ namespace KingsDamageMeter
                     return;
                 }
 
+                // 트랩보다 상위에 있어야함
+                matches = _CommonSummonedSumAtk.Matches(line);
+                if (matches.Count > 0)
+                {
+                    DateTime time = matches[0].Groups[_TimeGroupName].Value.GetTime(_TimeFormat);
+                    string pet = matches[0].Groups[_PetGroupName].Value;
+                    string skill = matches[0].Groups[_SkillGroupName].Value;
+                    int damage = matches[0].Groups[_DamageGroupName].Value.GetDigits();
+                    string target = matches[0].Groups[_TargetGroupName].Value;
+
+                    // 소환수가 소환하여 공격함
+                    if (_Energy.ContainsKey(pet + "^" + target))
+                    {
+                        string[] strvalues = _Energy[pet + "^" + target].Split('^');
+                        string strusername = strvalues[0];
+                        string strskill = "";
+                        if (strvalues.Length == 3)
+                        {
+                            strskill = strvalues[2];
+                        }
+                        else
+                        {
+                            strskill = "뭔가오류";
+                        }
+
+                        if (SkillDamageInflicted != null)
+                        {
+                            SkillDamageInflicted(this,
+                                                 new PlayerSkillDamageEventArgs(time, strusername, damage,
+                                                                                strskill));
+                        }
+                    }
+                    matched = true;
+                    regex = "_CommonSummonedSumAtk";
+                    return;
+                }
+
                 matches = _SummonedTrapRegex.Matches(line);
                 if (matches.Count > 0)
                 {
@@ -506,10 +548,12 @@ namespace KingsDamageMeter
 
                     if (_Pets.ContainsKey(skill + pet))
                     {
-
-                        SkillDamageInflicted(this,
-                                             new PlayerSkillDamageEventArgs(time, _Pets[skill + pet].Split('^')[0], damage,
-                                                                            skill));
+                        if (SkillDamageInflicted != null)
+                        {
+                            SkillDamageInflicted(this,
+                                                 new PlayerSkillDamageEventArgs(time, _Pets[skill + pet].Split('^')[0], damage,
+                                                                                skill));
+                        }
                     }
                     else
                     {
@@ -529,34 +573,60 @@ namespace KingsDamageMeter
                     int damage = matches[0].Groups[_DamageGroupName].Value.GetDigits();
                     string target = matches[0].Groups[_TargetGroupName].Value;
 
-                    if (String.IsNullOrEmpty(name))
+                    // 정령의 기운류가 공격 할 수 있음
+                    if (_Energy.ContainsKey(name + "^" + target))
                     {
-                        return;
-                    }
-
-                    if (name.Contains(" "))
-                    {
-                        if (_Pets.ContainsKey(name))
+                        string[] strvalues =_Energy[name + "^" + target].Split('^');
+                        string strusername = strvalues[0];
+                        string strskill = "";
+                        if (strvalues.Length == 3)
                         {
-                            string pet = name;
-                            name = _Pets[pet];
-
-                            if (SkillDamageInflicted != null)
-                            {
-                                SkillDamageInflicted(this, new PlayerSkillDamageEventArgs(time, name, damage, pet));
-                            }
+                            strskill = strvalues[2];
                         }
+                        else
+                        {
+                            strskill = "뭔가오류";
+                        }
+
+                        if (SkillDamageInflicted != null)
+                        {
+                            SkillDamageInflicted(this,
+                                                 new PlayerSkillDamageEventArgs(time, strusername, damage,
+                                                                                strskill));
+                        }
+                        regex = "_EnergySummonedAttack";
                     }
                     else
                     {
-                        if (DamageInflicted != null)
+                        if (String.IsNullOrEmpty(name))
                         {
-                            DamageInflicted(this, new PlayerDamageEventArgs(time, name, damage));
+                            return;
                         }
-                    }
+                        
+                        // 일반 유저 대미지 처리
+                        if (name.Contains(" "))
+                        {
+                            if (_Pets.ContainsKey(name))
+                            {
+                                string pet = name;
+                                name = _Pets[pet];
 
+                                if (SkillDamageInflicted != null)
+                                {
+                                    SkillDamageInflicted(this, new PlayerSkillDamageEventArgs(time, name, damage, pet));
+                                }
+                            }
+                        }
+                        else
+                        {
+                            if (DamageInflicted != null)
+                            {
+                                DamageInflicted(this, new PlayerDamageEventArgs(time, name, damage));
+                            }
+                        }                
+                        regex = "_OtherInflictedRegex";                        
+                    }
                     matched = true;
-                    regex = "_OtherInflictedRegex";
                     return;
                 }
 
@@ -883,6 +953,31 @@ namespace KingsDamageMeter
 
                     matched = true;
                     regex = "_OtherSummonedAttackRegex";
+                    return;
+                }
+
+                matches = _EnergySummonedRegex.Matches(line);
+                if (matches.Count > 0)
+                {
+                    DateTime time = matches[0].Groups[_TimeGroupName].Value.GetTime(_TimeFormat);
+                    string name = matches[0].Groups[_NameGroupName].Value;
+                    string target = matches[0].Groups[_TargetGroupName].Value;
+                    string skill = matches[0].Groups[_SkillGroupName].Value;
+                    string pet = matches[0].Groups[_PetGroupName].Value;
+                    if ( _Energy.ContainsKey(pet + "^" + target))
+                    {
+                        if (_Energy[pet + "^" + target].Contains(name))
+                        {
+                            _Energy[pet + "^" + target] = name + "^" + time.ToString()  + "^" + skill;
+                        }
+                    }
+                    else
+                    {
+                        _Energy.Add(pet + "^" + target, name + "^" + time.ToString() + "^" + skill);
+                    }
+
+                    matched = true;
+                    regex = "_EnergySummonedRegex";
                     return;
                 }
 
