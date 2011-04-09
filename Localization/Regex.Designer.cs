@@ -297,9 +297,9 @@ namespace KingsDamageMeter.Localization {
         /// <summary>
         ///   (?&lt;pet&gt;.+)[이가] (?&lt;skill&gt;.+) 효과를 사용해 (?&lt;target&gt;.+)[이가] 중독 상태가 됐습니다\.과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
-        internal static string SummonedDelayRegex {
+        internal static string SummonedPoisonDelayRegex {
             get {
-                return ResourceManager.GetString("SummonedDelayRegex", resourceCulture);
+                return ResourceManager.GetString("SummonedPoisonDelayRegex", resourceCulture);
             }
         }
         
