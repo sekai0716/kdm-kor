@@ -54,7 +54,7 @@
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="YouAlias" Type="System.String" Scope="User">
-      <Value Profile="(Default)">You</Value>
+      <Value Profile="(Default)">당신</Value>
     </Setting>
   </Settings>
 </SettingsFile>

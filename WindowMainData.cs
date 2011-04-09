@@ -415,7 +415,7 @@ namespace KingsDamageMeter
 
             if (player != null)
             {
-                if (player.PlayerClass == ClassType.None)
+                if (player.PlayerClass == ClassType.알수없음)
                 {
                     player.PlayerClass = SkillDictionary.GetClass(skill);
                 }

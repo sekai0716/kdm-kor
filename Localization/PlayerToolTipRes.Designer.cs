@@ -61,7 +61,7 @@ namespace KingsDamageMeter.Localization {
         }
         
         /// <summary>
-        ///   최대 대미지과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   최대 대미지:과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string PlayerToolTipBiggestHit {
             get {
@@ -70,7 +70,16 @@ namespace KingsDamageMeter.Localization {
         }
         
         /// <summary>
-        ///   dps과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   직업:과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string PlayerToolTipClassType {
+            get {
+                return ResourceManager.GetString("PlayerToolTipClassType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   dps:과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string PlayerToolTipDps {
             get {
@@ -79,7 +88,25 @@ namespace KingsDamageMeter.Localization {
         }
         
         /// <summary>
-        ///   peak과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   때린시간:과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string PlayerToolTipFightTime {
+            get {
+                return ResourceManager.GetString("PlayerToolTipFightTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   초과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string PlayerToolTipFightTime2 {
+            get {
+                return ResourceManager.GetString("PlayerToolTipFightTime2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   최대 dps:과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string PlayerToolTipPeak {
             get {
@@ -88,7 +115,7 @@ namespace KingsDamageMeter.Localization {
         }
         
         /// <summary>
-        ///   총합과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   총 데미지:과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string PlayerToolTipTotal {
             get {

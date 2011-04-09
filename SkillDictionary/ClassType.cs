@@ -21,15 +21,15 @@ namespace KingsDamageMeter
 {
     public enum ClassType
     {
-        None,
-        Cleric,
-        Chanter,
-        Assassin,
-        Ranger,
-        Templar,
-        Gladiator,
-        Sorcerer,
-        Spiritmaster
+        알수없음,
+        치유성,
+        호법성,
+        살성,
+        궁성,
+        수호성,
+        검성,
+        마도성,
+        정령성
     }
 }
 

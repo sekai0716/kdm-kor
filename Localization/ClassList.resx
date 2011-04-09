@@ -117,28 +117,28 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Assassin" xml:space="preserve">
+  <data name="살성" xml:space="preserve">
     <value>살성</value>
   </data>
-  <data name="Chanter" xml:space="preserve">
+  <data name="호법성" xml:space="preserve">
     <value>호법성</value>
   </data>
-  <data name="Cleric" xml:space="preserve">
+  <data name="치유성" xml:space="preserve">
     <value>치유성</value>
   </data>
-  <data name="Gladiator" xml:space="preserve">
+  <data name="검성" xml:space="preserve">
     <value>검성</value>
   </data>
-  <data name="Ranger" xml:space="preserve">
+  <data name="궁성" xml:space="preserve">
     <value>궁성</value>
   </data>
-  <data name="Sorcerer" xml:space="preserve">
+  <data name="마도성" xml:space="preserve">
     <value>마도성</value>
   </data>
-  <data name="Spiritmaster" xml:space="preserve">
+  <data name="정령성" xml:space="preserve">
     <value>정령성</value>
   </data>
-  <data name="Templar" xml:space="preserve">
+  <data name="수호성" xml:space="preserve">
     <value>수호성</value>
   </data>
 </root>

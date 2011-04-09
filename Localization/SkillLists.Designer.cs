@@ -61,74 +61,74 @@ namespace KingsDamageMeter.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Dash Attack,Killer&apos;s Eye,Rune Carve,Sprinting,Pain Rune,Apply Poison,Fang Strike,Rune Slash,Clear Focus,Whirlwind Slash,Binding Rune,Beast Kick,Searching Eye,Wind Walk,Assassination,Weakening Blow,Blood Rune,Beast Swipe,Spiral Slash,Throw Dagger.
+        ///   Looks up a localized string similar to Dash Attack,Killer&apos;s Eye,Rune Carve,Sprinting,Pain Rune,Apply Poison,Fang Strike,Rune Slash,Clear Focus,Whirlwind Slash,Binding Rune,Beast Kick,Searching Eye,Wind Walk,살성ation,Weakening Blow,Blood Rune,Beast Swipe,Spiral Slash,Throw Dagger.
         /// </summary>
-        internal static string Assassin {
+        internal static string 살성 {
             get {
-                return ResourceManager.GetString("Assassin", resourceCulture);
+                return ResourceManager.GetString("살성", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Victory Mantra,Meteor Strike,Shield Mantra,Booming Strike,Word of Revival,Promise of Earth,Magic Mantra,Incandescent Blow,Celerity Mantra,Focused Parry,Booming Smash,Revival Mantra,Clement Mind Mantra,Parrying Strike,Pentacle Shock,Word of Wind,Booming Assault,Intensity Mantra,Word of Quickness,Protection Mantra,Tremor.
         /// </summary>
-        internal static string Chanter {
+        internal static string 호법성 {
             get {
-                return ResourceManager.GetString("Chanter", resourceCulture);
+                return ResourceManager.GetString("호법성", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Light of Rejuvenation,Root,Thunderbolt,Dispel,Tranquility,Radiant Cure,Cure Mind,Penance,Divine Touch,Healing Wind,Rebirth,Divine Spark,Summer Circle,Winter Circle,Thorny Skin,Acquittal,Light of Recovery,Chastisement,Resurrection Loci,Prayer of Focus,Grace of Resurrection,Blessed Shield,Slashing Wind.
         /// </summary>
-        internal static string Cleric {
+        internal static string 치유성 {
             get {
-                return ResourceManager.GetString("Cleric", resourceCulture);
+                return ResourceManager.GetString("치유성", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Seismic Wave,Wrathful Strike,Aion&apos;s Strength,Rupture,Cleave,Aerial Lockdown,Body Smash,Crashing Blow,Shock Wave,Seismic Billow,Reckless Strike,Stamina Recovery,Wall of Steel,Pressure Wave,Great Cleave,Wrathful Wave,Righteous Cleave,Strengthen Wings.
         /// </summary>
-        internal static string Gladiator {
+        internal static string 검성 {
             get {
-                return ResourceManager.GetString("Gladiator", resourceCulture);
+                return ResourceManager.GetString("검성", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Swift Shot,Entanglng Shot,Arrow Strke,Stunnng Shot,Aiming,Poison Arrow,Rupture Arrow,Strong Shots,Tactcal Retreat,Aerial Wild Shot,Hunter&apos;s Eye,Arrow Flurry,Fleshcutter Arrow,Arrow Storm.
         /// </summary>
-        internal static string Ranger {
+        internal static string 궁성 {
             get {
-                return ResourceManager.GetString("Ranger", resourceCulture);
+                return ResourceManager.GetString("궁성", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Robe of Earth,Flame Harpoon,Blind Leap,Winter Binding,Flame Cage,Delayed Blast,Robe of Flame,Freezing Wind,Boon of Peace,Aether&apos;s Hold,Aether Flame,Inferno,Robe of Cold,Tranquilizing Cloud,Gain Mana,Flame Fusion,Magic Fist,Soul Absorption,Soul Freeze,Flaming Meteor,Cometfall.
         /// </summary>
-        internal static string Sorcerer {
+        internal static string 마도성 {
             get {
-                return ResourceManager.GetString("Sorcerer", resourceCulture);
+                return ResourceManager.GetString("마도성", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Root of Enervation,Summon Fire Spirit,Summon Wind Spirit,Chain of Earth,Summon Fire Energy,Dispel Magic,Summon Water Spirit,Summon Wind Servant,Spirit Erosion,Stone Shock,Sandblaster,Summon Group Member,Disenchant,Summoning Alacrity,Spirit Absorption,Blade of Earth,Wing Root,Erosion,Stone Skin.
         /// </summary>
-        internal static string Spiritmaster {
+        internal static string 정령성 {
             get {
-                return ResourceManager.GetString("Spiritmaster", resourceCulture);
+                return ResourceManager.GetString("정령성", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Taunt,Shield Bash,Provoking Shield Counter,Empyrean Armor,Shining Slash,Wrath Strike,Avenging Blow,Steel Wall Defense,Divine Blow,Dazing Severe Blow,Face Smash,Hand of Healing,Blunting Severe Blow,Judgment,Iron Skin,Divine Grasp.
         /// </summary>
-        internal static string Templar {
+        internal static string 수호성 {
             get {
-                return ResourceManager.GetString("Templar", resourceCulture);
+                return ResourceManager.GetString("수호성", resourceCulture);
             }
         }
     }

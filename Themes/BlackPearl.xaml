@@ -79,7 +79,7 @@
     </Style>
 
     <!-- Class Buttons -->
-    <RadialGradientBrush x:Key="ClassTypeNoneBrush" GradientOrigin="0.496,1.052">
+    <RadialGradientBrush x:Key="ClassType알수없음Brush" GradientOrigin="0.496,1.052">
         <RadialGradientBrush.RelativeTransform>
             <TransformGroup>
                 <ScaleTransform CenterX="0.5" CenterY="0.5" ScaleX="1.5" ScaleY="1.5"/>
@@ -89,7 +89,7 @@
         <GradientStop Offset="0.4" Color="#000"/>
         <GradientStop Offset="1" Color="#CCC"/>
     </RadialGradientBrush>
-    <RadialGradientBrush x:Key="ClassTypeClericBrush" GradientOrigin="0.496,1.052">
+    <RadialGradientBrush x:Key="ClassType치유성Brush" GradientOrigin="0.496,1.052">
         <RadialGradientBrush.RelativeTransform>
             <TransformGroup>
                 <ScaleTransform CenterX="0.5" CenterY="0.5" ScaleX="1.5" ScaleY="1.5"/>
@@ -99,7 +99,7 @@
         <GradientStop Offset="0.4" Color="#000"/>
         <GradientStop Offset="1" Color="#66F"/>
     </RadialGradientBrush>
-    <RadialGradientBrush x:Key="ClassTypeChanterBrush" GradientOrigin="0.496,1.052">
+    <RadialGradientBrush x:Key="ClassType호법성Brush" GradientOrigin="0.496,1.052">
         <RadialGradientBrush.RelativeTransform>
             <TransformGroup>
                 <ScaleTransform CenterX="0.5" CenterY="0.5" ScaleX="1.5" ScaleY="1.5"/>
@@ -109,7 +109,7 @@
         <GradientStop Offset="0.4" Color="#000"/>
         <GradientStop Offset="1" Color="#09C"/>
     </RadialGradientBrush>
-    <RadialGradientBrush x:Key="ClassTypeAssassinBrush" GradientOrigin="0.496,1.052">
+    <RadialGradientBrush x:Key="ClassType살성Brush" GradientOrigin="0.496,1.052">
         <RadialGradientBrush.RelativeTransform>
             <TransformGroup>
                 <ScaleTransform CenterX="0.5" CenterY="0.5" ScaleX="1.5" ScaleY="1.5"/>
@@ -119,7 +119,7 @@
         <GradientStop Offset="0.4" Color="#000"/>
         <GradientStop Offset="1" Color="#099"/>
     </RadialGradientBrush>
-    <RadialGradientBrush x:Key="ClassTypeRangerBrush" GradientOrigin="0.496,1.052">
+    <RadialGradientBrush x:Key="ClassType궁성Brush" GradientOrigin="0.496,1.052">
         <RadialGradientBrush.RelativeTransform>
             <TransformGroup>
                 <ScaleTransform CenterX="0.5" CenterY="0.5" ScaleX="1.5" ScaleY="1.5"/>
@@ -129,7 +129,7 @@
         <GradientStop Offset="0.4" Color="#000"/>
         <GradientStop Offset="1" Color="#060"/>
     </RadialGradientBrush>
-    <RadialGradientBrush x:Key="ClassTypeTemplarBrush" GradientOrigin="0.496,1.052">
+    <RadialGradientBrush x:Key="ClassType수호성Brush" GradientOrigin="0.496,1.052">
         <RadialGradientBrush.RelativeTransform>
             <TransformGroup>
                 <ScaleTransform CenterX="0.5" CenterY="0.5" ScaleX="1.5" ScaleY="1.5"/>
@@ -139,7 +139,7 @@
         <GradientStop Offset="0.4" Color="#000"/>
         <GradientStop Offset="1" Color="#F90"/>
     </RadialGradientBrush>
-    <RadialGradientBrush x:Key="ClassTypeGladiatorBrush" GradientOrigin="0.496,1.052">
+    <RadialGradientBrush x:Key="ClassType검성Brush" GradientOrigin="0.496,1.052">
         <RadialGradientBrush.RelativeTransform>
             <TransformGroup>
                 <ScaleTransform CenterX="0.5" CenterY="0.5" ScaleX="1.5" ScaleY="1.5"/>
@@ -149,7 +149,7 @@
         <GradientStop Offset="0.4" Color="#000"/>
         <GradientStop Offset="1" Color="#F00"/>
     </RadialGradientBrush>
-    <RadialGradientBrush x:Key="ClassTypeSorcererBrush" GradientOrigin="0.496,1.052">
+    <RadialGradientBrush x:Key="ClassType마도성Brush" GradientOrigin="0.496,1.052">
         <RadialGradientBrush.RelativeTransform>
             <TransformGroup>
                 <ScaleTransform CenterX="0.5" CenterY="0.5" ScaleX="1.5" ScaleY="1.5"/>
@@ -159,7 +159,7 @@
         <GradientStop Offset="0.4" Color="#000"/>
         <GradientStop Offset="1" Color="#606"/>
     </RadialGradientBrush>
-    <RadialGradientBrush x:Key="ClassTypeSpiritmasterBrush" GradientOrigin="0.496,1.052">
+    <RadialGradientBrush x:Key="ClassType정령성Brush" GradientOrigin="0.496,1.052">
         <RadialGradientBrush.RelativeTransform>
             <TransformGroup>
                 <ScaleTransform CenterX="0.5" CenterY="0.5" ScaleX="1.5" ScaleY="1.5"/>
