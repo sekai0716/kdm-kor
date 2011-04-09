@@ -119,26 +119,34 @@
   </resheader>
   <data name="Assassin" xml:space="preserve">
     <value>진격 베기,살의 극대화,문양 각인,질주,문양 폭발,독 바르기,맹수의 포효,고대 문양 각인,빈틈 노리기,회오리 베기,공중 포박,맹수의 뒷발차기,식별의 눈,그림자 망토,암살,배후 강타,고갈의 문양 폭발,맹수의 후려치기,나선 베기,단검 투척</value>
+    <comment>살성</comment>
   </data>
   <data name="Chanter" xml:space="preserve">
     <value>Victory Mantra,Meteor Strike,Shield Mantra,Booming Strike,Word of Revival,Promise of Earth,Magic Mantra,Incandescent Blow,Celerity Mantra,Focused Parry,Booming Smash,Revival Mantra,Clement Mind Mantra,Parrying Strike,Pentacle Shock,Word of Wind,Booming Assault,Intensity Mantra,Word of Quickness,Protection Mantra,Tremor</value>
+    <comment>호법성</comment>
   </data>
   <data name="Cleric" xml:space="preserve">
     <value>Light of Rejuvenation,Root,Thunderbolt,Dispel,Tranquility,Radiant Cure,Cure Mind,Penance,Divine Touch,Healing Wind,Rebirth,Divine Spark,Summer Circle,Winter Circle,Thorny Skin,Acquittal,Light of Recovery,Chastisement,Resurrection Loci,Prayer of Focus,Grace of Resurrection,Blessed Shield,Slashing Wind</value>
+    <comment>치유성</comment>
   </data>
   <data name="Gladiator" xml:space="preserve">
-    <value>Seismic Wave,Wrathful Strike,Aion's Strength,Rupture,Cleave,Aerial Lockdown,Body Smash,Crashing Blow,Shock Wave,Seismic Billow,Reckless Strike,Stamina Recovery,Wall of Steel,Pressure Wave,Great Cleave,Wrathful Wave,Righteous Cleave,Strengthen Wings</value>
+    <value>격노 폭발,맹렬한 일격,분쇄 파동,신성력 폭발,회심의 일격,분노의 일격,약화의 맹타,파열의 일격,방패 반격,칼날 날리기,내려찍기,공중 결박,몸통 강타,쇠약의 맹타,회심의 일격,강제 낙하,충격 파동,복수의 강타,도약 찍기,광폭 파동,강제 결박,무모한 일격,흡혈 파동,압력 파동,칼날 연사,칼날 화무,분노의 파동,성문 파괴,검기 투척,지진 파동,검기 파동,살기 파동,흡혈 찍기,파괴의 일격,노련한 반격,예리한 일격,검기 파열,살기 파열,파멸의 맹타,절단의 일격,검기 파동,살기 파동,최후의 일격,발목 베기,회전 일격,분노 폭발,격파의 일격,유린의 맹타,흡혈의 검</value>
+    <comment>검성</comment>
   </data>
   <data name="Ranger" xml:space="preserve">
     <value>Swift Shot,Entanglng Shot,Arrow Strke,Stunnng Shot,Aiming,Rupture Arrow,Strong Shots,Tactcal Retreat,Aerial Wild Shot,Hunter's Eye,Arrow Flurry,Fleshcutter Arrow,Arrow Storm</value>
+    <comment>궁성</comment>
   </data>
   <data name="Sorcerer" xml:space="preserve">
     <value>Robe of Earth,Flame Harpoon,Blind Leap,Winter Binding,Flame Cage,Delayed Blast,Robe of Flame,Freezing Wind,Boon of Peace,Aether's Hold,Aether Flame,Inferno,Robe of Cold,Tranquilizing Cloud,Gain Mana,Flame Fusion,Magic Fist,Soul Absorption,Soul Freeze,Flaming Meteor,Cometfall</value>
+    <comment>마도성</comment>
   </data>
   <data name="Spiritmaster" xml:space="preserve">
     <value>Root of Enervation,Summon Fire Spirit,Summon Wind Spirit,Chain of Earth,Summon Fire Energy,Dispel Magic,Summon Water Spirit,Summon Wind Servant,Spirit Erosion,Stone Shock,Sandblaster,Summon Group Member,Disenchant,Summoning Alacrity,Spirit Absorption,Blade of Earth,Wing Root,Erosion,Stone Skin</value>
+    <comment>정령성</comment>
   </data>
   <data name="Templar" xml:space="preserve">
     <value>Taunt,Shield Bash,Provoking Shield Counter,Empyrean Armor,Shining Slash,Wrath Strike,Avenging Blow,Steel Wall Defense,Divine Blow,Dazing Severe Blow,Face Smash,Hand of Healing,Blunting Severe Blow,Judgment,Iron Skin,Divine Grasp</value>
+    <comment>수호성</comment>
   </data>
 </root>

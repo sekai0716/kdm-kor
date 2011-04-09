@@ -51,19 +51,19 @@ namespace KingsDamageMeter.Forms
             // 
             // TextPlayer
             // 
-            this.TextPlayer.Location = new System.Drawing.Point(12, 12);
+            this.TextPlayer.Location = new System.Drawing.Point(14, 11);
             this.TextPlayer.Name = "TextPlayer";
-            this.TextPlayer.Size = new System.Drawing.Size(100, 20);
+            this.TextPlayer.Size = new System.Drawing.Size(116, 21);
             this.TextPlayer.TabIndex = 0;
             this.TextPlayer.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextPlayer_KeyDown);
             // 
             // ButtonFind
             // 
-            this.ButtonFind.Location = new System.Drawing.Point(118, 12);
+            this.ButtonFind.Location = new System.Drawing.Point(138, 11);
             this.ButtonFind.Name = "ButtonFind";
-            this.ButtonFind.Size = new System.Drawing.Size(60, 20);
+            this.ButtonFind.Size = new System.Drawing.Size(70, 21);
             this.ButtonFind.TabIndex = 1;
-            this.ButtonFind.Text = "Find";
+            this.ButtonFind.Text = "찾기";
             this.ButtonFind.UseVisualStyleBackColor = true;
             this.ButtonFind.Click += new System.EventHandler(this.ButtonFind_Click);
             // 
@@ -72,9 +72,10 @@ namespace KingsDamageMeter.Forms
             this.ListIgnored.ContextMenuStrip = this.MenuPlayers;
             this.ListIgnored.FormattingEnabled = true;
             this.ListIgnored.IntegralHeight = false;
-            this.ListIgnored.Location = new System.Drawing.Point(12, 38);
+            this.ListIgnored.ItemHeight = 12;
+            this.ListIgnored.Location = new System.Drawing.Point(14, 35);
             this.ListIgnored.Name = "ListIgnored";
-            this.ListIgnored.Size = new System.Drawing.Size(100, 244);
+            this.ListIgnored.Size = new System.Drawing.Size(116, 226);
             this.ListIgnored.TabIndex = 2;
             // 
             // MenuPlayers
@@ -93,9 +94,9 @@ namespace KingsDamageMeter.Forms
             // 
             // IgnoreListForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(192, 294);
+            this.ClientSize = new System.Drawing.Size(224, 271);
             this.Controls.Add(this.ListIgnored);
             this.Controls.Add(this.ButtonFind);
             this.Controls.Add(this.TextPlayer);
@@ -106,7 +107,7 @@ namespace KingsDamageMeter.Forms
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Ignore List";
+            this.Text = "무시 목록";
             this.TopMost = true;
             this.MenuPlayers.ResumeLayout(false);
             this.ResumeLayout(false);

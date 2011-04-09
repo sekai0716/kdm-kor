@@ -37,7 +37,7 @@ namespace KingsDamageMeter.Forms
             _InvlaidNameMessage = AddToGroupRes.InvalidNameMessage;
         }
 
-        private Regex _NameRegex = new Regex(@"^[a-zA-Z]+$");
+        //private Regex _NameRegex = new Regex(@"^[a-zA-Z]+$");
         private string _PlayerName;
         private string _InvlaidNameMessage = String.Empty;
 
@@ -81,8 +81,8 @@ namespace KingsDamageMeter.Forms
             //MatchCollection matches = _NameRegex.Matches(name);
             //if (matches.Count > 0)
             //{
-                _PlayerName = name;
-                DialogResult = DialogResult.OK;
+            _PlayerName = name;
+            DialogResult = DialogResult.OK;
             //}
 
             //else

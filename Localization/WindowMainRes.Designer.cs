@@ -277,7 +277,7 @@ namespace KingsDamageMeter.Localization {
         }
         
         /// <summary>
-        ///   Unable to locate chat log. Please refer to the documentation for instructions on setting up Aion to create the log or click &quot;{0} -&gt; {1}&quot;과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   chat.log를 열 수 없습니다. 사용 설명서를 보시고 chat.log를 생성하시고 설정해 주세요. &quot;{0} -&gt; {1}&quot;과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string OpenLogError {
             get {
@@ -304,7 +304,7 @@ namespace KingsDamageMeter.Localization {
         }
         
         /// <summary>
-        ///   대미지 측정 종료과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   대미지 측정 시작과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string PowerOffBtnTooltip {
             get {
@@ -313,7 +313,7 @@ namespace KingsDamageMeter.Localization {
         }
         
         /// <summary>
-        ///   대미지 측정 시작과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   대미지 측정 종료과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string PowerOnBtnTooltip {
             get {

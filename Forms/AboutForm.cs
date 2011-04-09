@@ -125,9 +125,14 @@ namespace KingsDamageMeter.Forms
             get
             {
                 StringBuilder s = new StringBuilder();
-                s.Append("Contributors:");
+                s.Append("참여자:");
                 s.AppendLine();
                 s.Append("Walentyn, Ayumi, M4dH4tter");
+                s.AppendLine();
+                s.Append("신도세카이(Sekai), 잃어버린하루");
+                s.AppendLine();
+                s.AppendLine();
+                s.Append("이 프로그램은 KDM을 부분적으로 수정하여 재배포 하는 2차 저작물 입니다.");
                 s.AppendLine();
                 s.AppendLine();
                 return s.ToString();

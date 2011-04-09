@@ -181,7 +181,7 @@
     <value>투명도 조절</value>
   </data>
   <data name="OpenLogError" xml:space="preserve">
-    <value>Unable to locate chat log. Please refer to the documentation for instructions on setting up Aion to create the log or click "{0} -&gt; {1}"</value>
+    <value>chat.log를 열 수 없습니다. 사용 설명서를 보시고 chat.log를 생성하시고 설정해 주세요. "{0} -&gt; {1}"</value>
   </data>
   <data name="OptionsBtnToolTip" xml:space="preserve">
     <value>옵션</value>
@@ -190,10 +190,10 @@
     <value>퍼센트(%)</value>
   </data>
   <data name="PowerOffBtnTooltip" xml:space="preserve">
-    <value>대미지 측정 종료</value>
+    <value>대미지 측정 시작</value>
   </data>
   <data name="PowerOnBtnTooltip" xml:space="preserve">
-    <value>대미지 측정 시작</value>
+    <value>대미지 측정 종료</value>
   </data>
   <data name="ResizeThumbToolTip" xml:space="preserve">
     <value>크기조절</value>

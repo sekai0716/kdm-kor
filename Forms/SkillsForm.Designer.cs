@@ -48,10 +48,10 @@ namespace KingsDamageMeter.Forms
         private void InitializeComponent()
         {
             this.SkillList = new System.Windows.Forms.ListView();
-            this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
-            this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
-            this.columnHeader3 = new System.Windows.Forms.ColumnHeader();
-            this.columnHeader4 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // SkillList
@@ -65,7 +65,7 @@ namespace KingsDamageMeter.Forms
             this.SkillList.FullRowSelect = true;
             this.SkillList.Location = new System.Drawing.Point(0, 0);
             this.SkillList.Name = "SkillList";
-            this.SkillList.Size = new System.Drawing.Size(354, 162);
+            this.SkillList.Size = new System.Drawing.Size(413, 150);
             this.SkillList.TabIndex = 0;
             this.SkillList.UseCompatibleStateImageBehavior = false;
             this.SkillList.View = System.Windows.Forms.View.Details;
@@ -73,35 +73,35 @@ namespace KingsDamageMeter.Forms
             // 
             // columnHeader1
             // 
-            this.columnHeader1.Text = "Skill";
+            this.columnHeader1.Text = "스킬";
             this.columnHeader1.Width = 125;
             // 
             // columnHeader2
             // 
-            this.columnHeader2.Text = "Damage";
+            this.columnHeader2.Text = "데미지";
             this.columnHeader2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.columnHeader2.Width = 75;
             // 
             // columnHeader3
             // 
-            this.columnHeader3.Text = "Percent";
+            this.columnHeader3.Text = "퍼센트";
             this.columnHeader3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // columnHeader4
             // 
-            this.columnHeader4.Text = "Uses";
+            this.columnHeader4.Text = "사용률";
             this.columnHeader4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // SkillsForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(354, 162);
+            this.ClientSize = new System.Drawing.Size(413, 150);
             this.Controls.Add(this.SkillList);
             this.Name = "SkillsForm";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Skills";
+            this.Text = "사용한 스킬들";
             this.TopMost = true;
             this.ResumeLayout(false);
 
