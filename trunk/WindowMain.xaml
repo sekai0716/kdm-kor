@@ -4,7 +4,7 @@
         xmlns:local="clr-namespace:KingsDamageMeter.Controls"
         xmlns:Properties="clr-namespace:KingsDamageMeter.Properties"
         xmlns:Converters="clr-namespace:KingsDamageMeter.Converters"
-        Title="KingsDamageMeter" 
+        Title="Sekai'sDamageMeter" 
         MinWidth="198" 
         MinHeight="102" 
         Left="{Binding WindowMainX, Mode=TwoWay, Source={x:Static Properties:Settings.Default}}"
@@ -14,7 +14,7 @@
         Topmost="{Binding WindowMainTopMost, Source={x:Static Properties:Settings.Default}}" 
         Opacity="{Binding WindowMainOpacity, Source={x:Static Properties:Settings.Default}}"
         WindowStyle="None" 
-        Foreground="White" 
+        Foreground="Gold" 
         ResizeMode="NoResize" 
         AllowsTransparency="True" 
         Icon="/KingsDamageMeter;component/Lion.ico" 
@@ -93,11 +93,11 @@
                                FontWeight="Bold"
                                Margin="4,0,8,0" 
                                VerticalContentAlignment="Center"
-                               Content="KDM"/>
+                               Content="SDM"/>
                         -->
                         <TextBlock Grid.Column="1"
                                Style="{StaticResource MainWindowTitleTextStyle}"
-                               Text="KDM"
+                               Text="SDM"
                                VerticalAlignment="Center"
                                FontFamily="Verdana"
                                FontWeight="Bold"

@@ -56,39 +56,39 @@ namespace KingsDamageMeter.Forms
             // 
             this.InputTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.InputTextBox.Location = new System.Drawing.Point(12, 12);
+            this.InputTextBox.Location = new System.Drawing.Point(14, 11);
             this.InputTextBox.Name = "InputTextBox";
-            this.InputTextBox.Size = new System.Drawing.Size(180, 20);
+            this.InputTextBox.Size = new System.Drawing.Size(209, 21);
             this.InputTextBox.TabIndex = 0;
             this.InputTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.InputTextBox_KeyDown);
             // 
             // OKButton
             // 
             this.OKButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.OKButton.Location = new System.Drawing.Point(12, 42);
+            this.OKButton.Location = new System.Drawing.Point(14, 39);
             this.OKButton.Name = "OKButton";
-            this.OKButton.Size = new System.Drawing.Size(75, 23);
+            this.OKButton.Size = new System.Drawing.Size(87, 21);
             this.OKButton.TabIndex = 1;
-            this.OKButton.Text = "OK";
+            this.OKButton.Text = "확인";
             this.OKButton.UseVisualStyleBackColor = true;
             this.OKButton.Click += new System.EventHandler(this.OKButton_Click);
             // 
             // CancelButton
             // 
             this.CancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.CancelButton.Location = new System.Drawing.Point(117, 42);
+            this.CancelButton.Location = new System.Drawing.Point(136, 39);
             this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(75, 23);
+            this.CancelButton.Size = new System.Drawing.Size(87, 21);
             this.CancelButton.TabIndex = 2;
-            this.CancelButton.Text = "Cancel";
+            this.CancelButton.Text = "취소";
             this.CancelButton.UseVisualStyleBackColor = true;
             this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
             // AddToGroupDialog
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(204, 77);
+            this.ClientSize = new System.Drawing.Size(238, 71);
             this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.OKButton);
             this.Controls.Add(this.InputTextBox);
@@ -97,7 +97,7 @@ namespace KingsDamageMeter.Forms
             this.MinimizeBox = false;
             this.Name = "AddToGroupDialog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Add Group Member";
+            this.Text = "파티원 추가";
             this.TopMost = true;
             this.ResumeLayout(false);
             this.PerformLayout();
