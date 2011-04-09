@@ -61,7 +61,7 @@ namespace KingsDamageMeter.Localization {
         }
         
         /// <summary>
-        ///   프로그램에 대하여..과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   이 프로그램은...과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string AboutMenuHeader {
             get {
@@ -79,7 +79,7 @@ namespace KingsDamageMeter.Localization {
         }
         
         /// <summary>
-        ///   Abyss Points과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   어비스 포인트과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string ApMainViewMenuHeader {
             get {
@@ -97,7 +97,7 @@ namespace KingsDamageMeter.Localization {
         }
         
         /// <summary>
-        ///   Close?과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   종료?과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string ConfirmCloseCaption {
             get {
@@ -106,7 +106,7 @@ namespace KingsDamageMeter.Localization {
         }
         
         /// <summary>
-        ///   Are you sure you wish to close King&apos;s Damage Meter?과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   정말로 종료 하시겠습니까?과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string ConfirmCloseMessage {
             get {
@@ -115,7 +115,7 @@ namespace KingsDamageMeter.Localization {
         }
         
         /// <summary>
-        ///   Damage과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   대미지과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string DamageMainViewMenuHeader {
             get {
@@ -133,7 +133,7 @@ namespace KingsDamageMeter.Localization {
         }
         
         /// <summary>
-        ///   Experience과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   경험치과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string ExperienceMainViewMenuHeader {
             get {
@@ -142,7 +142,7 @@ namespace KingsDamageMeter.Localization {
         }
         
         /// <summary>
-        ///   Exp per Hour:과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   시간당 경험치:과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string ExpPerHourToolTip {
             get {
@@ -151,7 +151,7 @@ namespace KingsDamageMeter.Localization {
         }
         
         /// <summary>
-        ///   파티원만과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   파티원의 정보만과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string GroupOnlyMenuHeader {
             get {
@@ -160,7 +160,7 @@ namespace KingsDamageMeter.Localization {
         }
         
         /// <summary>
-        ///   도움말(영문 pdf파일입니다)과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   도움말과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string HelpMenuHeader {
             get {
@@ -169,7 +169,7 @@ namespace KingsDamageMeter.Localization {
         }
         
         /// <summary>
-        ///   내정보만과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   내 정보만과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string HideOthersMenuHeader {
             get {
@@ -178,7 +178,7 @@ namespace KingsDamageMeter.Localization {
         }
         
         /// <summary>
-        ///   무시할 대상자 목록...과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   무시할 대상자 리스트...과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string IgnoreListMenuHeader {
             get {
@@ -187,7 +187,7 @@ namespace KingsDamageMeter.Localization {
         }
         
         /// <summary>
-        ///   Earned:과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   얻음:과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string KinahEarnedToolTip {
             get {
@@ -196,7 +196,7 @@ namespace KingsDamageMeter.Localization {
         }
         
         /// <summary>
-        ///   Kinah과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   키나과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string KinahMainViewMenuHeader {
             get {
@@ -205,7 +205,7 @@ namespace KingsDamageMeter.Localization {
         }
         
         /// <summary>
-        ///   Spent:과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   사용:과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string KinahSpentToolTip {
             get {
@@ -214,7 +214,7 @@ namespace KingsDamageMeter.Localization {
         }
         
         /// <summary>
-        ///   Language과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   언어과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string LanguageMenuHeader {
             get {
@@ -223,7 +223,7 @@ namespace KingsDamageMeter.Localization {
         }
         
         /// <summary>
-        ///   Chat.log의 위치 지정...과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   Chat.log 위치 지정...과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string LocateLogMenuHeader {
             get {
@@ -232,7 +232,7 @@ namespace KingsDamageMeter.Localization {
         }
         
         /// <summary>
-        ///   Log Language과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   로그 언어과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string LogLanguageMenuHeader {
             get {
@@ -241,7 +241,7 @@ namespace KingsDamageMeter.Localization {
         }
         
         /// <summary>
-        ///   보고싶은 항목 설정과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   보여질 항목과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string MainViewMenuHeader {
             get {
@@ -259,7 +259,7 @@ namespace KingsDamageMeter.Localization {
         }
         
         /// <summary>
-        ///   A player with this name already exists.과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   이미 존재하는 유저 이름입니다.과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string NameTakenMessage {
             get {
@@ -286,7 +286,7 @@ namespace KingsDamageMeter.Localization {
         }
         
         /// <summary>
-        ///   설정과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   옵션과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string OptionsBtnToolTip {
             get {
@@ -295,7 +295,7 @@ namespace KingsDamageMeter.Localization {
         }
         
         /// <summary>
-        ///   Percent과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   퍼센트(%)과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string PercentMainViewMenuHeader {
             get {
@@ -304,7 +304,7 @@ namespace KingsDamageMeter.Localization {
         }
         
         /// <summary>
-        ///   Power Off과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   대미지 측정 종료과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string PowerOffBtnTooltip {
             get {
@@ -313,7 +313,7 @@ namespace KingsDamageMeter.Localization {
         }
         
         /// <summary>
-        ///   Power On과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   대미지 측정 시작과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string PowerOnBtnTooltip {
             get {
@@ -331,7 +331,7 @@ namespace KingsDamageMeter.Localization {
         }
         
         /// <summary>
-        ///   나의 이름은...과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   내 이름 설정과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string SetYouAliasMenuHeader {
             get {
@@ -340,7 +340,7 @@ namespace KingsDamageMeter.Localization {
         }
         
         /// <summary>
-        ///   Damage순과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   대미지순과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string SortByDamageMenuHeader {
             get {
@@ -367,7 +367,7 @@ namespace KingsDamageMeter.Localization {
         }
         
         /// <summary>
-        ///   순서설정과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   순서 설정과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string SortingMenuHeader {
             get {
@@ -376,7 +376,7 @@ namespace KingsDamageMeter.Localization {
         }
         
         /// <summary>
-        ///   항상위에과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   항상 위과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string TopMostCheckBoxToolTip {
             get {

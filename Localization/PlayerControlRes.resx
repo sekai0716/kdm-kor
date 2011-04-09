@@ -118,39 +118,39 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ClearListMenuHeader" xml:space="preserve">
-    <value>Clear List</value>
+    <value>리스트 지우기</value>
   </data>
   <data name="CopyMacroAllianceMenuHeader" xml:space="preserve">
-    <value>Alliance Chat</value>
+    <value>포스 채팅</value>
   </data>
   <data name="CopyMacroGroupMenuHeader" xml:space="preserve">
-    <value>Group Chat</value>
+    <value>파티 채팅</value>
   </data>
   <data name="CopyMacroLegionMenuHeader" xml:space="preserve">
-    <value>Legion Chat</value>
+    <value>레기온 채팅</value>
   </data>
   <data name="CopyMacroMenuHeader" xml:space="preserve">
-    <value>Copy Macro</value>
+    <value>복사 매크로</value>
   </data>
   <data name="CopyMenuHeader" xml:space="preserve">
-    <value>Copy</value>
+    <value>복사</value>
   </data>
   <data name="FriendMenuHeader" xml:space="preserve">
-    <value>Friend</value>
+    <value>친구</value>
   </data>
   <data name="GroupMemeberMenuHeader" xml:space="preserve">
-    <value>Group Member</value>
+    <value>파티원</value>
   </data>
   <data name="IgnorePlayerMenuHeader" xml:space="preserve">
-    <value>Ignore</value>
+    <value>무시</value>
   </data>
   <data name="RemoveMenuHeader" xml:space="preserve">
-    <value>Remove</value>
+    <value>지우기</value>
   </data>
   <data name="ResetCountsMenuHeader" xml:space="preserve">
-    <value>Reset Counts</value>
+    <value>DPS등 전부 리셋</value>
   </data>
   <data name="ViewSkillsMenuHeader" xml:space="preserve">
-    <value>Skills...</value>
+    <value>사용한 스킬들...</value>
   </data>
 </root>

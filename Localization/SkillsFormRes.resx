@@ -118,6 +118,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="WindowTitle" xml:space="preserve">
-    <value>{0} - Breakdown</value>
+    <value>사용한 스킬 리스트</value>
   </data>
 </root>
