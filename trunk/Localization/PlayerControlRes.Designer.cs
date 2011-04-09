@@ -61,7 +61,7 @@ namespace KingsDamageMeter.Localization {
         }
         
         /// <summary>
-        ///   Clear List과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   리스트 지우기과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string ClearListMenuHeader {
             get {
@@ -70,7 +70,7 @@ namespace KingsDamageMeter.Localization {
         }
         
         /// <summary>
-        ///   Alliance Chat과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   포스 채팅과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string CopyMacroAllianceMenuHeader {
             get {
@@ -79,7 +79,7 @@ namespace KingsDamageMeter.Localization {
         }
         
         /// <summary>
-        ///   Group Chat과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   파티 채팅과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string CopyMacroGroupMenuHeader {
             get {
@@ -88,7 +88,7 @@ namespace KingsDamageMeter.Localization {
         }
         
         /// <summary>
-        ///   Legion Chat과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   레기온 채팅과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string CopyMacroLegionMenuHeader {
             get {
@@ -97,7 +97,7 @@ namespace KingsDamageMeter.Localization {
         }
         
         /// <summary>
-        ///   Copy Macro과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   복사 매크로과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string CopyMacroMenuHeader {
             get {
@@ -106,7 +106,7 @@ namespace KingsDamageMeter.Localization {
         }
         
         /// <summary>
-        ///   Copy과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   복사과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string CopyMenuHeader {
             get {
@@ -115,7 +115,7 @@ namespace KingsDamageMeter.Localization {
         }
         
         /// <summary>
-        ///   Friend과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   친구과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string FriendMenuHeader {
             get {
@@ -124,7 +124,7 @@ namespace KingsDamageMeter.Localization {
         }
         
         /// <summary>
-        ///   Group Member과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   파티원과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string GroupMemeberMenuHeader {
             get {
@@ -133,7 +133,7 @@ namespace KingsDamageMeter.Localization {
         }
         
         /// <summary>
-        ///   Ignore과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   무시과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string IgnorePlayerMenuHeader {
             get {
@@ -142,7 +142,7 @@ namespace KingsDamageMeter.Localization {
         }
         
         /// <summary>
-        ///   Remove과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   지우기과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string RemoveMenuHeader {
             get {
@@ -151,7 +151,7 @@ namespace KingsDamageMeter.Localization {
         }
         
         /// <summary>
-        ///   Reset Counts과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   DPS등 전부 리셋과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string ResetCountsMenuHeader {
             get {
@@ -160,7 +160,7 @@ namespace KingsDamageMeter.Localization {
         }
         
         /// <summary>
-        ///   Skills...과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   사용한 스킬들...과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string ViewSkillsMenuHeader {
             get {

@@ -61,7 +61,7 @@ namespace KingsDamageMeter.Localization {
         }
         
         /// <summary>
-        ///   {0} - Breakdown과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   사용한 스킬 리스트과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string WindowTitle {
             get {

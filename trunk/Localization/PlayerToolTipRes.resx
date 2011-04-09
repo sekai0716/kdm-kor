@@ -127,6 +127,6 @@
     <value>peak</value>
   </data>
   <data name="PlayerToolTipTotal" xml:space="preserve">
-    <value>total</value>
+    <value>총합</value>
   </data>
 </root>
