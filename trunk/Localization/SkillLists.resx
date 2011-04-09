@@ -117,36 +117,28 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Assassin" xml:space="preserve">
-    <value>진격 베기,살의 극대화,문양 각인,질주,문양 폭발,독 바르기,맹수의 포효,고대 문양 각인,빈틈 노리기,회오리 베기,공중 포박,맹수의 뒷발차기,식별의 눈,그림자 망토,암살,배후 강타,고갈의 문양 폭발,맹수의 후려치기,나선 베기,단검 투척</value>
-    <comment>살성</comment>
+  <data name="살성" xml:space="preserve">
+    <value>암흑의 일격,신성한 일격,진격 베기,살의 극대화,질주,문양 각인,문양 폭발,독 바르기,맹수의 포효,신속의 계약,연쇄 문양 각인,회피의 계약,빈틈 노리기,고대 문양 각인,암습,회오리 베기,공중 포박,극약 바르기,문양 파쇄,맹수의 뒷발차기,암살,명중의 서약,그림자 망토,고갈의 문양 폭발,원거리 문양 각인,배후 강타,연막탄,낙하,분노의 눈,필중의 문양 폭발,나선 베기,그림자 분신,맹수의 후려치기,경계 자세,기습 자세,맹수의 송곳니,표창 투척,그림자 보행,맹수의 상흔,쾌속 베기,폭약 바르기,번개 베기,단검 투척,각오,연쇄 화인,빛의 문양 폭발,어둠의 문양 파열,바이젤의 비수,트리니엘의 비수,천공의 문양 폭발,나락의 문양 파열,연쇄 문양 폭발,기습 베기,연속 회피,섬광 폭발,육감 극대화,폭풍 베기,맹독의 기습,강습 자세,침묵의 문양 폭발,혼절의 칼날</value>
   </data>
-  <data name="Chanter" xml:space="preserve">
-    <value>Victory Mantra,Meteor Strike,Shield Mantra,Booming Strike,Word of Revival,Promise of Earth,Magic Mantra,Incandescent Blow,Celerity Mantra,Focused Parry,Booming Smash,Revival Mantra,Clement Mind Mantra,Parrying Strike,Pentacle Shock,Word of Wind,Booming Assault,Intensity Mantra,Word of Quickness,Protection Mantra,Tremor</value>
-    <comment>호법성</comment>
+  <data name="호법성" xml:space="preserve">
+    <value>승리의 진언,유성격,유스티엘의 보호,마르쿠탄의 보호,격파쇄,소생의 주문,방패의 진언,대지의 약속,마력의 진언,바람의 약속,질주의 진언,백열격,흡수의 주문,격노의 주문,보호진,집중 방어,공명쇄,소생의 진언,총명의 진언,열파격,오드의 약속,수호의 주문,파열격,결박의 주문,질풍의 주문,벽력쇄,정확의 진언,생명의 주문,공명 연무,신속의 주문,보호의 진언,천벌의 낙인,유수격,고취의 주문,관통쇄,타격쇄,암격쇄,차단의 주문,결계의 주문,쾌유의 주문,십자 방어,기력 재생,바람의 축복,마력 회복,수호의 축복,쾌속의 주문,필멸 강타,강격쇄,속박의 주문,차단의 장막,결계의 장막,파산격,불패의 진언,육체 강화,파동격,쾌유의 손길,진동쇄,행운의 진언,충격쇄,분쇄격,철벽의 주문</value>
   </data>
-  <data name="Cleric" xml:space="preserve">
-    <value>Light of Rejuvenation,Root,Thunderbolt,Dispel,Tranquility,Radiant Cure,Cure Mind,Penance,Divine Touch,Healing Wind,Rebirth,Divine Spark,Summer Circle,Winter Circle,Thorny Skin,Acquittal,Light of Recovery,Chastisement,Resurrection Loci,Prayer of Focus,Grace of Resurrection,Blessed Shield,Slashing Wind</value>
-    <comment>치유성</comment>
+  <data name="치유성" xml:space="preserve">
+    <value>대지의 응보,뇌전,재생의 빛,구원,어둠의 가호,정화,진정,심판의 번개,소환: 신성한 수정,소환: 신성한 기운,치유의 은총,청명,고행,섬광,주신의 은총,천벌,벼락,치유의 바람,환생,방전,따뜻한 가호,차가운 가호,쾌유의 섬광,대지의 분노,회복 차단,필사의 교환,가시 보호막,쾌유의 빛,면죄,신속의 기도,응징,소환 부활,집중의 기도,부활의 은총,치유의 보호막,쾌유의 광휘,파멸의 목소리,응징의 번개,징벌의 번개,정화의 광휘,유스티엘의 빛,마르쿠탄의 빛,안정,재생의 광휘,기억 분쇄,고통의 연쇄,환생의 손길,회복의 가호,비상의 광휘,교감 치유,방호의 장막,유스티엘의 광휘,마르쿠탄의 광휘,정화의 물결,소환: 고결한 기운,찬란한 가호,증폭의 기도,소환: 치유의 기운,약화의 낙인,뇌우,대지의 징벌,불사의 장막,생명의 권능,벽력</value>
   </data>
-  <data name="Gladiator" xml:space="preserve">
-    <value>격노 폭발,맹렬한 일격,분쇄 파동,신성력 폭발,회심의 일격,분노의 일격,약화의 맹타,파열의 일격,방패 반격,칼날 날리기,내려찍기,공중 결박,몸통 강타,쇠약의 맹타,회심의 일격,강제 낙하,충격 파동,복수의 강타,도약 찍기,광폭 파동,강제 결박,무모한 일격,흡혈 파동,압력 파동,칼날 연사,칼날 화무,분노의 파동,성문 파괴,검기 투척,지진 파동,검기 파동,살기 파동,흡혈 찍기,파괴의 일격,노련한 반격,예리한 일격,검기 파열,살기 파열,파멸의 맹타,절단의 일격,검기 파동,살기 파동,최후의 일격,발목 베기,회전 일격,분노 폭발,격파의 일격,유린의 맹타,흡혈의 검</value>
-    <comment>검성</comment>
+  <data name="검성" xml:space="preserve">
+    <value>격노 폭발,분쇄 파동,신성력 폭발,분노의 일격,파열의 일격,칼날 날리기,내려찍기,공중 결박,몸통 강타,쇠약의 맹타,강제 낙하,충격 파동,복수의 강타,도약 찍기,광폭 파동,강제 결박,무모한 일격,흡혈 파동,압력 파동,칼날 연사,칼날 화무,분노의 파동,성문 파괴,검기 투척,지진 파동,흡혈 찍기,파괴의 일격,노련한 반격,예리한 일격,검기 파열,살기 파열,파멸의 맹타,절단의 일격,검기 파동,살기 파동,최후의 일격,발목 베기,회전 일격,분노 폭발,격파의 일격,유린의 맹타,흡혈의 검</value>
   </data>
-  <data name="Ranger" xml:space="preserve">
-    <value>Swift Shot,Entanglng Shot,Arrow Strke,Stunnng Shot,Aiming,Rupture Arrow,Strong Shots,Tactcal Retreat,Aerial Wild Shot,Hunter's Eye,Arrow Flurry,Fleshcutter Arrow,Arrow Storm</value>
-    <comment>궁성</comment>
+  <data name="궁성" xml:space="preserve">
+    <value>변신: 라이칸,변신: 크랄,올가미 화살,저격,경계의 눈,조준 화살,아교 덫,중독의 덫,연사,집중의 눈,강습 화살,수면 화살,화살 폭우,독 화살,퇴보 베기,침묵 화살,강화의 눈,파열 화살,폭발의 덫,폭발의 덫,축복의 활,바람의 활력,나선 화살,올가미 덫,투시의 덫,파멸의 덫,공중 난사,투시의 눈,대자연의 숨결,집중 속사,송곳 화살,둔화의 덫,결박의 덫,저격 자세,항마의 화살,화살 폭풍,흙먼지 덫,충격 화살,족쇄 화살,공격의 눈,그리폰 화살,콘도르 화살,속사의 눈,질풍 화살,바람의 질주,폭발 화살,사냥꾼의 결의,날개 치료,저항의 결의,퇴각 베기,흡수의 결의,바이젤의 화살,트리니엘의 화살,그리포닉스 화살,콘시어드 화살,광풍 화살,광포의 화살,수면의 덫,작렬의 덫,화살 강화,탈취 화살,시무르그 부르기,필중의 화살,번개 화살,고통의 화살</value>
   </data>
-  <data name="Sorcerer" xml:space="preserve">
-    <value>Robe of Earth,Flame Harpoon,Blind Leap,Winter Binding,Flame Cage,Delayed Blast,Robe of Flame,Freezing Wind,Boon of Peace,Aether's Hold,Aether Flame,Inferno,Robe of Cold,Tranquilizing Cloud,Gain Mana,Flame Fusion,Magic Fist,Soul Absorption,Soul Freeze,Flaming Meteor,Cometfall</value>
-    <comment>마도성</comment>
+  <data name="마도성" xml:space="preserve">
+    <value>수면: 허수아비,신성한 주문,혼신의 주문,수면,작렬,시공의 뒤틀림,불꽃 작살,대지의 로브,겨울의 속박,지연 폭발,냉기 파동,저주: 나무,루미엘의 지혜,시공의 회랑,불꽃의 로브,빙판,평화의 은혜,냉기 소환,철갑화의 은혜,공중 속박,지켈의 지혜,쇠약의 저주,투시의 은혜,바람의 칼날,화염 발사,수면 구름,냉기의 로브,지옥의 화염,극기,화염 폭발,화염 융해,나락,바이젤의 지혜,영혼 흡수,원기 흡수,영혼 동결,화염의 원무,신성 폭발,암흑 폭발,혹한,결빙,태풍 소환,강화의 은혜,신속의 은혜,얼음 작살,환영의 회오리,환영,암석 소환,집중의 기원,유성 강타,단절의 결계,시공 도약,화산 대폭발,용암 태풍,수면 폭풍,화염 난무,카이시넬의 진노,루미엘의 진노,화산 폭발,용암 해일,마력의 얼음칼,원소 결계,낙뢰,저주: 고목,생기 교환,마력 증폭,빙설의 갑주,빙하 강타</value>
   </data>
-  <data name="Spiritmaster" xml:space="preserve">
-    <value>Root of Enervation,Summon Fire Spirit,Summon Wind Spirit,Chain of Earth,Summon Fire Energy,Dispel Magic,Summon Water Spirit,Summon Wind Servant,Spirit Erosion,Stone Shock,Sandblaster,Summon Group Member,Disenchant,Summoning Alacrity,Spirit Absorption,Blade of Earth,Wing Root,Erosion,Stone Skin</value>
-    <comment>정령성</comment>
+  <data name="정령성" xml:space="preserve">
+    <value>정령 강화: 빛의 갑옷,정령 강화: 어둠의 갑옷,무기력의 구속,소환: 불의 정령,명령: 뇌전 발톱,소환: 불의 기운,소환: 바람의 정령,대지의 사슬,명령: 위협의 기세,소환: 땅의 정령,마법 해제,원소 보충,원소 방어력 증가,소환: 바람의 기운,소환: 물의 정령,명령: 분노의 기세,육체 구속,생기 흡수,명령: 부식,진공 폭발,대지 진동,정령의 희생,광역 침식,소환: 파티원,소환: 땅의 기운,마법 연소,명령: 교란,마법 차단,영혼의 절규: 삼,영혼의 절규,소환: 물의 기운,복종의 수인,불길의 축복,마법 강탈,정령 흡수,저항의 계약,정령 약화,명령: 수호의 장벽,대지의 칼날,공포의 절규,저주의 구름,원소 전이,은신의 휘장,명령: 기폭의 발톱,저주: 불의 정령,저주: 물의 정령,정령 강화: 회복,분노의 회오리,소환: 회오리의 기운,정령 강화: 강화의 갑주,둔화의 족쇄,마법 역류,날개 속박,명령: 대역,쾌속 흡인,명령: 희생,명령: 자폭,명령: 전소,명령: 폭발,명령: 파멸의 공세,지옥의 고통,소환: 태풍의 정령,소환: 용암의 정령,흡인,정령 강화: 치유,수면의 수인,절망의 저주,어둠의 저주,명령: 정령의 가호,명령: 최면,황천의 저주</value>
   </data>
-  <data name="Templar" xml:space="preserve">
-    <value>Taunt,Shield Bash,Provoking Shield Counter,Empyrean Armor,Shining Slash,Wrath Strike,Avenging Blow,Steel Wall Defense,Divine Blow,Dazing Severe Blow,Face Smash,Hand of Healing,Blunting Severe Blow,Judgment,Iron Skin,Divine Grasp</value>
-    <comment>수호성</comment>
+  <data name="수호성" xml:space="preserve">
+    <value>신성한 응징,암흑의 응징,방패 강타,주신의 갑옷,방패 찍기,도발의 맹타,섬광 베기,필사의 일격,격앙,보호의 방패,포획,철벽 방어,응징의 일격,연속 난타,돌격,도발의 포효,무기력의 맹타,분노 유발,징벌,치유의 손길,방패 돌격,둔화의 맹타,모욕의 포효,균형의 갑옷,발목 강타,전우 보호,심판,나포,천둥 베기,성문 파괴,이중 갑옷,혈관 베기,방패 휘두르기,회생의 권능,차단의 갑옷,기사회생,정신 파괴,마력 강타,비호의 갑옷,쾌속의 방패,전율의 포효,생명력 충만,주신의 징벌,빛의 징벌,어둠의 징벌,견고한 방패,파괴의 기합,사신의 징벌,네자칸의 방패,지켈의 방패,방패 타격,위협,속박의 파동,생포,반격 방어,극한의 맹타,주신의 보호,파멸의 방패</value>
   </data>
 </root>

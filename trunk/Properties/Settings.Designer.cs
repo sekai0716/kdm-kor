@@ -227,7 +227,7 @@ namespace KingsDamageMeter.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("You")]
+        [global::System.Configuration.DefaultSettingValueAttribute("당신")]
         public string YouAlias {
             get {
                 return ((string)(this["YouAlias"]));

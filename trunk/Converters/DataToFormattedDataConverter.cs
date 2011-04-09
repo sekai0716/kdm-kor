@@ -53,6 +53,8 @@ namespace KingsDamageMeter.Converters
                         return val.ToString("#,#");
                     case DisplayType.Percent:
                         return val.ToString("0%");
+                    case DisplayType.FightTime:
+                        return val.ToString("#");
                 }
             }
             return string.Empty;

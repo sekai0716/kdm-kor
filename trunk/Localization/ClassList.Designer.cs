@@ -61,74 +61,74 @@ namespace KingsDamageMeter.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Assassin.
+        ///   Looks up a localized string similar to 살성.
         /// </summary>
-        internal static string Assassin {
+        internal static string 살성 {
             get {
-                return ResourceManager.GetString("Assassin", resourceCulture);
+                return ResourceManager.GetString("살성", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Chanter.
+        ///   Looks up a localized string similar to 호법성.
         /// </summary>
-        internal static string Chanter {
+        internal static string 호법성 {
             get {
-                return ResourceManager.GetString("Chanter", resourceCulture);
+                return ResourceManager.GetString("호법성", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cleric.
+        ///   Looks up a localized string similar to 치유성.
         /// </summary>
-        internal static string Cleric {
+        internal static string 치유성 {
             get {
-                return ResourceManager.GetString("Cleric", resourceCulture);
+                return ResourceManager.GetString("치유성", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Gladiator.
+        ///   Looks up a localized string similar to 검성.
         /// </summary>
-        internal static string Gladiator {
+        internal static string 검성 {
             get {
-                return ResourceManager.GetString("Gladiator", resourceCulture);
+                return ResourceManager.GetString("검성", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ranger.
+        ///   Looks up a localized string similar to 궁성.
         /// </summary>
-        internal static string Ranger {
+        internal static string 궁성 {
             get {
-                return ResourceManager.GetString("Ranger", resourceCulture);
+                return ResourceManager.GetString("궁성", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sorcerer.
+        ///   Looks up a localized string similar to 마도성.
         /// </summary>
-        internal static string Sorcerer {
+        internal static string 마도성 {
             get {
-                return ResourceManager.GetString("Sorcerer", resourceCulture);
+                return ResourceManager.GetString("마도성", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Spiritmaster.
+        ///   Looks up a localized string similar to 정령성.
         /// </summary>
-        internal static string Spiritmaster {
+        internal static string 정령성 {
             get {
-                return ResourceManager.GetString("Spiritmaster", resourceCulture);
+                return ResourceManager.GetString("정령성", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Templar.
+        ///   Looks up a localized string similar to 수호성.
         /// </summary>
-        internal static string Templar {
+        internal static string 수호성 {
             get {
-                return ResourceManager.GetString("Templar", resourceCulture);
+                return ResourceManager.GetString("수호성", resourceCulture);
             }
         }
     }

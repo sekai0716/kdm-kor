@@ -43,7 +43,7 @@ namespace KingsDamageMeter
             }
             else
             {
-                return ClassType.None;
+                return ClassType.알수없음;
             }
         }
 
@@ -62,14 +62,14 @@ namespace KingsDamageMeter
         private static void PopulateDictionary()
         {
             char[] sep = new char[] { ',' };
-            PopulateFromArray(SkillLists.Cleric.Split(sep, StringSplitOptions.RemoveEmptyEntries), ClassType.Cleric);
-            PopulateFromArray(SkillLists.Chanter.Split(sep, StringSplitOptions.RemoveEmptyEntries), ClassType.Chanter);
-            PopulateFromArray(SkillLists.Assassin.Split(sep, StringSplitOptions.RemoveEmptyEntries), ClassType.Assassin);
-            PopulateFromArray(SkillLists.Ranger.Split(sep, StringSplitOptions.RemoveEmptyEntries), ClassType.Ranger);
-            PopulateFromArray(SkillLists.Templar.Split(sep, StringSplitOptions.RemoveEmptyEntries), ClassType.Templar);
-            PopulateFromArray(SkillLists.Gladiator.Split(sep, StringSplitOptions.RemoveEmptyEntries), ClassType.Gladiator);
-            PopulateFromArray(SkillLists.Sorcerer.Split(sep, StringSplitOptions.RemoveEmptyEntries), ClassType.Sorcerer);
-            PopulateFromArray(SkillLists.Spiritmaster.Split(sep, StringSplitOptions.RemoveEmptyEntries), ClassType.Spiritmaster);
+            PopulateFromArray(SkillLists.치유성.Split(sep, StringSplitOptions.RemoveEmptyEntries), ClassType.치유성);
+            PopulateFromArray(SkillLists.호법성.Split(sep, StringSplitOptions.RemoveEmptyEntries), ClassType.호법성);
+            PopulateFromArray(SkillLists.살성.Split(sep, StringSplitOptions.RemoveEmptyEntries), ClassType.살성);
+            PopulateFromArray(SkillLists.궁성.Split(sep, StringSplitOptions.RemoveEmptyEntries), ClassType.궁성);
+            PopulateFromArray(SkillLists.수호성.Split(sep, StringSplitOptions.RemoveEmptyEntries), ClassType.수호성);
+            PopulateFromArray(SkillLists.검성.Split(sep, StringSplitOptions.RemoveEmptyEntries), ClassType.검성);
+            PopulateFromArray(SkillLists.마도성.Split(sep, StringSplitOptions.RemoveEmptyEntries), ClassType.마도성);
+            PopulateFromArray(SkillLists.정령성.Split(sep, StringSplitOptions.RemoveEmptyEntries), ClassType.정령성);
         }
     }
 }

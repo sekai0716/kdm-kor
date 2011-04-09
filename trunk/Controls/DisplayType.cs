@@ -29,6 +29,7 @@ namespace KingsDamageMeter.Controls
         Percent = 4,
         Experience = 8,
         Kinah = 16,
-        AbyssPoints = 32
+        AbyssPoints = 32,
+        FightTime = 64
     }
 }

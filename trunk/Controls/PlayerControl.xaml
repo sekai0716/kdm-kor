@@ -18,32 +18,32 @@
         </Style>
         <Style x:Key="ClassIconStyle" TargetType="{x:Type Ellipse}">
             <Style.Triggers>
-                <DataTrigger Binding="{Binding PlayerClass, Mode=OneWay}" Value="None">
-                    <Setter Property="Fill" Value="{DynamicResource ClassTypeNoneBrush}"/>
+                <DataTrigger Binding="{Binding PlayerClass, Mode=OneWay}" Value="알수없음">
+                    <Setter Property="Fill" Value="{DynamicResource ClassType알수없음Brush}"/>
                 </DataTrigger>
-                <DataTrigger Binding="{Binding PlayerClass, Mode=OneWay}" Value="Cleric">
-                    <Setter Property="Fill" Value="{DynamicResource ClassTypeClericBrush}"/>
+                <DataTrigger Binding="{Binding PlayerClass, Mode=OneWay}" Value="치유성">
+                    <Setter Property="Fill" Value="{DynamicResource ClassType치유성Brush}"/>
                 </DataTrigger>
-                <DataTrigger Binding="{Binding PlayerClass, Mode=OneWay}" Value="Chanter">
-                    <Setter Property="Fill" Value="{DynamicResource ClassTypeChanterBrush}"/>
+                <DataTrigger Binding="{Binding PlayerClass, Mode=OneWay}" Value="호법성">
+                    <Setter Property="Fill" Value="{DynamicResource ClassType호법성Brush}"/>
                 </DataTrigger>
-                <DataTrigger Binding="{Binding PlayerClass, Mode=OneWay}" Value="Assassin">
-                    <Setter Property="Fill" Value="{DynamicResource ClassTypeAssassinBrush}"/>
+                <DataTrigger Binding="{Binding PlayerClass, Mode=OneWay}" Value="살성">
+                    <Setter Property="Fill" Value="{DynamicResource ClassType살성Brush}"/>
                 </DataTrigger>
-                <DataTrigger Binding="{Binding PlayerClass, Mode=OneWay}" Value="Ranger">
-                    <Setter Property="Fill" Value="{DynamicResource ClassTypeRangerBrush}"/>
+                <DataTrigger Binding="{Binding PlayerClass, Mode=OneWay}" Value="궁성">
+                    <Setter Property="Fill" Value="{DynamicResource ClassType궁성Brush}"/>
                 </DataTrigger>
-                <DataTrigger Binding="{Binding PlayerClass, Mode=OneWay}" Value="Templar">
-                    <Setter Property="Fill" Value="{DynamicResource ClassTypeTemplarBrush}"/>
+                <DataTrigger Binding="{Binding PlayerClass, Mode=OneWay}" Value="수호성">
+                    <Setter Property="Fill" Value="{DynamicResource ClassType수호성Brush}"/>
                 </DataTrigger>
-                <DataTrigger Binding="{Binding PlayerClass, Mode=OneWay}" Value="Gladiator">
-                    <Setter Property="Fill" Value="{DynamicResource ClassTypeGladiatorBrush}"/>
+                <DataTrigger Binding="{Binding PlayerClass, Mode=OneWay}" Value="검성">
+                    <Setter Property="Fill" Value="{DynamicResource ClassType검성Brush}"/>
                 </DataTrigger>
-                <DataTrigger Binding="{Binding PlayerClass, Mode=OneWay}" Value="Sorcerer">
-                    <Setter Property="Fill" Value="{DynamicResource ClassTypeSorcererBrush}"/>
+                <DataTrigger Binding="{Binding PlayerClass, Mode=OneWay}" Value="마도성">
+                    <Setter Property="Fill" Value="{DynamicResource ClassType마도성Brush}"/>
                 </DataTrigger>
-                <DataTrigger Binding="{Binding PlayerClass, Mode=OneWay}" Value="Spiritmaster">
-                    <Setter Property="Fill" Value="{DynamicResource ClassTypeSpiritmasterBrush}"/>
+                <DataTrigger Binding="{Binding PlayerClass, Mode=OneWay}" Value="정령성">
+                    <Setter Property="Fill" Value="{DynamicResource ClassType정령성Brush}"/>
                 </DataTrigger>
             </Style.Triggers>
         </Style>
@@ -51,29 +51,40 @@
     <UserControl.ToolTip>
         <StackPanel>
             <TextBlock Text="{Binding PlayerName}"/>
-            <TextBlock Text="{Binding PlayerClass}"/>
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="{Binding Damage, Converter={StaticResource DataToFormattedDataConverter}, ConverterParameter={x:Static Controls:DisplayType.Damage}}"/>
+                <TextBlock Text="{LocText KingsDamageMeter:PlayerToolTipRes:PlayerToolTipClassType}"/>
                 <TextBlock Text=" "/>
+                <TextBlock Text="{Binding PlayerClass}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
                 <TextBlock Text="{LocText KingsDamageMeter:PlayerToolTipRes:PlayerToolTipTotal}"/>
+                <TextBlock Text=" "/>
+                <TextBlock Text="{Binding Damage, Converter={StaticResource DataToFormattedDataConverter}, ConverterParameter={x:Static Controls:DisplayType.Damage}}"/>
             </StackPanel>
             <TextBlock Text="{Binding PercentFromGroupDamages, Converter={StaticResource DataToFormattedDataConverter}, ConverterParameter={x:Static Controls:DisplayType.Percent}}"/>
             <TextBlock/>
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="{Binding DamagePerSecond, Converter={StaticResource DataToFormattedDataConverter}, ConverterParameter={x:Static Controls:DisplayType.DamagePerSecond}}"/>
+                <TextBlock Text="{LocText KingsDamageMeter:PlayerToolTipRes:PlayerToolTipFightTime}"/>
                 <TextBlock Text=" "/>
-                <TextBlock Text="{LocText KingsDamageMeter:PlayerToolTipRes:PlayerToolTipDps}"/>
+                <TextBlock Text="{Binding FightTime, Converter={StaticResource DataToFormattedDataConverter}, ConverterParameter={x:Static Controls:DisplayType.FightTime}}"/>
+                <TextBlock Text=" "/>
+                <TextBlock Text="{LocText KingsDamageMeter:PlayerToolTipRes:PlayerToolTipFightTime2}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="{Binding PeakDps, Converter={StaticResource DataToFormattedDataConverter}, ConverterParameter={x:Static Controls:DisplayType.DamagePerSecond}}"/>
+                <TextBlock Text="{LocText KingsDamageMeter:PlayerToolTipRes:PlayerToolTipDps}"/>
                 <TextBlock Text=" "/>
+                <TextBlock Text="{Binding DamagePerSecond, Converter={StaticResource DataToFormattedDataConverter}, ConverterParameter={x:Static Controls:DisplayType.DamagePerSecond}}"/>                
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
                 <TextBlock Text="{LocText KingsDamageMeter:PlayerToolTipRes:PlayerToolTipPeak}"/>
+                <TextBlock Text=" "/>
+                <TextBlock Text="{Binding PeakDps, Converter={StaticResource DataToFormattedDataConverter}, ConverterParameter={x:Static Controls:DisplayType.DamagePerSecond}}"/>
             </StackPanel>
             <TextBlock/>
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="{Binding BiggestHit, Converter={StaticResource DataToFormattedDataConverter}, ConverterParameter={x:Static Controls:DisplayType.Damage}}"/>
-                <TextBlock Text=" "/>
                 <TextBlock Text="{LocText KingsDamageMeter:PlayerToolTipRes:PlayerToolTipBiggestHit}"/>
+                <TextBlock Text=" "/>
+                <TextBlock Text="{Binding BiggestHit, Converter={StaticResource DataToFormattedDataConverter}, ConverterParameter={x:Static Controls:DisplayType.Damage}}"/>
             </StackPanel>
         </StackPanel>
     </UserControl.ToolTip>

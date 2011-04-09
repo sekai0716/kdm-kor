@@ -14,7 +14,7 @@
         Topmost="{Binding WindowMainTopMost, Source={x:Static Properties:Settings.Default}}" 
         Opacity="{Binding WindowMainOpacity, Source={x:Static Properties:Settings.Default}}"
         WindowStyle="None" 
-        Foreground="Gold" 
+        Foreground="White" 
         ResizeMode="NoResize" 
         AllowsTransparency="True" 
         Icon="/KingsDamageMeter;component/Lion.ico" 
