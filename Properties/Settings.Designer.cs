@@ -7,6 +7,7 @@
 //     이러한 변경 내용이 손실됩니다.
 // </auto-generated>
 //------------------------------------------------------------------------------
+using Microsoft.Win32;
 
 namespace KingsDamageMeter.Properties {
     
@@ -76,7 +77,24 @@ namespace KingsDamageMeter.Properties {
         [global::System.Configuration.DefaultSettingValueAttribute("C:\\Program Files\\NCSoft\\Aion\\Chat.log")]
         public string AionLogPath {
             get {
-                return ((string)(this["AionLogPath"]));
+                // 이건 윈도7 64bit 아이온 설치 경로입니다.
+                RegistryKey reg = Registry.LocalMachine.OpenSubKey("SOFTWARE\\Wow6432Node\\plaync\\aion_kor");
+                string logpath = reg.GetValue("basedir").ToString();
+
+                if (logpath == "")
+                {
+
+                }
+                reg.Close();
+
+                if (logpath == "")
+                {
+                    return ((string)(this["AionLogPath"]));
+                }
+                else
+                {
+                    return logpath;
+                }
             }
             set {
                 this["AionLogPath"] = value;
