@@ -492,6 +492,7 @@ namespace KingsDamageMeter
                                                          new PlayerSkillDamageEventArgs(time, _Pets[pet], damage,
                                                                                         skill));
                                 }
+                                regex = "_CommandRegex";
                             }
                             else
                             {
@@ -504,8 +505,10 @@ namespace KingsDamageMeter
                         }
                     }
 
-                    if (name.Contains(" "))
+                    if (regex == "")
                     {
+                        if (name.Contains(" "))
+                        {
                             if (_Pets.ContainsKey(name))    // 덫 스킬
                             {
                                 name = _Pets[name];
@@ -515,12 +518,13 @@ namespace KingsDamageMeter
                                     SkillDamageInflicted(this, new PlayerSkillDamageEventArgs(time, name, damage, skill));
                                 }
                             }
-                    }
-                    else
-                    {
-                        if (SkillDamageInflicted != null)
+                        }
+                        else
                         {
-                            SkillDamageInflicted(this, new PlayerSkillDamageEventArgs(time, name, damage, skill));
+                            if (SkillDamageInflicted != null)
+                            {
+                                SkillDamageInflicted(this, new PlayerSkillDamageEventArgs(time, name, damage, skill));
+                            }
                         }
                     }
 
