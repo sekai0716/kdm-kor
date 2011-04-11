@@ -99,8 +99,7 @@ namespace KingsDamageMeter.Properties {
                         logpath = "";
                     }
                 }
-
-                // system.ovr 파일 생성해주기
+                
                 if (logpath == "")
                 {
                     return ((string)(this["AionLogPath"]));
