@@ -88,6 +88,7 @@ namespace KingsDamageMeter.Properties {
                 }
                 catch (Exception e)
                 {
+                    DebugLogger.Write(e.Message);
                     try
                     {// windows7 32bit, winxp 32bit
                         RegistryKey reg = Registry.LocalMachine.OpenSubKey("SOFTWARE\\plaync\\aion_kor");
@@ -97,6 +98,7 @@ namespace KingsDamageMeter.Properties {
                     catch (Exception e1)
                     {
                         logpath = "";
+                        DebugLogger.Write(e1.Message);
                     }
                 }
                 
