@@ -27,11 +27,11 @@ using System.Windows;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Sekai'sDamageMeter")]
-[assembly: AssemblyDescription("Sekai'sDamageMeter 는 무료 소프트웨어입니다: 당신은 이것을 재배포 할수 있는 자유 소프트웨어 재단에 의해 출판된 GNU 일반 공중 사용 허가서의 조건에 따라 재배포가 가능합니다. 자세한건 GNU일반 공중 사용 허가서를 참조하세요.")]
+[assembly: AssemblyDescription("Sekai'sDamageMeter는 무료 소프트웨어입니다: 당신은 이것을 재배포 할수 있는 자유 소프트웨어 재단에 의해 출판된 GNU 일반 공중 사용 허가서의 조건에 따라 재배포가 가능합니다. 자세한건 GNU일반 공중 사용 허가서를 참조하세요.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("신도세카이, 잃어버린하루")]
+[assembly: AssemblyCompany("신도세카이,잃어버린하루")]
 [assembly: AssemblyProduct("Sekai'sDamageMeter")]
-[assembly: AssemblyCopyright("Copyright © 신도세카이, 잃어버린하루 2011")]
+[assembly: AssemblyCopyright("Copyright © 2011 by 신도세카이, 잃어버린하루")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -72,3 +72,4 @@ using System.Windows;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.1.0.0")]
 [assembly: AssemblyFileVersion("1.1.0.0")]
+[assembly: NeutralResourcesLanguageAttribute("ko-KR")]
