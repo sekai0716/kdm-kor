@@ -75,7 +75,7 @@ namespace KingsDamageMeter.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Program Files\\NCSoft\\Aion\\Chat.log")]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Program Files\\NCSoft\\Aion\\")]
         public string AionLogPath {
             get {
                 // 이건 윈도7 64bit 아이온 설치 경로입니다.
