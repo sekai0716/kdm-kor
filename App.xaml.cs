@@ -110,7 +110,15 @@ namespace KingsDamageMeter
                 MessageBox.Show("system.ovr파일을 자동으로 생성하지 못하였습니다.\n\n혹시 윈도우7인 경우에는 프로그램에서 우측버튼 클릭하여 관리자모드로 실행해주세요.");
                 MessageBox.Show(e1.Message);
             }
-
+            try
+            {
+                if (File.Exists(Settings.Default.AionLogPath + "\\Chat.log")) File.Delete(Settings.Default.AionLogPath + "\\Chat.log");
+            }
+            catch (Exception e1)
+            {
+                MessageBox.Show("Chat.log 파일을 삭제하지 못했습니다.\n\n혹시 윈도우7인 경우에는 프로그램에서 우측버튼 클릭하여 관리자모드로 실행해주세요.");
+                MessageBox.Show(e1.Message);
+            }
             base.OnExit(e);
         }
 
