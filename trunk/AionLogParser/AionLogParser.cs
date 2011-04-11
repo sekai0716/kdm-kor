@@ -302,7 +302,7 @@ namespace KingsDamageMeter
                 Starting(this, EventArgs.Empty);
             }
 
-            if ((_FileStream = OpenFileStream(file)) != null)
+            if ((_FileStream = OpenFileStream(file + "\\Chat.log")) != null)
             {
                 _Running = true;
 
