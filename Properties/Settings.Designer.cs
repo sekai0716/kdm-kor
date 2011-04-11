@@ -109,6 +109,7 @@ namespace KingsDamageMeter.Properties {
                 {
                     return logpath;
                 }
+
             }
             set {
                 this["AionLogPath"] = value;
