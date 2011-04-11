@@ -452,14 +452,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="ChangeLog.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="system.ovr">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Themes\BlackPearl\Images\MinimizeButton.bmp" />
   </ItemGroup>
   <ItemGroup>
@@ -529,6 +521,16 @@
     <Resource Include="Themes\BlackPearl\Images\Book-32x32.png" />
     <Resource Include="Themes\BlackPearl\Images\Coin-32x32.png" />
     <Resource Include="Themes\BlackPearl\Images\Swords-32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="KDMChangeLog.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SDMChangeLog.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
