@@ -32,4 +32,3 @@ namespace KingsDamageMeter
         정령성
     }
 }
-
