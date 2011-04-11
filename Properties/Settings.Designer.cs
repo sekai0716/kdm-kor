@@ -8,6 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 using Microsoft.Win32;
+using System;
 
 namespace KingsDamageMeter.Properties {
     
@@ -78,15 +79,28 @@ namespace KingsDamageMeter.Properties {
         public string AionLogPath {
             get {
                 // 이건 윈도7 64bit 아이온 설치 경로입니다.
-                RegistryKey reg = Registry.LocalMachine.OpenSubKey("SOFTWARE\\Wow6432Node\\plaync\\aion_kor");
-                string logpath = reg.GetValue("basedir").ToString();
-
-                if (logpath == "")
-                {
-
+                string logpath = "";
+                try
+                {// windows7 64bit
+                    RegistryKey reg = Registry.LocalMachine.OpenSubKey("SOFTWARE\\Wow6432Node\\plaync\\aion_kor");
+                    logpath = reg.GetValue("basedir").ToString();
+                    reg.Close();
                 }
-                reg.Close();
+                catch (Exception e)
+                {
+                    try
+                    {// windows7 32bit, winxp 32bit
+                        RegistryKey reg = Registry.LocalMachine.OpenSubKey("SOFTWARE\\plaync\\aion_kor");
+                        logpath = reg.GetValue("basedir").ToString();
+                        reg.Close();
+                    }
+                    catch (Exception e1)
+                    {
+                        logpath = "";
+                    }
+                }
 
+                // system.ovr 파일 생성해주기
                 if (logpath == "")
                 {
                     return ((string)(this["AionLogPath"]));

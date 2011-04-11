@@ -18,6 +18,7 @@
 \**************************************************************************/
 
 using System;
+using System.IO;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Threading;
@@ -86,6 +87,29 @@ namespace KingsDamageMeter
         {
             //NotifyIcon.Hide();
             Settings.Default.Save();
+
+            // system.ovr파일 0으로 변경
+            try
+            {
+                string strsystemovr = Settings.Default.AionLogPath + "\\system.ovr";
+                if (File.Exists(strsystemovr)) File.Delete(strsystemovr);
+                FileStream fs = new FileStream(strsystemovr, FileMode.Create);
+                StreamWriter writer = new StreamWriter(fs, System.Text.Encoding.ASCII);
+                writer.Write("g_chatlog = \"0\"");
+                writer.WriteLine();
+                writer.Write("log_IncludeTime = \"0\"");
+                writer.WriteLine();
+                writer.Write("log_Verbosity = \"0\"");
+                writer.WriteLine();
+                writer.Write("log_FileVerbosity = \"0\"");
+                writer.Close();
+                fs.Close();
+            }
+            catch (Exception e1)
+            {
+                MessageBox.Show("system.ovr파일을 자동으로 생성하지 못하였습니다.\n\n혹시 윈도우7인 경우에는 프로그램에서 우측버튼 클릭하여 관리자모드로 실행해주세요.");
+            }
+
             base.OnExit(e);
         }
 
