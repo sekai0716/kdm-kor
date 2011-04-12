@@ -171,6 +171,10 @@
   <data name="OtherDelayedRegex" xml:space="preserve">
     <value>(?&lt;name&gt;.+)[이가] (?&lt;skill&gt;.+)[을를] 사용해 (?&lt;target&gt;.+)[이가] 지연 폭발 효과를 받았습니다\.</value>
   </data>
+  <data name="OtherDelayedRegex1" xml:space="preserve">
+    <value>(?&lt;name&gt;.+)[이가] (?&lt;skill&gt;.+)[을를] 사용합니다\.</value>
+    <comment>태풍소환</comment>
+  </data>
   <data name="OtherInflictedBleedRegex" xml:space="preserve">
     <value>(?&lt;target&gt;.+) is bleeding because (?&lt;name&gt;.+) used (?&lt;skill&gt;.+)\.</value>
   </data>
