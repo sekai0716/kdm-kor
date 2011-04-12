@@ -91,7 +91,9 @@ namespace KingsDamageMeter
             // system.ovr파일 0으로 변경
             try
             {
-                string strsystemovr = Settings.Default.AionLogPath + "\\system.ovr";
+                string straionpath = Settings.Default.AionLogPath;
+                straionpath = straionpath.Substring(0, straionpath.Length - 9);
+                string strsystemovr = straionpath + "\\system.ovr";
                 if (File.Exists(strsystemovr)) File.Delete(strsystemovr);
                 FileStream fs = new FileStream(strsystemovr, FileMode.Create);
                 StreamWriter writer = new StreamWriter(fs, System.Text.Encoding.ASCII);
