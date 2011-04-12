@@ -127,6 +127,7 @@ namespace KingsDamageMeter
         private Regex _YouDelayedRegex;
         private Regex _YouDelayedPoisonRegex;
         private Regex _OtherDelayedRegex;
+        private Regex _OtherDelayedRegex1;
 
         private Regex _OtherInflictedSkillRegex;
         private Regex _OtherInflictedSkillRegex2;
@@ -266,6 +267,8 @@ namespace KingsDamageMeter
             _YouDelayedRegex = new Regex(_TimestampRegex + Localization.Regex.YouDelayedRegex, RegexOptions.Compiled);
             _YouDelayedPoisonRegex = new Regex(_TimestampRegex + Localization.Regex.YouDelayedPoisonRegex, RegexOptions.Compiled);
             _OtherDelayedRegex = new Regex(_TimestampRegex + Localization.Regex.OtherDelayedRegex, RegexOptions.Compiled);
+            _OtherDelayedRegex1 = new Regex(_TimestampRegex + Localization.Regex.OtherDelayedRegex1, RegexOptions.Compiled);
+            
 
             _OtherInflictedSkillRegex = new Regex(_TimestampRegex + Localization.Regex.OtherInflictedSkillRegex, RegexOptions.Compiled);
             _OtherInflictedSkillRegex2 = new Regex(_TimestampRegex + Localization.Regex.OtherInflictedSkillRegex2, RegexOptions.Compiled);
@@ -525,6 +528,14 @@ namespace KingsDamageMeter
                                 if (SkillDamageInflicted != null)
                                 {
                                     SkillDamageInflicted(this, new PlayerSkillDamageEventArgs(time, name, damage, skill));
+                                }
+                            }
+                            else if (_Dots.ContainsKey(skill))
+                            {   // 태풍소환
+                                string[] strvalue = _Dots[skill].Split('^');
+                                if (SkillDamageInflicted != null)
+                                {
+                                    SkillDamageInflicted(this, new PlayerSkillDamageEventArgs(time, strvalue[0], damage, skill));
                                 }
                             }
                         }
@@ -947,24 +958,41 @@ namespace KingsDamageMeter
                 }
 
                 matches = _OtherDelayedRegex.Matches(line);
-                if (matches.Count > 0)
+                matches2 = _OtherDelayedRegex1.Matches(line);
+                if (matches.Count > 0 | matches2.Count > 0)
                 {
+                    if (matches2.Count> 0) matches = matches2;
                     DateTime time = matches[0].Groups[_TimeGroupName].Value.GetTime(_TimeFormat);
                     string name = matches[0].Groups[_NameGroupName].Value;
                     string skill = matches[0].Groups[_SkillGroupName].Value;
                     string target = matches[0].Groups[_TargetGroupName].Value;
 
-                    if (_Dots.ContainsKey(skill + "^" + target))
+                    if (target != "")
                     {
-                        _Dots[skill + "^" + target] = name + "^" + time.ToString();
+                        if (_Dots.ContainsKey(skill + "^" + target))
+                        {
+                            _Dots[skill + "^" + target] = name + "^" + time.ToString();
+                        }
+                        else
+                        {
+                            _Dots.Add(skill + "^" + target, name + "^" + time.ToString());
+                        }
+                        regex = "_OtherDelayedRegex";
                     }
                     else
                     {
-                        _Dots.Add(skill + "^" + target, name + "^" + time.ToString());
+                        if (_Dots.ContainsKey(skill))
+                        {
+                            _Dots[skill] = name + "^" + time.ToString();
+                        }
+                        else
+                        {
+                            _Dots.Add(skill, name + "^" + time.ToString());
+                        }
+                        regex = "_OtherDelayedRegex1";
                     }
 
-                    matched = true;
-                    regex = "_OtherDelayedRegex";
+                    matched = true;                    
                     return;
                 }
 

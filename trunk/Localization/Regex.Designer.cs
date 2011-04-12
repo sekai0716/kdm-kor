@@ -205,6 +205,15 @@ namespace KingsDamageMeter.Localization {
         }
         
         /// <summary>
+        ///   (?&lt;name&gt;.+)[이가] (?&lt;skill&gt;.+)[을를] 사용합니다\.과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string OtherDelayedRegex1 {
+            get {
+                return ResourceManager.GetString("OtherDelayedRegex1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   (?&lt;target&gt;.+) is bleeding because (?&lt;name&gt;.+) used (?&lt;skill&gt;.+)\.과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string OtherInflictedBleedRegex {
