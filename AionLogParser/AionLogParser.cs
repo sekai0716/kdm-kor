@@ -91,7 +91,9 @@ namespace KingsDamageMeter
         private Regex _CommonDelayedPoisonDamageRegex;
         private Regex _CommonSummonedSumAtk;
         private Regex _CommandRegex;
-
+        private Regex _EffectDamageRegex;                 // ex)호법성 자체 버프-바람의 약속
+        private Regex _YouEffectDamageBeforeRegex;  // 해당 내용이 있고 그 다음에 효과 대미지인 경우 나의 대미지
+    
         private Regex _YouInflictedRegex;
         private Regex _YouInflictedSkillRegex;
         private Regex _YouInflictedSkillRegex1;
@@ -140,6 +142,9 @@ namespace KingsDamageMeter
 
         private string  _OtherPrevSkill;
         private int     _OtherPrevSkillDamage;
+        private string  _TempEffectBefore;
+        private int     _TempEffectBeforeChk=2;         // 처음부터 체크하지 않도록
+
         /// <summary>
         /// Occurs when the parser is starting.
         /// </summary>
@@ -223,7 +228,9 @@ namespace KingsDamageMeter
             _CommonDelayedPoisonDamageRegex = new Regex(_TimestampRegex + Localization.Regex.CommonDelayedPoisonDamageRegex, RegexOptions.Compiled);
             _CommonSummonedSumAtk = new Regex(_TimestampRegex + Localization.Regex.CommonSummonedSumAtk, RegexOptions.Compiled);
             _CommandRegex = new Regex(_TimestampRegex + Localization.Regex.CommandRegex, RegexOptions.Compiled);
-            
+            _EffectDamageRegex = new Regex(_TimestampRegex + Localization.Regex.EffectDamageRegex, RegexOptions.Compiled);
+            _YouEffectDamageBeforeRegex = new Regex(_TimestampRegex + Localization.Regex.YouEffectDamageBeforeRegex, RegexOptions.Compiled);
+
             _YouInflictedRegex = new Regex(_TimestampRegex + Localization.Regex.YouInflictedRegex, RegexOptions.Compiled);
             _YouInflictedSkillRegex = new Regex(_TimestampRegex + Localization.Regex.YouInflictedSkillRegex, RegexOptions.Compiled);
             _YouInflictedSkillRegex1 = new Regex(_TimestampRegex + Localization.Regex.YouInflictedSkillRegex1, RegexOptions.Compiled);
@@ -302,7 +309,7 @@ namespace KingsDamageMeter
                 Starting(this, EventArgs.Empty);
             }
 
-            if ((_FileStream = OpenFileStream(file + "\\Chat.log")) != null)
+            if ((_FileStream = OpenFileStream(file)) != null)
             {
                 _Running = true;
 
@@ -464,6 +471,8 @@ namespace KingsDamageMeter
 
             try
             {
+                if( _TempEffectBeforeChk < 2) _TempEffectBeforeChk++;
+
                 matches = _OtherInflictedSkillRegex.Matches(line);
                 matches2 = _OtherInflictedSkillRegex2.Matches(line);
                 matches3 = _CommandRegex.Matches(line);
@@ -838,10 +847,7 @@ namespace KingsDamageMeter
 
                     if (_Dots.ContainsKey(skill + "^" + target))
                     {
-                        //if (!_Dots[skill + "^" + target].Contains(name))
-                        //{
                         _Dots[skill + "^" + target] = name + "^" + time.ToString();
-                        //}
                     }
                     else
                     {
@@ -852,7 +858,52 @@ namespace KingsDamageMeter
                     regex = "_OtherContinuousRegex";
                     return;
                 }
-                
+
+                // 밑에 스킬보다 상세하게 나온건 위에 선언되어야함.
+                matches = _EffectDamageRegex.Matches(line);
+                if (matches.Count > 0)
+                {
+                    DateTime time = matches[0].Groups[_TimeGroupName].Value.GetTime(_TimeFormat);
+                    int damage = matches[0].Groups[_DamageGroupName].Value.GetDigits();
+                    string target = matches[0].Groups[_TargetGroupName].Value;
+                    string effect = matches[0].Groups[_EffectGroupName].Value;
+
+                    if (_TempEffectBeforeChk == 1 & _TempEffectBefore == effect)
+                    {   // 바람의 약속
+                        if (SkillDamageInflicted != null)
+                        {
+                            SkillDamageInflicted(this,
+                                                 new PlayerSkillDamageEventArgs(time, Settings.Default.YouAlias, damage,
+                                                                                effect));
+                        }
+                        _TempEffectBefore = "";
+                        _TempEffectBeforeChk = 2;
+                        regex = "_EffectDamageRegex";
+                    }
+                    else
+                    {
+                        // 다른유저 처리
+                        if (_Effects.ContainsKey(effect))
+                        {
+                            if (SkillDamageInflicted != null)
+                            {
+                                SkillDamageInflicted(this,
+                                                     new PlayerSkillDamageEventArgs(time, _Effects[effect], damage,
+                                                                                    effect));
+                            }
+                            regex = "_EffectDamageRegex";
+
+                        }
+                        else
+                        {
+                            regex = "_NoEffectDamageRegex";
+                        }
+                    }
+
+                    matched = true;
+                    return;
+                }
+
                 matches = _OtherContinuousDamage.Matches(line);
                 matches2 = _CommonDelayedPoisonDamageRegex.Matches(line);
                 matches3 = _CommonDelayedTrapDamageRegex.Matches(line);
@@ -905,10 +956,7 @@ namespace KingsDamageMeter
 
                     if (_Dots.ContainsKey(skill + "^" + target))
                     {
-                        //if (!_Dots[skill + "^" + target].Contains(name))
-                        //{
                         _Dots[skill + "^" + target] = name + "^" + time.ToString();
-                        //}
                     }
                     else
                     {
@@ -1008,10 +1056,7 @@ namespace KingsDamageMeter
                     if (name == "") name = Settings.Default.YouAlias;
                     if ( _Energy.ContainsKey(pet + "^" + target))
                     {
-                        //if (_Energy[pet + "^" + target].Contains(name))
-                        //{
                         _Energy[pet + "^" + target] = name + "^" + time.ToString()  + "^" + skill;
-                        //}
                     }
                     else
                     {
@@ -1088,10 +1133,7 @@ namespace KingsDamageMeter
                     {//마법역류 스킬류는 도트 스킬임
                         if (_Dots.ContainsKey(skill + "^" + target))
                         {
-                            //if (!_Dots[skill + "^" + target].Contains(name))
-                            //{
                             _Dots[skill + "^" + target] = Settings.Default.YouAlias + "^" + time.ToString();
-                            //}
                         }
                         else
                         {
@@ -1165,10 +1207,22 @@ namespace KingsDamageMeter
                         }
                     }
 
-
-
                     matched = true;
                     regex = "_YouEffectDamageRegex";
+                    return;
+                }
+
+                matches = _YouEffectDamageBeforeRegex.Matches(line);
+                if (matches.Count > 0)
+                {
+                    DateTime time = matches[0].Groups[_TimeGroupName].Value.GetTime(_TimeFormat);
+                    string effect = matches[0].Groups[_EffectGroupName].Value;
+
+                    _TempEffectBefore = effect;
+                    _TempEffectBeforeChk = 0;
+
+                    matched = true;
+                    regex = "_YouEffectDamageBeforeRegex";
                     return;
                 }
 
@@ -1222,10 +1276,7 @@ namespace KingsDamageMeter
 
                     if (_Dots.ContainsKey(skill + "^" + target))
                     {
-                        //if (!_Dots[skill + "^" + target].Contains(name))
-                        //{
                         _Dots[skill + "^" + target] = name + "^" + time.ToString();
-                        //}
                     }
                     else
                     {
@@ -1375,10 +1426,7 @@ namespace KingsDamageMeter
 
                     if (_Dots.ContainsKey(skill + "^" + target))
                     {
-                        //if (!_Dots[skill + "^" + target].Contains(name))
-                        //{
                         _Dots[skill + "^" + target] = name + "^" + time.ToString();
-                        //}
                     }
                     else
                     {

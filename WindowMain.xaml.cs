@@ -25,6 +25,7 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
 using System.IO;
+using Microsoft.Win32;
 using System.Diagnostics;
 using KingsDamageMeter.Controls;
 using KingsDamageMeter.Converters;
@@ -40,10 +41,37 @@ namespace KingsDamageMeter
         {
             InitializeComponent();
 
+            // 이건 윈도7 64bit 아이온 설치 경로입니다.
+            string logpath = "";
+            try
+            {// windows7 64bit
+                RegistryKey reg = Registry.LocalMachine.OpenSubKey("SOFTWARE\\Wow6432Node\\plaync\\aion_kor");
+                logpath = reg.GetValue("basedir").ToString();
+                reg.Close();
+            }
+            catch (Exception e)
+            {
+                DebugLogger.Write("Win32 Reg 읽는중:오류아님 - " + e.Message);
+                try
+                {// windows7 32bit, winxp 32bit
+                    RegistryKey reg = Registry.LocalMachine.OpenSubKey("SOFTWARE\\plaync\\aion_kor");
+                    logpath = reg.GetValue("basedir").ToString();
+                    reg.Close();
+                }
+                catch (Exception e1)
+                {
+                    logpath = "";
+                    DebugLogger.Write(e1.Message);
+                }
+            }
+            if( logpath != "") Settings.Default.AionLogPath = logpath + "\\Chat.log";
+
             // system.ovr 파일 생성
             try
             {
-                string strsystemovr = Settings.Default.AionLogPath + "\\system.ovr";
+                string straionpath = Settings.Default.AionLogPath;
+                straionpath = straionpath.Substring(0, straionpath.Length - 9);
+                string strsystemovr = straionpath + "\\system.ovr";
                 if (File.Exists(strsystemovr)) File.Delete(strsystemovr);
                 FileStream fs = new FileStream(strsystemovr, FileMode.Create);
                 StreamWriter writer = new StreamWriter(fs, System.Text.Encoding.ASCII);
@@ -67,7 +95,7 @@ namespace KingsDamageMeter
             // chat.log 새로 생성
             try
             {
-                string strsystemovr = Settings.Default.AionLogPath + "\\Chat.log";
+                string strsystemovr = Settings.Default.AionLogPath;
                 if (File.Exists(strsystemovr))
                 {
                 } else {

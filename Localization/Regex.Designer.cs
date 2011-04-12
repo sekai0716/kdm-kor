@@ -133,6 +133,15 @@ namespace KingsDamageMeter.Localization {
         }
         
         /// <summary>
+        ///   (?&lt;target&gt;.+)[이가] (?&lt;effect&gt;.+) 효과의 효과로 (?&lt;damage&gt;[^a-zA-Z]+)의 대미지를 받았습니다\.과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string EffectDamageRegex {
+            get {
+                return ResourceManager.GetString("EffectDamageRegex", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   ((?&lt;name&gt;.+)[이가] )?소환: (?&lt;skill&gt;.+)을 사용해 (?&lt;target&gt;.+)[을를] 공격할 (?&lt;pet&gt;.+)[을를] 소환했습니다\.과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string EnergySummonedRegex {
@@ -367,6 +376,15 @@ namespace KingsDamageMeter.Localization {
         }
         
         /// <summary>
+        ///   (?&lt;effect&gt;.+) 효과가 발동했습니다\.과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string YouEffectDamageBeforeRegex {
+            get {
+                return ResourceManager.GetString("YouEffectDamageBeforeRegex", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   (?&lt;target&gt;.+) received (?&lt;damage&gt;[^a-zA-Z]+)( poisoning)? damage after you used (?&lt;effect&gt;.+)\.과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string YouEffectDamageRegex {
@@ -484,7 +502,7 @@ namespace KingsDamageMeter.Localization {
         }
         
         /// <summary>
-        ///   (?&lt;skill&gt;.+)을 사용해 (?&lt;pet&gt;.+)을 소환했습니다\.과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   (?&lt;skill&gt;.+)[을를] 사용해 (?&lt;pet&gt;.+)[을를] 소환했습니다\.과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string YouSummonedRegex {
             get {
