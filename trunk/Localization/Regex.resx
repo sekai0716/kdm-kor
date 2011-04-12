@@ -175,7 +175,7 @@
     <value>(?&lt;target&gt;.+) is bleeding because (?&lt;name&gt;.+) used (?&lt;skill&gt;.+)\.</value>
   </data>
   <data name="OtherInflictedRegex" xml:space="preserve">
-    <value>(?&lt;name&gt;.+)[이가] (?&lt;target&gt;.+)에게 (?&lt;damage&gt;[^a-zA-Z]+)의 대미지를 줬습니다\.</value>
+    <value>(치명타! )?(?&lt;name&gt;.+)[이가] (?&lt;target&gt;.+)에게 (?&lt;damage&gt;[^a-zA-Z]+)의 (치명적인 )?대미지를 줬습니다\.</value>
   </data>
   <data name="OtherInflictedSkillCureEx" xml:space="preserve">
     <value>(?&lt;name&gt;.+)[이가] (?&lt;skill&gt;.+) 추가 효과의 효과로 (?&lt;damage&gt;[^a-zA-Z]+)의 생명력을 회복했습니다.</value>

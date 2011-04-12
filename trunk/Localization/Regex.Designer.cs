@@ -214,7 +214,7 @@ namespace KingsDamageMeter.Localization {
         }
         
         /// <summary>
-        ///   (?&lt;name&gt;.+)[이가] (?&lt;target&gt;.+)에게 (?&lt;damage&gt;[^a-zA-Z]+)의 대미지를 줬습니다\.과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   (치명타! )?(?&lt;name&gt;.+)[이가] (?&lt;target&gt;.+)에게 (?&lt;damage&gt;[^a-zA-Z]+)의 (치명적인 )?대미지를 줬습니다\.과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string OtherInflictedRegex {
             get {
