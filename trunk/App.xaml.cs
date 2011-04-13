@@ -115,7 +115,7 @@ namespace KingsDamageMeter
             }
             try
             {
-                if (File.Exists(Settings.Default.AionLogPath + "\\Chat.log")) File.Delete(Settings.Default.AionLogPath + "\\Chat.log");
+                if (File.Exists(Settings.Default.AionLogPath)) File.Delete(Settings.Default.AionLogPath);
             }
             catch (Exception e1)
             {

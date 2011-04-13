@@ -1008,6 +1008,7 @@ namespace KingsDamageMeter
                     string skill = matches[0].Groups[_SkillGroupName].Value;
                     string target = matches[0].Groups[_TargetGroupName].Value;
 
+                    if (name == "") name = Settings.Default.YouAlias;
                     if (target != "")
                     {
                         if (_Dots.ContainsKey(skill + "^" + target))
