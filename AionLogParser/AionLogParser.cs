@@ -492,15 +492,15 @@ namespace KingsDamageMeter
                     string effect = matches[0].Groups[_EffectGroupName].Value;
                     string name = "";
                     if( 1 <= damage & damage <= 150) {
-                        name = "신석" + effect + "1~150";
+                        name = "신석" + effect + "150";
                     } else if(151 <= damage & damage <= 500) {
-                        name = "신석" + effect + "151~500";
+                        name = "신석" + effect + "500";
                     } else if(501 <= damage & damage <= 900) {
-                        name = "신석" + effect + "501~900";
+                        name = "신석" + effect + "900";
                     } else if(901 <= damage & damage <= 1800) {
-                        name = "신석" + effect + "901~1800";
+                        name = "신석" + effect + "1800";
                     } else if(1801 <= damage & damage <= 2000) {
-                        name = "신석" + effect + "1801~2000";
+                        name = "신석" + effect + "2000";
                     } else if(2001 <= damage) {
                         name = "신석" + effect + "2000~";
                     } else {
