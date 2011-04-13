@@ -496,6 +496,19 @@ namespace KingsDamageMeter
         /// </summary>
         public void AddPlayer(string name, bool isGroupMember)
         {
+            if( name.Contains("신석(") & name.Contains("속성)"))
+            {
+                Player p;
+                p = new Player
+                            {
+                                PlayerName = name,
+                                IsGroupMember = isGroupMember || Settings.Default.FriendList.Contains(name)
+                            };
+
+                Players.Add(p);
+                UpdateSort();
+                return;
+            }
             if (Settings.Default.IgnoreList.Contains(name))
             {
                 return;

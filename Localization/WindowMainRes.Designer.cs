@@ -151,6 +151,15 @@ namespace KingsDamageMeter.Localization {
         }
         
         /// <summary>
+        ///   신석대미지과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string GodStoneMainViewMenuHeader {
+            get {
+                return ResourceManager.GetString("GodStoneMainViewMenuHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   파티원의 정보만과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string GroupOnlyMenuHeader {

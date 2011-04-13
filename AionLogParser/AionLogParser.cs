@@ -141,6 +141,9 @@ namespace KingsDamageMeter
         private Regex _CommonDelayedTrapDamageRegex;
         private Regex _EnergySummonedRegex;
 
+        private Regex _GodStoneAttrRegex;           // 신석대미지 - 자신이 발동했을때만 나타남
+        private Regex _GodStoneAttrDamageRegex;     // 신석대미지 - 자신,타인 대미지
+
         private string  _OtherPrevSkill;
         private int     _OtherPrevSkillDamage;
         private string  _TempEffectBefore;
@@ -283,6 +286,9 @@ namespace KingsDamageMeter
             
             _CommonDelayedTrapDamageRegex = new Regex(_TimestampRegex + Localization.Regex.CommonDelayedTrapDamageRegex, RegexOptions.Compiled);
             _EnergySummonedRegex = new Regex(_TimestampRegex + Localization.Regex.EnergySummonedRegex, RegexOptions.Compiled);
+
+            _GodStoneAttrRegex = new Regex(_TimestampRegex + Localization.Regex.GodStoneAttrRegex, RegexOptions.Compiled);
+            _GodStoneAttrDamageRegex = new Regex(_TimestampRegex + Localization.Regex.GodStoneAttrDamageRegex, RegexOptions.Compiled);
 
         }
 
@@ -475,6 +481,41 @@ namespace KingsDamageMeter
             try
             {
                 if( _TempEffectBeforeChk < 2) _TempEffectBeforeChk++;
+
+                // 신석 대미지 추가
+                matches = _GodStoneAttrDamageRegex.Matches(line);
+                if (matches.Count > 0)
+                {
+                    DateTime time = matches[0].Groups[_TimeGroupName].Value.GetTime(_TimeFormat);
+                    int damage = matches[0].Groups[_DamageGroupName].Value.GetDigits();
+                    string target = matches[0].Groups[_TargetGroupName].Value;
+                    string effect = matches[0].Groups[_EffectGroupName].Value;
+                    string name = "";
+                    if( 1 <= damage & damage <= 150) {
+                        name = "신석" + effect + "1~150";
+                    } else if(151 <= damage & damage <= 500) {
+                        name = "신석" + effect + "151~500";
+                    } else if(501 <= damage & damage <= 900) {
+                        name = "신석" + effect + "501~900";
+                    } else if(901 <= damage & damage <= 1800) {
+                        name = "신석" + effect + "901~1800";
+                    } else if(1801 <= damage & damage <= 2000) {
+                        name = "신석" + effect + "1801~2000";
+                    } else if(2001 <= damage) {
+                        name = "신석" + effect + "2000~";
+                    } else {
+                        return;
+                    }
+
+                    if (DamageInflicted != null)
+                    {
+                        DamageInflicted(this, new PlayerDamageEventArgs(time, name, damage));
+                    }
+                   
+                    matched = true;
+                    regex = "_GodStoneAttrDamageRegex";
+                    return;
+                }
 
                 matches = _OtherInflictedSkillRegex.Matches(line);
                 matches2 = _OtherInflictedSkillRegex2.Matches(line);

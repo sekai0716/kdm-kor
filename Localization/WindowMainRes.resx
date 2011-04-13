@@ -189,6 +189,9 @@
   <data name="PercentMainViewMenuHeader" xml:space="preserve">
     <value>퍼센트(%)</value>
   </data>
+  <data name="GodStoneMainViewMenuHeader" xml:space="preserve">
+    <value>신석대미지</value>
+  </data>
   <data name="PowerOffBtnTooltip" xml:space="preserve">
     <value>대미지 측정 시작</value>
   </data>

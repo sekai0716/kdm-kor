@@ -153,6 +153,13 @@
     <value>((?&lt;name&gt;.+)[이가] )?소환: (?&lt;skill&gt;.+)을 사용해 (?&lt;target&gt;.+)[을를] 공격할 (?&lt;pet&gt;.+)[을를] 소환했습니다\.</value>
     <comment>치유성의 소환, 정령의 기운류</comment>
   </data>
+  <data name="GodStoneAttrDamageRegex" xml:space="preserve">
+    <value>(?&lt;target&gt;.+)[이가] 마법(?&lt;effect&gt;.+) 피해 효과의 효과로 (?&lt;damage&gt;[^a-zA-Z]+)의 대미지를 받았습니다\.</value>
+  </data>
+  <data name="GodStoneAttrRegex" xml:space="preserve">
+    <value>마법((?&lt;effect&gt;.+) 속성) 피해 효과가 발동했습니다\.</value>
+    <comment>신석:속성신석 (자신)</comment>
+  </data>
   <data name="JoinedGroupRegex" xml:space="preserve">
     <value>(?&lt;name&gt;.+) 님이 파티에 참가했습니다\.</value>
   </data>
