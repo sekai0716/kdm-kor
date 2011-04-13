@@ -91,9 +91,9 @@ namespace KingsDamageMeter
         private Regex _CommonDelayedPoisonDamageRegex;
         private Regex _CommonSummonedSumAtk;
         private Regex _CommandRegex;
-        private Regex _EffectDamageRegex;                 // ex)호법성 자체 버프-바람의 약속
-        private Regex _YouEffectDamageBeforeRegex;  // 해당 내용이 있고 그 다음에 효과 대미지인 경우 나의 대미지
-    
+        private Regex _EffectDamageRegex;           // ex)호법성 자체 버프-바람의 약속
+        private Regex _YouEffectDamageBeforeRegex;     // 해당 내용이 있고 그 다음에 효과 대미지인 경우 나의 대미지  (폭약,바람의약속 등)
+        
         private Regex _YouInflictedRegex;
         private Regex _YouInflictedSkillRegex;
         private Regex _YouInflictedSkillRegex1;
@@ -234,7 +234,7 @@ namespace KingsDamageMeter
             _CommandRegex = new Regex(_TimestampRegex + Localization.Regex.CommandRegex, RegexOptions.Compiled);
             _EffectDamageRegex = new Regex(_TimestampRegex + Localization.Regex.EffectDamageRegex, RegexOptions.Compiled);
             _YouEffectDamageBeforeRegex = new Regex(_TimestampRegex + Localization.Regex.YouEffectDamageBeforeRegex, RegexOptions.Compiled);
-
+            
             _YouInflictedRegex = new Regex(_TimestampRegex + Localization.Regex.YouInflictedRegex, RegexOptions.Compiled);
             _YouInflictedSkillRegex = new Regex(_TimestampRegex + Localization.Regex.YouInflictedSkillRegex, RegexOptions.Compiled);
             _YouInflictedSkillRegex1 = new Regex(_TimestampRegex + Localization.Regex.YouInflictedSkillRegex1, RegexOptions.Compiled);
@@ -988,6 +988,13 @@ namespace KingsDamageMeter
                     }
                     else if(_Dots.ContainsKey(skill + "^" + target))
                     {
+                    }
+                    else if(_Effects.ContainsKey(skill)) {
+                        // 독바르기류
+                        if (SkillDamageInflicted != null)
+                        {
+                            SkillDamageInflicted(this, new PlayerSkillDamageEventArgs(time, _Effects[skill], damage, skill));
+                        }
 
                     } else {
                         return;
@@ -1288,14 +1295,23 @@ namespace KingsDamageMeter
                     DateTime time = matches[0].Groups[_TimeGroupName].Value.GetTime(_TimeFormat);
                     string effect = matches[0].Groups[_EffectGroupName].Value;
 
-                    _TempEffectBefore = effect;
-                    _TempEffectBeforeChk = 0;
+                    if (_Effects.ContainsKey(effect))
+                    {
+                        if (_Effects[effect] != Settings.Default.YouAlias)
+                        {
+                            _Effects[effect] = Settings.Default.YouAlias;
+                        }
+                    }
+                    else
+                    {
+                        _Effects.Add(effect, Settings.Default.YouAlias);
+                    }
 
                     matched = true;
                     regex = "_YouEffectDamageBeforeRegex";
                     return;
                 }
-
+                
                 matches = _YouGainedEffectRegex.Matches(line);
                 if (matches.Count > 0)
                 {

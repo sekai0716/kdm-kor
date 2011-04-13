@@ -403,7 +403,7 @@ namespace KingsDamageMeter.Localization {
         }
         
         /// <summary>
-        ///   (?&lt;effect&gt;.+) 효과가 발동했습니다\.과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   (?&lt;effect&gt;.+)[을를] 사용해 효과가 발생했습니다\.과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string YouEffectDamageBeforeRegex {
             get {
