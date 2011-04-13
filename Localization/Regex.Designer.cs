@@ -214,7 +214,7 @@ namespace KingsDamageMeter.Localization {
         }
         
         /// <summary>
-        ///   (?&lt;name&gt;.+)[이가] (?&lt;skill&gt;.+)[을를] 사용해 (?&lt;target&gt;.+)[이가] 지연 폭발 효과를 받았습니다\.과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   ((?&lt;name&gt;.+)[이가] )?(?&lt;skill&gt;.+)[을를] 사용해 (?&lt;target&gt;.+)[이가] 지연 폭발 효과를 받았습니다\.과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string OtherDelayedRegex {
             get {
@@ -223,7 +223,7 @@ namespace KingsDamageMeter.Localization {
         }
         
         /// <summary>
-        ///   (?&lt;name&gt;.+)[이가] (?&lt;skill&gt;.+)[을를] 사용합니다\.과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   ((?&lt;name&gt;.+)[이가] )?(?&lt;skill&gt;.+)[을를] 사용합니다\.과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string OtherDelayedRegex1 {
             get {

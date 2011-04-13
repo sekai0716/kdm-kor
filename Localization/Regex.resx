@@ -176,10 +176,11 @@
     <value>(치명타! )?(?&lt;name&gt;.+)[이가] (?&lt;skill&gt;.+)을 사용해 (?&lt;target&gt;.+)에게 지속적인 대미지 효과를 줬습니다\.</value>
   </data>
   <data name="OtherDelayedRegex" xml:space="preserve">
-    <value>(?&lt;name&gt;.+)[이가] (?&lt;skill&gt;.+)[을를] 사용해 (?&lt;target&gt;.+)[이가] 지연 폭발 효과를 받았습니다\.</value>
+    <value>((?&lt;name&gt;.+)[이가] )?(?&lt;skill&gt;.+)[을를] 사용해 (?&lt;target&gt;.+)[이가] 지연 폭발 효과를 받았습니다\.</value>
+    <comment>지연폭발</comment>
   </data>
   <data name="OtherDelayedRegex1" xml:space="preserve">
-    <value>(?&lt;name&gt;.+)[이가] (?&lt;skill&gt;.+)[을를] 사용합니다\.</value>
+    <value>((?&lt;name&gt;.+)[이가] )?(?&lt;skill&gt;.+)[을를] 사용합니다\.</value>
     <comment>태풍소환</comment>
   </data>
   <data name="OtherInflictedBleedRegex" xml:space="preserve">
