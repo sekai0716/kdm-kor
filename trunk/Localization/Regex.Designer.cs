@@ -151,6 +151,24 @@ namespace KingsDamageMeter.Localization {
         }
         
         /// <summary>
+        ///   (?&lt;target&gt;.+)[이가] 마법(?&lt;effect&gt;.+) 피해 효과의 효과로 (?&lt;damage&gt;[^a-zA-Z]+)의 대미지를 받았습니다\.과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string GodStoneAttrDamageRegex {
+            get {
+                return ResourceManager.GetString("GodStoneAttrDamageRegex", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   마법((?&lt;effect&gt;.+) 속성) 피해 효과가 발동했습니다\.과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string GodStoneAttrRegex {
+            get {
+                return ResourceManager.GetString("GodStoneAttrRegex", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   (?&lt;name&gt;.+) 님이 파티에 참가했습니다\.과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string JoinedGroupRegex {
