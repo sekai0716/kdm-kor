@@ -147,8 +147,16 @@
     <value> Effect</value>
   </data>
   <data name="EffectDamageRegex" xml:space="preserve">
-    <value>(?&lt;target&gt;.+)[이가] (?&lt;effect&gt;.+) 효과의 효과로 (?&lt;damage&gt;[^a-zA-Z]+)의 대미지를 받았습니다\.</value>
-    <comment>자체버프류. 만약 YouEffectDamageBeforeRegex가 없으면 타유저</comment>
+    <value>(치명타 !)?(?&lt;target&gt;.+)[이가] (?&lt;effect&gt;.+) 효과의 효과로 (?&lt;damage&gt;[^a-zA-Z]+)의 대미지를 받았습니다\.</value>
+    <comment>자체버프류.</comment>
+  </data>
+  <data name="EffectOtherRegex" xml:space="preserve">
+    <value>(?&lt;name&gt;.+)[이가] (?&lt;effect&gt;.+)[을를] 사용해 자신에게 영향을 줬습니다\.</value>
+    <comment>자체버프류. 파티원이 사용할 경우 버프 메시지(바람의약속,폭약바르기)</comment>
+  </data>
+  <data name="EffectYouRegex" xml:space="preserve">
+    <value>(?&lt;effect&gt;.+)[을를] 사용해 효과가 발생했습니다\.</value>
+    <comment>자체버프류. 자신이 사용할 경우 버프 메시지(바람의약속,폭약바르기)</comment>
   </data>
   <data name="EnergySummonedRegex" xml:space="preserve">
     <value>((?&lt;name&gt;.+)[이가] )?소환: (?&lt;skill&gt;.+)을 사용해 (?&lt;target&gt;.+)[을를] 공격할 (?&lt;pet&gt;.+)[을를] 소환했습니다\.</value>
@@ -243,10 +251,6 @@
   </data>
   <data name="YouEarnedKinahRegex" xml:space="preserve">
     <value>(?&lt;kinah&gt;[^a-zA-Z]+)키나를 얻었습니다\.</value>
-  </data>
-  <data name="YouEffectDamageBeforeRegex" xml:space="preserve">
-    <value>(?&lt;effect&gt;.+)[을를] 사용해 효과가 발생했습니다\.</value>
-    <comment>자체버프류. 자신이 사용할 경우 대미지앞에 항상 나타남(바람의약속,폭약바르기)</comment>
   </data>
   <data name="YouEffectDamageRegex" xml:space="preserve">
     <value>(?&lt;target&gt;.+) received (?&lt;damage&gt;[^a-zA-Z]+)( poisoning)? damage after you used (?&lt;effect&gt;.+)\.</value>
