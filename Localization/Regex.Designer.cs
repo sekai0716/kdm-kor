@@ -133,11 +133,29 @@ namespace KingsDamageMeter.Localization {
         }
         
         /// <summary>
-        ///   (?&lt;target&gt;.+)[이가] (?&lt;effect&gt;.+) 효과의 효과로 (?&lt;damage&gt;[^a-zA-Z]+)의 대미지를 받았습니다\.과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   (치명타 !)?(?&lt;target&gt;.+)[이가] (?&lt;effect&gt;.+) 효과의 효과로 (?&lt;damage&gt;[^a-zA-Z]+)의 대미지를 받았습니다\.과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string EffectDamageRegex {
             get {
                 return ResourceManager.GetString("EffectDamageRegex", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   (?&lt;name&gt;.+)[이가] (?&lt;effect&gt;.+)[을를] 사용해 자신에게 영향을 줬습니다\.과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string EffectOtherRegex {
+            get {
+                return ResourceManager.GetString("EffectOtherRegex", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   (?&lt;effect&gt;.+)[을를] 사용해 효과가 발생했습니다\.과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string EffectYouRegex {
+            get {
+                return ResourceManager.GetString("EffectYouRegex", resourceCulture);
             }
         }
         
@@ -399,15 +417,6 @@ namespace KingsDamageMeter.Localization {
         internal static string YouEarnedKinahRegex {
             get {
                 return ResourceManager.GetString("YouEarnedKinahRegex", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   (?&lt;effect&gt;.+)[을를] 사용해 효과가 발생했습니다\.과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string YouEffectDamageBeforeRegex {
-            get {
-                return ResourceManager.GetString("YouEffectDamageBeforeRegex", resourceCulture);
             }
         }
         

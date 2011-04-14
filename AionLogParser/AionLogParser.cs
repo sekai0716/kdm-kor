@@ -91,8 +91,9 @@ namespace KingsDamageMeter
         private Regex _CommonDelayedPoisonDamageRegex;
         private Regex _CommonSummonedSumAtk;
         private Regex _CommandRegex;
-        private Regex _EffectDamageRegex;           // ex)호법성 자체 버프-바람의 약속
-        private Regex _YouEffectDamageBeforeRegex;     // 해당 내용이 있고 그 다음에 효과 대미지인 경우 나의 대미지  (폭약,바람의약속 등)
+        private Regex _EffectDamageRegex;   // ex)호법성 자체 버프-바람의 약속
+        private Regex _EffectYouRegex;      // 자체 공격대미지 주는 버프 메세지 (폭약,바람의약속 등)
+        private Regex _EffectOtherRegex;    // 파티원의 공격대미지 주는 버프 메세지 ..
         
         private Regex _YouInflictedRegex;
         private Regex _YouInflictedSkillRegex;
@@ -233,7 +234,8 @@ namespace KingsDamageMeter
             _CommonSummonedSumAtk = new Regex(_TimestampRegex + Localization.Regex.CommonSummonedSumAtk, RegexOptions.Compiled);
             _CommandRegex = new Regex(_TimestampRegex + Localization.Regex.CommandRegex, RegexOptions.Compiled);
             _EffectDamageRegex = new Regex(_TimestampRegex + Localization.Regex.EffectDamageRegex, RegexOptions.Compiled);
-            _YouEffectDamageBeforeRegex = new Regex(_TimestampRegex + Localization.Regex.YouEffectDamageBeforeRegex, RegexOptions.Compiled);
+            _EffectYouRegex = new Regex(_TimestampRegex + Localization.Regex.EffectYouRegex, RegexOptions.Compiled);
+            _EffectOtherRegex = new Regex(_TimestampRegex + Localization.Regex.EffectOtherRegex, RegexOptions.Compiled);
             
             _YouInflictedRegex = new Regex(_TimestampRegex + Localization.Regex.YouInflictedRegex, RegexOptions.Compiled);
             _YouInflictedSkillRegex = new Regex(_TimestampRegex + Localization.Regex.YouInflictedSkillRegex, RegexOptions.Compiled);
@@ -1289,26 +1291,38 @@ namespace KingsDamageMeter
                     return;
                 }
 
-                matches = _YouEffectDamageBeforeRegex.Matches(line);
-                if (matches.Count > 0)
+                matches = _EffectYouRegex.Matches(line);
+                matches2 = _EffectOtherRegex.Matches(line);
+                if (matches.Count > 0 | matches2.Count > 0)
                 {
+                    string name = "";
+                    if (matches2.Count == 0)
+                    {
+                        name = Settings.Default.YouAlias;
+                        regex = "_EffectYouRegex";
+                    }
+                    else
+                    {                        
+                        matches = matches2;
+                        name = matches[0].Groups[_NameGroupName].Value;
+                        regex = "_EffectOtherRegex";
+                    }
                     DateTime time = matches[0].Groups[_TimeGroupName].Value.GetTime(_TimeFormat);
                     string effect = matches[0].Groups[_EffectGroupName].Value;
 
                     if (_Effects.ContainsKey(effect))
                     {
-                        if (_Effects[effect] != Settings.Default.YouAlias)
+                        if (_Effects[effect] != name)
                         {
-                            _Effects[effect] = Settings.Default.YouAlias;
+                            _Effects[effect] = name;
                         }
                     }
                     else
                     {
-                        _Effects.Add(effect, Settings.Default.YouAlias);
+                        _Effects.Add(effect, name);
                     }
 
-                    matched = true;
-                    regex = "_YouEffectDamageBeforeRegex";
+                    matched = true;                    
                     return;
                 }
                 
