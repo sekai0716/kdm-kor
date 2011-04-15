@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual C# Express 2010
+# Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KingsDamageMeter", "KingsDamageMeter.csproj", "{2ED927CC-AF2E-4190-AF56-7B18F8C2B8AC}"
 EndProject
 Global
