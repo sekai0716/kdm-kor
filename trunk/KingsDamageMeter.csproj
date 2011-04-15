@@ -230,6 +230,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Settings.cs" />
     <Compile Include="WindowMain.xaml.cs">
       <DependentUpon>WindowMain.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -441,6 +442,7 @@
     <None Include="Properties\Settings.settings">
       <Generator>PublicSettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </None>
     <AppDesigner Include="Properties\" />
   </ItemGroup>
@@ -560,7 +562,25 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="꼭 읽어주세요.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>IF NOT EXIST "$(ProjectDir)Publish" MD "$(ProjectDir)Publish"
+DEL "$(ProjectDir)Publish" /Q
+IF $(ConfigurationName)==Release XCOPY "$(TargetDir)*" "$(ProjectDir)Publish\"
+IF $(ConfigurationName)==Release ren "$(ProjectDir)Publish\KingsDamageMeter.exe" "Sekai'sDamageMeter.exe"
+IF $(ConfigurationName)==Release ren "$(ProjectDir)Publish\KingsDamageMeter.exe.config" "Sekai'sDamageMeter.exe.config"
+IF $(ConfigurationName)==Release DEL "$(ProjectDir)Publish\KingsDamageMeter.pdb" /Q
+IF $(ConfigurationName)==Release DEL "$(ProjectDir)Publish\KingsDamageMeter.vshost.application" /Q
+IF $(ConfigurationName)==Release DEL "$(ProjectDir)Publish\KingsDamageMeter.vshost.exe" /Q
+IF $(ConfigurationName)==Release DEL "$(ProjectDir)Publish\KingsDamageMeter.vshost.exe.config" /Q
+IF $(ConfigurationName)==Release DEL "$(ProjectDir)Publish\KingsDamageMeter.vshost.exe.manifest" /Q
+</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
