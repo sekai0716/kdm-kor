@@ -119,7 +119,7 @@ namespace KingsDamageMeter
             }
             catch (Exception e1)
             {
-                MessageBox.Show("system.ovr파일을 자동으로 생성하지 못하였습니다.\n\n" +
+                MessageBox.Show("chat.log 파일을 삭제하지 못했습니다.\n\n" +
                     "혹시 윈도우7인 경우에는 프로그램에 아이콘에서\n\n" +
                     "[마우스 우측 클릭 우측버튼 클릭]-[관리자 권한으로 실행]을 선택해주시면 해결됩니다.\n\n\n\n" + e1.Message);
             }
