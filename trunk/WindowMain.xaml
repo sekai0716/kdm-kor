@@ -143,6 +143,10 @@
                                                   Header="{LocText KingsDamageMeter:WindowMainRes:SetYouAliasMenuHeader}" 
                                                   Click="MainContextMenuSetYouAlias_Click" />
                                         <Separator />
+                                        <MenuItem Name="AionWebPage"
+                                                  Header="{LocText KingsDamageMeter:WindowMainRes:AionWebPage}"
+                                                  Click="MainContextMenuAionWebPage_Click" />
+                                        <Separator />
                                         <MenuItem Name="MainContextView"  
                                                   Header="{LocText KingsDamageMeter:WindowMainRes:MainViewMenuHeader}">
                                             <!--MenuItem Name="MainContextViewDamage" 

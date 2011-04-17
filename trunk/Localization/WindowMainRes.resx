@@ -184,7 +184,7 @@
     <value>chat.log를 열 수 없습니다. 사용 설명서를 보시고 chat.log를 생성하시고 설정해 주세요. "{0} -&gt; {1}"</value>
   </data>
   <data name="OptionsBtnToolTip" xml:space="preserve">
-    <value>옵션</value>
+    <value>메뉴</value>
   </data>
   <data name="PercentMainViewMenuHeader" xml:space="preserve">
     <value>퍼센트(%)</value>
@@ -227,5 +227,8 @@
   </data>
   <data name="ConfirmCloseMessage" xml:space="preserve">
     <value>정말로 종료 하시겠습니까?</value>
+  </data>
+  <data name="AionWebPage" xml:space="preserve">
+    <value>아이온 웹사이트 열기</value>
   </data>
 </root>
