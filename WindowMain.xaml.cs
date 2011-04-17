@@ -276,6 +276,11 @@ namespace KingsDamageMeter
             }
         }
 
+        private void MainContextMenuAionWebPage_Click(object sender, RoutedEventArgs e) //  아이온 웹사이트 실행
+        {
+            System.Diagnostics.Process program = System.Diagnostics.Process.Start(@"http://aion.plaync.co.kr");
+        }
+
         #endregion
 
         private bool isLoaded;
