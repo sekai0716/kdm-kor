@@ -150,13 +150,9 @@
     <value>(치명타 !)?(?&lt;target&gt;.+)[이가] (?&lt;effect&gt;.+) 효과의 효과로 (?&lt;damage&gt;[^a-zA-Z]+)의 대미지를 받았습니다\.</value>
     <comment>자체버프류.</comment>
   </data>
-  <data name="EffectOtherRegex" xml:space="preserve">
-    <value>(?&lt;name&gt;.+)[이가] (?&lt;effect&gt;.+)[을를] 사용해 자신에게 영향을 줬습니다\.</value>
-    <comment>자체버프류. 파티원이 사용할 경우 버프 메시지(바람의약속,폭약바르기)</comment>
-  </data>
-  <data name="EffectYouRegex" xml:space="preserve">
-    <value>(?&lt;effect&gt;.+)[을를] 사용해 효과가 발생했습니다\.</value>
-    <comment>자체버프류. 자신이 사용할 경우 버프 메시지(바람의약속,폭약바르기)</comment>
+  <data name="EffectRegex" xml:space="preserve">
+    <value>((?&lt;name&gt;.+)[이가] )?(?&lt;effect&gt;.+)[을를] 사용해 (효과가 발생했습니다|자신에게 영향을 줬습니다)\.</value>
+    <comment>자체버프류. (바람의약속,폭약바르기)</comment>
   </data>
   <data name="EnergySummonedRegex" xml:space="preserve">
     <value>((?&lt;name&gt;.+)[이가] )?소환: (?&lt;skill&gt;.+)을 사용해 (?&lt;target&gt;.+)[을를] 공격할 (?&lt;pet&gt;.+)[을를] 소환했습니다\.</value>
@@ -168,6 +164,13 @@
   <data name="GodStoneAttrRegex" xml:space="preserve">
     <value>마법((?&lt;effect&gt;.+) 속성) 피해 효과가 발동했습니다\.</value>
     <comment>신석:속성신석 (자신)</comment>
+  </data>
+  <data name="InflictedRegex" xml:space="preserve">
+    <value>(치명타! )?((?&lt;name&gt;.+)[이가] )?(?&lt;target&gt;.+)에게 (?&lt;damage&gt;[^a-zA-Z]+)의 (|치명적인 )대미지를 줬습니다\.</value>
+  </data>
+  <data name="InflictedSkillRegex" xml:space="preserve">
+    <value>(치명타! )?((?&lt;name&gt;.+)[이가] )?(?&lt;skill&gt;.+)[을를] 사용해 (?&lt;target&gt;.+)에게 (?&lt;damage&gt;[^a-zA-Z]+)의 대미지를 (줬습니다|주고 (?&lt;effect&gt;.+) 효과가 발생했습니다|입고 일부 강화 마법이 제거됐습니다)\.</value>
+    <comment>일반스킬, 효과,마법역류스킬</comment>
   </data>
   <data name="JoinedGroupRegex" xml:space="preserve">
     <value>(?&lt;name&gt;.+) 님이 파티에 참가했습니다\.</value>
@@ -192,12 +195,6 @@
     <value>((?&lt;name&gt;.+)[이가] )?(?&lt;skill&gt;.+)[을를] 사용합니다\.</value>
     <comment>태풍소환</comment>
   </data>
-  <data name="OtherInflictedBleedRegex" xml:space="preserve">
-    <value>(?&lt;target&gt;.+) is bleeding because (?&lt;name&gt;.+) used (?&lt;skill&gt;.+)\.</value>
-  </data>
-  <data name="OtherInflictedRegex" xml:space="preserve">
-    <value>(치명타! )?(?&lt;name&gt;.+)[이가] (?&lt;target&gt;.+)에게 (?&lt;damage&gt;[^a-zA-Z]+)의 (치명적인 )?대미지를 줬습니다\.</value>
-  </data>
   <data name="OtherInflictedSkillCureEx" xml:space="preserve">
     <value>(?&lt;name&gt;.+)[이가] (?&lt;skill&gt;.+) 추가 효과의 효과로 (?&lt;damage&gt;[^a-zA-Z]+)의 생명력을 회복했습니다.</value>
     <comment>점검대상1</comment>
@@ -206,26 +203,8 @@
     <value>(?&lt;target&gt;.+)[이가] (?&lt;skill&gt;.+) 추가 효과의 효과로 (?&lt;damage&gt;[^a-zA-Z]+)의 대미지를 받았습니다\.</value>
     <comment>점검대상2</comment>
   </data>
-  <data name="OtherInflictedSkillRegex" xml:space="preserve">
-    <value>(치명타! )?(?&lt;name&gt;.+)[이가] (?&lt;skill&gt;.+)을 사용해 (?&lt;target&gt;.+)에게 (?&lt;damage&gt;[^a-zA-Z]+)의 대미지를 줬습니다\.</value>
-  </data>
-  <data name="OtherInflictedSkillRegex2" xml:space="preserve">
-    <value>(치명타! )?(?&lt;name&gt;.+)[이가] (?&lt;skill&gt;.+)을 사용해 (?&lt;target&gt;.+)에게 (?&lt;damage&gt;[^a-zA-Z]+)의 대미지를 주고 (?&lt;effect&gt;.+) 효과가 발생됐습니다\.</value>
-  </data>
-  <data name="OtherPoisonEffectRegex" xml:space="preserve">
-    <value>(?&lt;target&gt;.+) became poisoned because (?&lt;name&gt;.+) used (?&lt;skill&gt;.+)\.</value>
-  </data>
-  <data name="OtherReceivedBleedRegex" xml:space="preserve">
-    <value>(?&lt;name&gt;.+) received (?&lt;damage&gt;[^a-zA-Z]+) (bleeding|poisoning) damage after you used (?&lt;skill&gt;.+)\.</value>
-  </data>
   <data name="OtherReceivedRegex" xml:space="preserve">
     <value>(?&lt;name&gt;.+)[이가] (?&lt;target&gt;.+)에게서 (?&lt;damage&gt;[^a-zA-Z]+)의 대미지를 받았습니다\.</value>
-  </data>
-  <data name="OtherReceivedSkillRegex" xml:space="preserve">
-    <value>(?&lt;name&gt;.+) received (?&lt;damage&gt;[^a-zA-Z]+) damage due to the effect of (?&lt;skill&gt;.+)\.</value>
-  </data>
-  <data name="OtherSummonedAttackRegex" xml:space="preserve">
-    <value>(?&lt;name&gt;.+) has summoned (?&lt;pet&gt;.+) to attack (?&lt;target&gt;.+) by using (?&lt;skill&gt;.+)\.</value>
   </data>
   <data name="SummonedPoisonDelayRegex" xml:space="preserve">
     <value>(?&lt;pet&gt;.+)[이가] (?&lt;skill&gt;.+) 효과를 사용해 (?&lt;target&gt;.+)[이가] 중독 상태가 됐습니다\.</value>
@@ -240,57 +219,20 @@
     <value>(치명타! )?(?&lt;skill&gt;.+)[을를] 사용해 (?&lt;target&gt;.+)에게 지속적인 대미지를 줬습니다\.</value>
     <comment>자신의 도트 대미지 스킬 추가</comment>
   </data>
-  <data name="YouCriticalRegex" xml:space="preserve">
-    <value>치명타! (?&lt;target&gt;.+)에게 (?&lt;damage&gt;[^a-zA-Z]+)의 치명적인 대미지를 줬습니다\.</value>
-  </data>
   <data name="YouDelayedPoisonRegex" xml:space="preserve">
     <value>(치명타! )?(?&lt;skill&gt;.+)[을를] 사용해 (?&lt;target&gt;.+)[이가] 중독 상태가 됐습니다\.</value>
-  </data>
-  <data name="YouDelayedRegex" xml:space="preserve">
-    <value>(?&lt;target&gt;.+) received the delayed explosion effect as you used (?&lt;skill&gt;.+)\.</value>
   </data>
   <data name="YouEarnedKinahRegex" xml:space="preserve">
     <value>(?&lt;kinah&gt;[^a-zA-Z]+)키나를 얻었습니다\.</value>
   </data>
-  <data name="YouEffectDamageRegex" xml:space="preserve">
-    <value>(?&lt;target&gt;.+) received (?&lt;damage&gt;[^a-zA-Z]+)( poisoning)? damage after you used (?&lt;effect&gt;.+)\.</value>
-  </data>
   <data name="YouGainedApRegex" xml:space="preserve">
     <value>(?&lt;ap&gt;[^a-zA-Z]+) 어비스 포인트를 얻었습니다\.</value>
-  </data>
-  <data name="YouGainedEffectRegex" xml:space="preserve">
-    <value>You received the effect by using (?&lt;effect&gt;.+)\.</value>
   </data>
   <data name="YouGainedExpRegex" xml:space="preserve">
     <value>(?&lt;target&gt;.+)에게 (?&lt;exp&gt;[^a-zA-Z]+)만큼의 경험치를 얻었습니다\.</value>
   </data>
-  <data name="YouInflictedBleed2Regex" xml:space="preserve">
-    <value>You caused (?&lt;target&gt;.+) to bleed by using (?&lt;skill&gt;.+)\.</value>
-  </data>
-  <data name="YouInflictedBleedRegex" xml:space="preserve">
-    <value>(?&lt;target&gt;.+) is bleeding because You used (?&lt;skill&gt;.+)\.</value>
-  </data>
-  <data name="YouInflictedRegex" xml:space="preserve">
-    <value>(?&lt;target&gt;.+)에게 (?&lt;damage&gt;[^a-zA-Z]+)의 대미지를 줬습니다\.</value>
-  </data>
-  <data name="YouInflictedSkillRegex" xml:space="preserve">
-    <value>(치명타! )?(?&lt;skill&gt;.+)[을를] 사용해 (?&lt;target&gt;.+)에게 (?&lt;damage&gt;[^a-zA-Z]+)의 대미지를 줬습니다\.</value>
-  </data>
-  <data name="YouInflictedSkillRegex1" xml:space="preserve">
-    <value>(치명타! )?(?&lt;skill&gt;.+)[을를] 사용해 (?&lt;target&gt;.+)에게 (?&lt;damage&gt;[^a-zA-Z]+)의 대미지를 주고 (?&lt;effect&gt;.+) 효과가 발생했습니다\.</value>
-  </data>
-  <data name="YouInflictedSkillRegex2" xml:space="preserve">
-    <value>(치명타! )?(?&lt;skill&gt;.+)[을를] 사용해 (?&lt;target&gt;.+)[이가] (?&lt;damage&gt;[^a-zA-Z]+)의 대미지를 입고 일부 강화 마법이 제거됐습니다\.</value>
-    <comment>마법 역류 스킬</comment>
-  </data>
-  <data name="YouReceivedRegex" xml:space="preserve">
-    <value>You received (?&lt;damage&gt;[^a-zA-Z]+) damage from (?&lt;target&gt;.+)\.</value>
-  </data>
   <data name="YouSpentKinahRegex" xml:space="preserve">
     <value>(?&lt;kinah&gt;[^a-zA-Z]+)키나를 사용했습니다\.</value>
-  </data>
-  <data name="YouSummonedAttackRegex" xml:space="preserve">
-    <value>You summoned (?&lt;pet&gt;.+) by using (?&lt;skill&gt;.+) to let it attack (?&lt;target&gt;.+)\.</value>
   </data>
   <data name="YouSummonedRegex" xml:space="preserve">
     <value>(?&lt;skill&gt;.+)[을를] 사용해 (?&lt;pet&gt;.+)[을를] 소환했습니다\.</value>
