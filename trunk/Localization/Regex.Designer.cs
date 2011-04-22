@@ -79,24 +79,6 @@ namespace KingsDamageMeter.Localization {
         }
         
         /// <summary>
-        ///   (?&lt;target&gt;.+)[이가] (?&lt;skill&gt;.+)의 효과로 (?&lt;damage&gt;[^a-zA-Z]+)의 중독 대미지를 받았습니다\.과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string CommonDelayedPoisonDamageRegex {
-            get {
-                return ResourceManager.GetString("CommonDelayedPoisonDamageRegex", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   (?&lt;target&gt;.+)[이가] (?&lt;skill&gt;.+) 효과의 효과로 (?&lt;damage&gt;[^a-zA-Z]+)의 중독 대미지를 받았습니다\.과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string CommonDelayedTrapDamageRegex {
-            get {
-                return ResourceManager.GetString("CommonDelayedTrapDamageRegex", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   (?&lt;pet&gt;.+)의 소환이 해제됐습니다\.과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string CommonSummonedOffRegex {
@@ -124,7 +106,16 @@ namespace KingsDamageMeter.Localization {
         }
         
         /// <summary>
-        ///   (치명타! )?((?&lt;name&gt;.+)[이가] )?(?&lt;skill&gt;.+)[을를] 사용해 (?&lt;target&gt;.+)에게 지속적인 대미지 효과를 줬습니다\.과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   (치명타! )?(?&lt;target&gt;.+)[이가] (?&lt;skill&gt;.+)의 효과로 (?&lt;damage&gt;[^a-zA-Z]+)의 (중독 )?대미지를 받았습니다\.과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string ContinuousDamage {
+            get {
+                return ResourceManager.GetString("ContinuousDamage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   (치명타! )?((?&lt;name&gt;.+)[이가] )?(?&lt;skill&gt;.+)[을를] 사용해 (?&lt;target&gt;.+)([이가] 중독 상태가 됐습니다|에게 지속적인 대미지([을를]| 효과를) 줬습니다)\.과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string ContinuousRegex {
             get {
@@ -223,15 +214,6 @@ namespace KingsDamageMeter.Localization {
         }
         
         /// <summary>
-        ///   (?&lt;target&gt;.+)[이가] (?&lt;skill&gt;.+)의 효과로 (?&lt;damage&gt;[^a-zA-Z]+)의 대미지를 받았습니다\.과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string OtherContinuousDamage {
-            get {
-                return ResourceManager.GetString("OtherContinuousDamage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   ((?&lt;name&gt;.+)[이가] )?(?&lt;skill&gt;.+)[을를] 사용해 (?&lt;target&gt;.+)[이가] 지연 폭발 효과를 받았습니다\.과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string OtherDelayedRegex {
@@ -250,15 +232,6 @@ namespace KingsDamageMeter.Localization {
         }
         
         /// <summary>
-        ///   (?&lt;name&gt;.+)[이가] (?&lt;target&gt;.+)에게서 (?&lt;damage&gt;[^a-zA-Z]+)의 대미지를 받았습니다\.과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string OtherReceivedRegex {
-            get {
-                return ResourceManager.GetString("OtherReceivedRegex", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   (?&lt;pet&gt;.+)[이가] (?&lt;skill&gt;.+) 효과를 사용해 (?&lt;target&gt;.+)[이가] 중독 상태가 됐습니다\.과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string SummonedPoisonDelayRegex {
@@ -268,29 +241,11 @@ namespace KingsDamageMeter.Localization {
         }
         
         /// <summary>
-        ///   (?&lt;pet&gt;.+)[이가] (?&lt;skill&gt;.+) 효과를 사용해 (?&lt;target&gt;.+)에게 (?&lt;damage&gt;[^a-zA-Z]+)의 대미지를 줬습니다\.과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string SummonedTrapRegex {
-            get {
-                return ResourceManager.GetString("SummonedTrapRegex", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   (?&lt;time&gt;[^a-zA-Z]+) : 과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string TimestampRegex {
             get {
                 return ResourceManager.GetString("TimestampRegex", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   (치명타! )?(?&lt;skill&gt;.+)[을를] 사용해 (?&lt;target&gt;.+)[이가] 중독 상태가 됐습니다\.과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string YouDelayedPoisonRegex {
-            get {
-                return ResourceManager.GetString("YouDelayedPoisonRegex", resourceCulture);
             }
         }
         
