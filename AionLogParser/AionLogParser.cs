@@ -95,6 +95,7 @@ namespace KingsDamageMeter
         private Regex _InflictedRegex;              // 일반적인 대미지
 
         private Regex _ContinuousRegex;             // 일반적인 도트 추가
+        private Regex _ContinuousDamage;       // 도트 대미지
 
         private Regex _EffectRegex;                 // 자체 공격대미지 주는 버프 메세지 (폭약,바람의약속 등)
         private Regex _EffectDamageRegex;           // ex)호법성 자체 버프-바람의 약속
@@ -114,21 +115,15 @@ namespace KingsDamageMeter
 
 
         // 정리가 안된 부분
-        private Regex _CommonDelayedPoisonDamageRegex;
         private Regex _CommonSummonedSumAtk;        
-        private Regex _OtherContinuousDamage;
         private Regex _YouSummonedRegex;
         private Regex _CommonSummonedRegex;         // 정령류
-        private Regex _CommonSummonedOffRegex;     // 정령해제
+        private Regex _CommonSummonedOffRegex;      // 정령해제
 
-        private Regex _YouDelayedPoisonRegex;
         private Regex _OtherDelayedRegex;
         private Regex _OtherDelayedRegex1;
-        private Regex _OtherReceivedRegex;
 
         private Regex _SummonedPoisonDelayRegex;
-        private Regex _SummonedTrapRegex;
-        private Regex _CommonDelayedTrapDamageRegex;
         private Regex _EnergySummonedRegex;
 
         /// <summary>
@@ -216,6 +211,7 @@ namespace KingsDamageMeter
             _InflictedRegex = new Regex(_TimestampRegex + Localization.Regex.InflictedRegex, RegexOptions.Compiled);
 
             _ContinuousRegex = new Regex(_TimestampRegex + Localization.Regex.ContinuousRegex, RegexOptions.Compiled);
+            _ContinuousDamage = new Regex(_TimestampRegex + Localization.Regex.ContinuousDamage, RegexOptions.Compiled);
 
             _EffectRegex = new Regex(_TimestampRegex + Localization.Regex.EffectRegex, RegexOptions.Compiled);
             _EffectDamageRegex = new Regex(_TimestampRegex + Localization.Regex.EffectDamageRegex, RegexOptions.Compiled);
@@ -236,23 +232,15 @@ namespace KingsDamageMeter
             
 
             // 정리가 안된 부분            
-            _CommonDelayedPoisonDamageRegex = new Regex(_TimestampRegex + Localization.Regex.CommonDelayedPoisonDamageRegex, RegexOptions.Compiled);
             _CommonSummonedSumAtk = new Regex(_TimestampRegex + Localization.Regex.CommonSummonedSumAtk, RegexOptions.Compiled);
-            _OtherContinuousDamage = new Regex(_TimestampRegex + Localization.Regex.OtherContinuousDamage, RegexOptions.Compiled);
-
             _YouSummonedRegex = new Regex(_TimestampRegex + Localization.Regex.YouSummonedRegex, RegexOptions.Compiled);
             _CommonSummonedRegex = new Regex(_TimestampRegex + Localization.Regex.CommonSummonedRegex, RegexOptions.Compiled);
             _CommonSummonedOffRegex = new Regex(_TimestampRegex + Localization.Regex.CommonSummonedOffRegex, RegexOptions.Compiled);
 
-            _YouDelayedPoisonRegex = new Regex(_TimestampRegex + Localization.Regex.YouDelayedPoisonRegex, RegexOptions.Compiled);
             _OtherDelayedRegex = new Regex(_TimestampRegex + Localization.Regex.OtherDelayedRegex, RegexOptions.Compiled);
             _OtherDelayedRegex1 = new Regex(_TimestampRegex + Localization.Regex.OtherDelayedRegex1, RegexOptions.Compiled);
             
-            _OtherReceivedRegex = new Regex(_TimestampRegex + Localization.Regex.OtherReceivedRegex, RegexOptions.Compiled);
             _SummonedPoisonDelayRegex = new Regex(_TimestampRegex + Localization.Regex.SummonedPoisonDelayRegex, RegexOptions.Compiled);
-            _SummonedTrapRegex = new Regex(_TimestampRegex + Localization.Regex.SummonedTrapRegex, RegexOptions.Compiled);
-            
-            _CommonDelayedTrapDamageRegex = new Regex(_TimestampRegex + Localization.Regex.CommonDelayedTrapDamageRegex, RegexOptions.Compiled);
             _EnergySummonedRegex = new Regex(_TimestampRegex + Localization.Regex.EnergySummonedRegex, RegexOptions.Compiled);
         }
 
@@ -432,7 +420,7 @@ namespace KingsDamageMeter
                 return;
             }
 
-            MatchCollection matches, matches2, matches3;
+            MatchCollection matches, matches2;
             matches = _ChatRegex.Matches(line);
             string debugprint = ">>>>>";
             if (matches.Count > 0)
@@ -503,7 +491,7 @@ namespace KingsDamageMeter
                     matched = true;
                     return;
                 }
-
+                
                 matches = _InflictedSkillRegex.Matches(line);
                 if (matches.Count > 0)
                 {
@@ -512,13 +500,14 @@ namespace KingsDamageMeter
                     string skill = matches[0].Groups[_SkillGroupName].Value;
                     string target = matches[0].Groups[_TargetGroupName].Value;
                     int damage = matches[0].Groups[_DamageGroupName].Value.GetDigits();
-                    
+
+                    if (skill.Contains(" 효과")) skill = skill.Substring(0, skill.IndexOf(" 효과"));
                     if (name.Trim().Length == 0) name = Settings.Default.YouAlias;
                     if (name.Contains(" "))
-                    {
-                        if (_Pets.ContainsKey(name))
-                        {   // 덫 스킬
-                            name = _Pets[name];
+                    {                        
+                        if (_Pets.ContainsKey(skill + name))
+                        {   // 덫 스킬(폭발의 덫)
+                            name = _Pets[skill + name].Split('^')[0];
                             if (SkillDamageInflicted != null)
                             {
                                 debugprint += "유저:[[" + name + "]], 타겟 [[" + target +
@@ -601,34 +590,6 @@ namespace KingsDamageMeter
                     return;
                 }
 
-                matches = _SummonedTrapRegex.Matches(line);
-                if (matches.Count > 0)
-                {
-                    DateTime time = matches[0].Groups[_TimeGroupName].Value.GetTime(_TimeFormat);
-                    string target = matches[0].Groups[_TargetGroupName].Value;
-                    string skill = matches[0].Groups[_SkillGroupName].Value;
-                    int damage = matches[0].Groups[_DamageGroupName].Value.GetDigits();
-                    string pet = matches[0].Groups[_PetGroupName].Value;
-
-                    if (_Pets.ContainsKey(skill + pet))
-                    {
-                        if (SkillDamageInflicted != null)
-                        {
-                            SkillDamageInflicted(this,
-                                                 new PlayerSkillDamageEventArgs(time, _Pets[skill + pet].Split('^')[0], damage,
-                                                                                skill));
-                        }
-                    }
-                    else
-                    {
-                        return;
-                    }
-
-                    matched = true;
-                    regex = "_SummonedTrapRegex";
-                    return;
-                }
-
                 matches = _InflictedRegex.Matches(line);
                 if (matches.Count > 0)
                 {
@@ -677,7 +638,7 @@ namespace KingsDamageMeter
                         {
                             debugprint += "유저:[[" + name + "]], 타겟 [[" + target +
                                         "]], 대미지 [[" + damage.ToString() + "]] - Attack:";
-                            DamageInflicted(this, new PlayerDamageEventArgs(time, Settings.Default.YouAlias, damage));
+                            DamageInflicted(this, new PlayerDamageEventArgs(time, name, damage));
                         }
                     }
                     debugprint += "_InflictedRegex";
@@ -693,6 +654,10 @@ namespace KingsDamageMeter
                     string skill = matches[0].Groups[_SkillGroupName].Value;
                     string target = matches[0].Groups[_TargetGroupName].Value;
 
+                    if (name.Contains(" ")) {
+                        if (skill.Contains(" 효과")) skill = skill.Substring(0, skill.IndexOf(" 효과"));
+                        if (_Pets.ContainsKey(skill + name)) name = _Pets[skill + name].Split('^')[0];
+                    }
                     if (name.Trim().Length == 0) name = Settings.Default.YouAlias;
                     if (_Dots.ContainsKey(skill + "^" + target))
                     {
@@ -709,6 +674,46 @@ namespace KingsDamageMeter
                     return;
                 }
 
+                matches = _ContinuousDamage.Matches(line);
+                if (matches.Count > 0)
+                {
+                    DateTime time = matches[0].Groups[_TimeGroupName].Value.GetTime(_TimeFormat);
+                    string target = matches[0].Groups[_TargetGroupName].Value;
+                    string skill = matches[0].Groups[_SkillGroupName].Value;
+                    int damage = matches[0].Groups[_DamageGroupName].Value.GetDigits();
+
+                    if (skill.Contains(" 효과")) skill = skill.Substring(0, skill.IndexOf(" 효과"));
+                    if (_Dots.ContainsKey(skill + "^" + target))
+                    {   // 궁성 덫 스킬, skill + target
+                        string[] strdotnametime = _Dots[skill + "^" + target].Split('^');
+                        //DateTime chktime = Convert.ToDateTime(strdotnametime[1]);
+                        //DateTime chktime2 = time;
+                        //chktime2 = chktime2.AddMinutes(2);
+                        //if (chktime <= time & time <= chktime2)
+                        //{
+                        if (SkillDamageInflicted != null)
+                        {
+                            debugprint += "유저:[[" + strdotnametime[0] + "]], 타겟 [[" + target +
+                                        "]], 대미지 [[" + damage.ToString() + "]], 스킬명[[" + skill + "]] - 도트대미지:";
+                            SkillDamageInflicted(this, new PlayerSkillDamageEventArgs(time, strdotnametime[0], damage, skill));
+                        }
+                        //}
+                    }
+                    else if (_Effects.ContainsKey(skill))
+                    {
+                        // 독바르기류
+                        if (SkillDamageInflicted != null)
+                        {
+                            debugprint += "유저:[[" + _Effects[skill] + "]], 타겟 [[" + target +
+                                        "]], 대미지 [[" + damage.ToString() + "]], 스킬명[[" + skill + "]] - 도트대미지:";
+                            SkillDamageInflicted(this, new PlayerSkillDamageEventArgs(time, _Effects[skill], damage, skill));
+                        }
+                    }
+                    debugprint += "_ContinuousDamage";
+                    matched = true;
+                    return;
+                }
+                
                 matches = _EffectRegex.Matches(line);
                 if (matches.Count > 0)
                 {
@@ -752,68 +757,6 @@ namespace KingsDamageMeter
                     }
                     debugprint += "_EffectDamageRegex";
                     matched = true;
-                    return;
-                }
-
-                matches = _OtherReceivedRegex.Matches(line);
-                if (matches.Count > 0)
-                {
-                    DateTime time = matches[0].Groups[_TimeGroupName].Value.GetTime(_TimeFormat);
-                    string name = matches[0].Groups[_NameGroupName].Value;
-                    int damage = matches[0].Groups[_DamageGroupName].Value.GetDigits();
-                    string target = matches[0].Groups[_TargetGroupName].Value;
-
-                    matched = true;
-                    regex = "_OtherReceivedRegex";
-                    return;
-                }
-
-                matches = _OtherContinuousDamage.Matches(line);
-                matches2 = _CommonDelayedPoisonDamageRegex.Matches(line);
-                matches3 = _CommonDelayedTrapDamageRegex.Matches(line);
-                if (matches.Count > 0 | matches2.Count > 0 | matches3.Count > 0)
-                {
-                    if (matches2.Count > 0) matches = matches2;
-                    if (matches3.Count > 0) matches = matches3;
-                    DateTime time = matches[0].Groups[_TimeGroupName].Value.GetTime(_TimeFormat);
-                    int damage = matches[0].Groups[_DamageGroupName].Value.GetDigits();
-                    string skill = matches[0].Groups[_SkillGroupName].Value;
-                    string target = matches[0].Groups[_TargetGroupName].Value;
-
-                    if (_Dots.ContainsKey(skill + "^" + target)) // 궁성 덫 스킬, skill + pet
-                    {
-                        string[] strdotnametime = _Dots[skill + "^" + target].Split('^');
-                        DateTime chktime = Convert.ToDateTime(strdotnametime[1]);
-                        DateTime chktime2 = time;
-                        chktime2 = chktime2.AddMinutes(2);
-                        if (chktime <= time & time <= chktime2)
-                        {
-                            if (SkillDamageInflicted != null)
-                            {
-                                SkillDamageInflicted(this, new PlayerSkillDamageEventArgs(time, strdotnametime[0], damage, skill));
-                            }
-                        }
-                        else
-                        {
-                            return;
-                        }
-                    }
-                    else if(_Dots.ContainsKey(skill + "^" + target))
-                    {
-                    }
-                    else if(_Effects.ContainsKey(skill)) {
-                        // 독바르기류
-                        if (SkillDamageInflicted != null)
-                        {
-                            SkillDamageInflicted(this, new PlayerSkillDamageEventArgs(time, _Effects[skill], damage, skill));
-                        }
-
-                    } else {
-                        return;
-                    }
-
-                    matched = true;
-                    regex = "_OtherContinuousDamage";
                     return;
                 }
 
@@ -973,28 +916,6 @@ namespace KingsDamageMeter
 
                     matched = true;
                     regex = "_SummonedPoisonDelayRegex";
-                    return;
-                }
-                
-                matches2 = _YouDelayedPoisonRegex.Matches(line);
-                if (matches.Count > 0 | matches2.Count > 0)
-                {
-                    if (matches2.Count > 0) matches = matches2;
-                    DateTime time = matches[0].Groups[_TimeGroupName].Value.GetTime(_TimeFormat);
-                    string name = Settings.Default.YouAlias;
-                    string skill = matches[0].Groups[_SkillGroupName].Value;
-                    string target = matches[0].Groups[_TargetGroupName].Value;
-
-                    if (_Dots.ContainsKey(skill + "^" + target))
-                    {
-                        _Dots[skill + "^" + target] = name + "^" + time.ToString();
-                    }
-                    else
-                    {
-                        _Dots.Add(skill + "^" + target, name + "^" + time.ToString());
-                    }
-                    matched = true;
-                    regex = "_YouDelayedRegex";
                     return;
                 }
 
