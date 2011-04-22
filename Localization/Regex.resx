@@ -143,6 +143,10 @@
     <value>(?&lt;pet&gt;.+)[이가] 소환: (?&lt;skill&gt;.+) 효과를 사용해 (?&lt;target&gt;.+)에게 (?&lt;damage&gt;[^a-zA-Z]+)의 대미지를 줬습니다\.</value>
     <comment>소환수가 소환하여 공격하는 경우</comment>
   </data>
+  <data name="ContinuousRegex" xml:space="preserve">
+    <value>(치명타! )?((?&lt;name&gt;.+)[이가] )?(?&lt;skill&gt;.+)[을를] 사용해 (?&lt;target&gt;.+)에게 지속적인 대미지 효과를 줬습니다\.</value>
+    <comment>일반적인 도트 추가</comment>
+  </data>
   <data name="Effect" xml:space="preserve">
     <value> Effect</value>
   </data>
@@ -160,10 +164,6 @@
   </data>
   <data name="GodStoneAttrDamageRegex" xml:space="preserve">
     <value>(?&lt;target&gt;.+)[이가] 마법(?&lt;effect&gt;.+) 피해 효과의 효과로 (?&lt;damage&gt;[^a-zA-Z]+)의 대미지를 받았습니다\.</value>
-  </data>
-  <data name="GodStoneAttrRegex" xml:space="preserve">
-    <value>마법((?&lt;effect&gt;.+) 속성) 피해 효과가 발동했습니다\.</value>
-    <comment>신석:속성신석 (자신)</comment>
   </data>
   <data name="InflictedRegex" xml:space="preserve">
     <value>(치명타! )?((?&lt;name&gt;.+)[이가] )?(?&lt;target&gt;.+)에게 (?&lt;damage&gt;[^a-zA-Z]+)의 (|치명적인 )대미지를 줬습니다\.</value>
@@ -184,9 +184,6 @@
   <data name="OtherContinuousDamage" xml:space="preserve">
     <value>(?&lt;target&gt;.+)[이가] (?&lt;skill&gt;.+)의 효과로 (?&lt;damage&gt;[^a-zA-Z]+)의 대미지를 받았습니다\.</value>
   </data>
-  <data name="OtherContinuousRegex" xml:space="preserve">
-    <value>(치명타! )?(?&lt;name&gt;.+)[이가] (?&lt;skill&gt;.+)을 사용해 (?&lt;target&gt;.+)에게 지속적인 대미지 효과를 줬습니다\.</value>
-  </data>
   <data name="OtherDelayedRegex" xml:space="preserve">
     <value>((?&lt;name&gt;.+)[이가] )?(?&lt;skill&gt;.+)[을를] 사용해 (?&lt;target&gt;.+)[이가] 지연 폭발 효과를 받았습니다\.</value>
     <comment>지연폭발</comment>
@@ -194,14 +191,6 @@
   <data name="OtherDelayedRegex1" xml:space="preserve">
     <value>((?&lt;name&gt;.+)[이가] )?(?&lt;skill&gt;.+)[을를] 사용합니다\.</value>
     <comment>태풍소환</comment>
-  </data>
-  <data name="OtherInflictedSkillCureEx" xml:space="preserve">
-    <value>(?&lt;name&gt;.+)[이가] (?&lt;skill&gt;.+) 추가 효과의 효과로 (?&lt;damage&gt;[^a-zA-Z]+)의 생명력을 회복했습니다.</value>
-    <comment>점검대상1</comment>
-  </data>
-  <data name="OtherInflictedSkillEx" xml:space="preserve">
-    <value>(?&lt;target&gt;.+)[이가] (?&lt;skill&gt;.+) 추가 효과의 효과로 (?&lt;damage&gt;[^a-zA-Z]+)의 대미지를 받았습니다\.</value>
-    <comment>점검대상2</comment>
   </data>
   <data name="OtherReceivedRegex" xml:space="preserve">
     <value>(?&lt;name&gt;.+)[이가] (?&lt;target&gt;.+)에게서 (?&lt;damage&gt;[^a-zA-Z]+)의 대미지를 받았습니다\.</value>
@@ -214,10 +203,6 @@
   </data>
   <data name="TimestampRegex" xml:space="preserve">
     <value>(?&lt;time&gt;[^a-zA-Z]+) : </value>
-  </data>
-  <data name="YouContinuousRegex" xml:space="preserve">
-    <value>(치명타! )?(?&lt;skill&gt;.+)[을를] 사용해 (?&lt;target&gt;.+)에게 지속적인 대미지를 줬습니다\.</value>
-    <comment>자신의 도트 대미지 스킬 추가</comment>
   </data>
   <data name="YouDelayedPoisonRegex" xml:space="preserve">
     <value>(치명타! )?(?&lt;skill&gt;.+)[을를] 사용해 (?&lt;target&gt;.+)[이가] 중독 상태가 됐습니다\.</value>

@@ -124,6 +124,15 @@ namespace KingsDamageMeter.Localization {
         }
         
         /// <summary>
+        ///   (치명타! )?((?&lt;name&gt;.+)[이가] )?(?&lt;skill&gt;.+)[을를] 사용해 (?&lt;target&gt;.+)에게 지속적인 대미지 효과를 줬습니다\.과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string ContinuousRegex {
+            get {
+                return ResourceManager.GetString("ContinuousRegex", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///    Effect과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string Effect {
@@ -165,15 +174,6 @@ namespace KingsDamageMeter.Localization {
         internal static string GodStoneAttrDamageRegex {
             get {
                 return ResourceManager.GetString("GodStoneAttrDamageRegex", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   마법((?&lt;effect&gt;.+) 속성) 피해 효과가 발동했습니다\.과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string GodStoneAttrRegex {
-            get {
-                return ResourceManager.GetString("GodStoneAttrRegex", resourceCulture);
             }
         }
         
@@ -232,15 +232,6 @@ namespace KingsDamageMeter.Localization {
         }
         
         /// <summary>
-        ///   (치명타! )?(?&lt;name&gt;.+)[이가] (?&lt;skill&gt;.+)을 사용해 (?&lt;target&gt;.+)에게 지속적인 대미지 효과를 줬습니다\.과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string OtherContinuousRegex {
-            get {
-                return ResourceManager.GetString("OtherContinuousRegex", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   ((?&lt;name&gt;.+)[이가] )?(?&lt;skill&gt;.+)[을를] 사용해 (?&lt;target&gt;.+)[이가] 지연 폭발 효과를 받았습니다\.과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string OtherDelayedRegex {
@@ -255,24 +246,6 @@ namespace KingsDamageMeter.Localization {
         internal static string OtherDelayedRegex1 {
             get {
                 return ResourceManager.GetString("OtherDelayedRegex1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   (?&lt;name&gt;.+)[이가] (?&lt;skill&gt;.+) 추가 효과의 효과로 (?&lt;damage&gt;[^a-zA-Z]+)의 생명력을 회복했습니다.과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string OtherInflictedSkillCureEx {
-            get {
-                return ResourceManager.GetString("OtherInflictedSkillCureEx", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   (?&lt;target&gt;.+)[이가] (?&lt;skill&gt;.+) 추가 효과의 효과로 (?&lt;damage&gt;[^a-zA-Z]+)의 대미지를 받았습니다\.과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string OtherInflictedSkillEx {
-            get {
-                return ResourceManager.GetString("OtherInflictedSkillEx", resourceCulture);
             }
         }
         
@@ -309,15 +282,6 @@ namespace KingsDamageMeter.Localization {
         internal static string TimestampRegex {
             get {
                 return ResourceManager.GetString("TimestampRegex", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   (치명타! )?(?&lt;skill&gt;.+)[을를] 사용해 (?&lt;target&gt;.+)에게 지속적인 대미지를 줬습니다\.과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string YouContinuousRegex {
-            get {
-                return ResourceManager.GetString("YouContinuousRegex", resourceCulture);
             }
         }
         
