@@ -119,11 +119,8 @@ namespace KingsDamageMeter
         private Regex _YouSummonedRegex;
         private Regex _CommonSummonedRegex;         // 정령류
         private Regex _CommonSummonedOffRegex;      // 정령해제
-
         private Regex _OtherDelayedRegex;
         private Regex _OtherDelayedRegex1;
-
-        private Regex _SummonedPoisonDelayRegex;
         private Regex _EnergySummonedRegex;
 
         /// <summary>
@@ -240,7 +237,6 @@ namespace KingsDamageMeter
             _OtherDelayedRegex = new Regex(_TimestampRegex + Localization.Regex.OtherDelayedRegex, RegexOptions.Compiled);
             _OtherDelayedRegex1 = new Regex(_TimestampRegex + Localization.Regex.OtherDelayedRegex1, RegexOptions.Compiled);
             
-            _SummonedPoisonDelayRegex = new Regex(_TimestampRegex + Localization.Regex.SummonedPoisonDelayRegex, RegexOptions.Compiled);
             _EnergySummonedRegex = new Regex(_TimestampRegex + Localization.Regex.EnergySummonedRegex, RegexOptions.Compiled);
         }
 
@@ -552,7 +548,7 @@ namespace KingsDamageMeter
                     matched = true;
                     return;
                 }
-
+                
                 // 트랩보다 상위에 있어야함
                 matches = _CommonSummonedSumAtk.Matches(line);
                 if (matches.Count > 0)
@@ -891,34 +887,6 @@ namespace KingsDamageMeter
                     return;
                 }
 
-                matches = _SummonedPoisonDelayRegex.Matches(line);
-                if (matches.Count > 0)
-                {
-                    DateTime time = matches[0].Groups[_TimeGroupName].Value.GetTime(_TimeFormat);
-                    string target = matches[0].Groups[_TargetGroupName].Value;
-                    string skill = matches[0].Groups[_SkillGroupName].Value;
-                    string pet = matches[0].Groups[_PetGroupName].Value;
-                    if (_Pets.ContainsKey(skill + pet))
-                    {
-                        string strplayer = _Pets[skill + pet].Split('^')[0];
-                        if (_Dots.ContainsKey(skill + "^" + target))
-                        {
-                            if (!_Dots[skill + "^" + target].Contains(strplayer))
-                            {
-                                _Dots[skill + "^" + target] = strplayer + "^" + time.ToString();
-                            }
-                        }
-                        else
-                        {
-                            _Dots.Add(skill + "^" + target, strplayer + "^" + time.ToString());
-                        }
-                    }
-
-                    matched = true;
-                    regex = "_SummonedPoisonDelayRegex";
-                    return;
-                }
-
                 matches = _JoinedGroupRegex.Matches(line);
                 if (matches.Count > 0)
                 {
@@ -1015,7 +983,7 @@ namespace KingsDamageMeter
                     regex = "_YouSpentKinahRegex";
                     return;
                 }
-
+                
                 matches = _YouGainedApRegex.Matches(line);
                 if (matches.Count > 0)
                 {

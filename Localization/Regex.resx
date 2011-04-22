@@ -184,9 +184,6 @@
     <value>((?&lt;name&gt;.+)[이가] )?(?&lt;skill&gt;.+)[을를] 사용합니다\.</value>
     <comment>태풍소환</comment>
   </data>
-  <data name="SummonedPoisonDelayRegex" xml:space="preserve">
-    <value>(?&lt;pet&gt;.+)[이가] (?&lt;skill&gt;.+) 효과를 사용해 (?&lt;target&gt;.+)[이가] 중독 상태가 됐습니다\.</value>
-  </data>
   <data name="TimestampRegex" xml:space="preserve">
     <value>(?&lt;time&gt;[^a-zA-Z]+) : </value>
   </data>
