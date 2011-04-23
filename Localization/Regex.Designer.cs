@@ -61,6 +61,15 @@ namespace KingsDamageMeter.Localization {
         }
         
         /// <summary>
+        ///   (?&lt;target&gt;.+)가 (?&lt;skill&gt;.+) 추가 효과의 효과로 (?&lt;damage&gt;[^a-zA-Z]+)의 대미지를 받았습니다과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string AddDamageRegex {
+            get {
+                return ResourceManager.GetString("AddDamageRegex", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   \[charname:과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string Chat {
@@ -88,7 +97,7 @@ namespace KingsDamageMeter.Localization {
         }
         
         /// <summary>
-        ///   ((?&lt;name&gt;.+)[이가] )?소환: (?&lt;skill&gt;.+)을 사용해 (?&lt;pet&gt;.+)을 소환했습니다\.과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   ((?&lt;name&gt;.+)[이가] )?소환: (?&lt;skill&gt;.+)[을를] 사용해 (?&lt;pet&gt;.+)을 소환했습니다\.과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string CommonSummonedRegex {
             get {
@@ -120,6 +129,15 @@ namespace KingsDamageMeter.Localization {
         internal static string ContinuousRegex {
             get {
                 return ResourceManager.GetString("ContinuousRegex", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   ((?&lt;name&gt;.+)[이가] )?(?&lt;skill&gt;.+)[을를] (사용합니다|사용해 (?&lt;target&gt;.+)[이가] 지연 폭발 효과를 받았습니다)\.과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string DelayedRegex {
+            get {
+                return ResourceManager.GetString("DelayedRegex", resourceCulture);
             }
         }
         
@@ -210,24 +228,6 @@ namespace KingsDamageMeter.Localization {
         internal static string LeftGroupRegex {
             get {
                 return ResourceManager.GetString("LeftGroupRegex", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   ((?&lt;name&gt;.+)[이가] )?(?&lt;skill&gt;.+)[을를] 사용해 (?&lt;target&gt;.+)[이가] 지연 폭발 효과를 받았습니다\.과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string OtherDelayedRegex {
-            get {
-                return ResourceManager.GetString("OtherDelayedRegex", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   ((?&lt;name&gt;.+)[이가] )?(?&lt;skill&gt;.+)[을를] 사용합니다\.과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string OtherDelayedRegex1 {
-            get {
-                return ResourceManager.GetString("OtherDelayedRegex1", resourceCulture);
             }
         }
         
