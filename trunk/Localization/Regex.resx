@@ -117,6 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AddDamageRegex" xml:space="preserve">
+    <value>(?&lt;target&gt;.+)가 (?&lt;skill&gt;.+) 추가 효과의 효과로 (?&lt;damage&gt;[^a-zA-Z]+)의 대미지를 받았습니다</value>
+    <comment>추가 대미지</comment>
+  </data>
   <data name="Chat" xml:space="preserve">
     <value>\[charname:</value>
   </data>
@@ -128,7 +132,7 @@
     <value>(?&lt;pet&gt;.+)의 소환이 해제됐습니다\.</value>
   </data>
   <data name="CommonSummonedRegex" xml:space="preserve">
-    <value>((?&lt;name&gt;.+)[이가] )?소환: (?&lt;skill&gt;.+)을 사용해 (?&lt;pet&gt;.+)을 소환했습니다\.</value>
+    <value>((?&lt;name&gt;.+)[이가] )?소환: (?&lt;skill&gt;.+)[을를] 사용해 (?&lt;pet&gt;.+)을 소환했습니다\.</value>
     <comment>자신,타 유저 정령류 소환</comment>
   </data>
   <data name="CommonSummonedSumAtk" xml:space="preserve">
@@ -137,10 +141,15 @@
   </data>
   <data name="ContinuousDamage" xml:space="preserve">
     <value>(치명타! )?(?&lt;target&gt;.+)[이가] (?&lt;skill&gt;.+)의 효과로 (?&lt;damage&gt;[^a-zA-Z]+)의 (중독 )?대미지를 받았습니다\.</value>
+    <comment>일반적인 도트 대미지</comment>
   </data>
   <data name="ContinuousRegex" xml:space="preserve">
     <value>(치명타! )?((?&lt;name&gt;.+)[이가] )?(?&lt;skill&gt;.+)[을를] 사용해 (?&lt;target&gt;.+)([이가] 중독 상태가 됐습니다|에게 지속적인 대미지([을를]| 효과를) 줬습니다)\.</value>
     <comment>일반적인 도트 추가</comment>
+  </data>
+  <data name="DelayedRegex" xml:space="preserve">
+    <value>((?&lt;name&gt;.+)[이가] )?(?&lt;skill&gt;.+)[을를] (사용합니다|사용해 (?&lt;target&gt;.+)[이가] 지연 폭발 효과를 받았습니다)\.</value>
+    <comment>지연폭발,태풍솬류 도트추가</comment>
   </data>
   <data name="Effect" xml:space="preserve">
     <value> Effect</value>
@@ -175,14 +184,6 @@
   </data>
   <data name="LeftGroupRegex" xml:space="preserve">
     <value>(?&lt;name&gt;.+) 님이 파티를 떠났습니다\.</value>
-  </data>
-  <data name="OtherDelayedRegex" xml:space="preserve">
-    <value>((?&lt;name&gt;.+)[이가] )?(?&lt;skill&gt;.+)[을를] 사용해 (?&lt;target&gt;.+)[이가] 지연 폭발 효과를 받았습니다\.</value>
-    <comment>지연폭발</comment>
-  </data>
-  <data name="OtherDelayedRegex1" xml:space="preserve">
-    <value>((?&lt;name&gt;.+)[이가] )?(?&lt;skill&gt;.+)[을를] 사용합니다\.</value>
-    <comment>태풍소환</comment>
   </data>
   <data name="TimestampRegex" xml:space="preserve">
     <value>(?&lt;time&gt;[^a-zA-Z]+) : </value>
