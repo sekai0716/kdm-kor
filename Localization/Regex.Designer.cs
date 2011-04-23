@@ -196,7 +196,7 @@ namespace KingsDamageMeter.Localization {
         }
         
         /// <summary>
-        ///   (치명타! )?((?&lt;name&gt;.+)[이가] )?(?&lt;skill&gt;.+)[을를] 사용해 (?&lt;target&gt;.+)에게 (?&lt;damage&gt;[^a-zA-Z]+)의 대미지를 (줬습니다|주고 (?&lt;effect&gt;.+) 효과가 발생했습니다|입고 일부 강화 마법이 제거됐습니다)\.과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   (치명타! )?((?&lt;name&gt;.+)[이가] )?(?&lt;skill&gt;.+)[을를] 사용해 ((?&lt;target&gt;.+)에게 (?&lt;damage&gt;[^a-zA-Z]+)의 대미지를 줬습니다|(?&lt;target&gt;.+)에게 (?&lt;damage&gt;[^a-zA-Z]+)의 대미지를 주고 (?&lt;effect&gt;.+) 효과가 발생했습니다|(?&lt;target&gt;.+)[이가] (?&lt;damage&gt;[^a-zA-Z]+)의 대미지를 (받고|입고) 일부 강화 마법이 제거됐습니다)\.과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string InflictedSkillRegex {
             get {

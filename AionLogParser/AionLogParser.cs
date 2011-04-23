@@ -521,7 +521,7 @@ namespace KingsDamageMeter
                                         "]], 대미지 [[" + damage.ToString() + "]], 스킬명[[" + skill + "]] - 일반스킬:";
                             SkillDamageInflicted(this, new PlayerSkillDamageEventArgs(time, name, damage, skill));
                         }
-                        if (line.Contains("입고 일부 강화 마법이 제거됐습니다") | skill.Contains("고갈의 문양 폭발"))
+                        if (line.Contains("일부 강화 마법이 제거됐습니다") | skill.Contains("고갈의 문양 폭발"))
                         {   //마법역류 스킬류는 도트 스킬임, 고갈 문양 폭발 추가 대미지 발생
                             if (_Dots.ContainsKey(skill + "^" + target))
                             {
