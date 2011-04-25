@@ -80,20 +80,100 @@ namespace KingsDamageMeter
                 Settings.Default.FriendList = new ObservableCollection<string>();
             }
 
-            Settings.Default.PropertyChanged += SettingsChanged;
+            //Settings.Default.PropertyChanged += SettingsChanged;
+            // SDM.cfg로 대체
+            classINI clsINI = new classINI();
+            string strFileName = System.Environment.CurrentDirectory + "\\SDM.cfg";
+
+            try
+            {
+                Settings.Default.WindowMainHeight = int.Parse(clsINI.GetIniValue("System", "WindowMainHeight", strFileName));
+                Settings.Default.WindowMainOpacity = double.Parse(clsINI.GetIniValue("System", "WindowMainOpacity", strFileName));
+                Settings.Default.WindowMainTopMost = bool.Parse(clsINI.GetIniValue("System", "WindowMainTopMost", strFileName));
+                Settings.Default.WindowMainWidth = int.Parse(clsINI.GetIniValue("System", "WindowMainWidth", strFileName));
+                Settings.Default.WindowMainX = int.Parse(clsINI.GetIniValue("System", "WindowMainX", strFileName));
+                Settings.Default.WindowMainY = int.Parse(clsINI.GetIniValue("System", "WindowMainY", strFileName));
+                Settings.Default.Debug = bool.Parse(clsINI.GetIniValue("System", "Debug", strFileName));
+                Settings.Default.IsGroupOnly = bool.Parse(clsINI.GetIniValue("AppData", "IsGroupOnly", strFileName));
+                Settings.Default.IsHideOthers = bool.Parse(clsINI.GetIniValue("AppData", "IsHideOthers", strFileName));
+                Settings.Default.LogTimeFormat = clsINI.GetIniValue("AppData", "LogTimeFormat", strFileName);
+                string strSortType = clsINI.GetIniValue("AppData", "SortType", strFileName);
+                if (strSortType == "Damage")
+                {
+                    Settings.Default.SortType = Controls.PlayerSortType.Damage;
+                }
+                else if (strSortType == "DamagePerSecond")
+                {
+                    Settings.Default.SortType = Controls.PlayerSortType.DamagePerSecond;
+                }
+                else if (strSortType == "Name")
+                {
+                    Settings.Default.SortType = Controls.PlayerSortType.Name;
+                }
+                else
+                {
+                    Settings.Default.SortType = Controls.PlayerSortType.None;
+                }
+                Settings.Default.YouAlias = clsINI.GetIniValue("AppData", "YouAlias", strFileName);
+                string strdisplaytype = clsINI.GetIniValue("AppData", "DisplayType", strFileName);
+                foreach (var display in strdisplaytype.Split(','))
+                {
+                    if (display.Trim() == "Damage")
+                    {
+                        Settings.Default.DisplayType |= Controls.DisplayType.Damage;
+                    }
+                    else if (display.Trim() == "AbyssPoints")
+                    {
+                        Settings.Default.DisplayType |= Controls.DisplayType.AbyssPoints;
+                    }
+                    else if (display.Trim() == "DamagePerSecond")
+                    {
+                        Settings.Default.DisplayType |= Controls.DisplayType.DamagePerSecond;
+                    }
+                    else if (display.Trim() == "Experience")
+                    {
+                        Settings.Default.DisplayType |= Controls.DisplayType.Experience;
+                    }
+                    else if (display.Trim() == "Kinah")
+                    {
+                        Settings.Default.DisplayType |= Controls.DisplayType.Kinah;
+                    }
+                    else if (display.Trim() == "Percent")
+                    {
+                        Settings.Default.DisplayType |= Controls.DisplayType.Percent;
+                    }
+                }
+
+
+            }
+            catch (Exception setError)
+            {
+                Settings.Default.PropertyChanged += SettingsChanged;
+            }
         }
 
         protected override void OnExit(ExitEventArgs e)
         {
             //NotifyIcon.Hide();
-            Settings.Default.Save();
-
+            //Settings.Default.Save();
             // 환경변수 저장
             classINI clsINI = new classINI();
-            clsINI.SetInIValue("viewContents", "YouAlias", Settings.Default.YouAlias, System.Environment.CurrentDirectory + "\\SDM.cfg");
-            clsINI.SetInIValue("viewContents", "SortType", Settings.Default.SortType.ToString(), System.Environment.CurrentDirectory + "\\SDM.cfg");
-            clsINI.SetInIValue("viewContents", "DisplayType", Settings.Default.DisplayType.ToString(), System.Environment.CurrentDirectory + "\\SDM.cfg");
-            
+            string strFileName = System.Environment.CurrentDirectory + "\\SDM.cfg";
+
+            clsINI.SetInIValue("System", "WindowMainHeight", Settings.Default.WindowMainHeight.ToString(), strFileName);
+            clsINI.SetInIValue("System", "WindowMainOpacity", Settings.Default.WindowMainOpacity.ToString(), strFileName);
+            clsINI.SetInIValue("System", "WindowMainTopMost", Settings.Default.WindowMainTopMost.ToString(), strFileName);
+            clsINI.SetInIValue("System", "WindowMainWidth", Settings.Default.WindowMainWidth.ToString(), strFileName);
+            clsINI.SetInIValue("System", "WindowMainX", Settings.Default.WindowMainX.ToString(), strFileName);
+            clsINI.SetInIValue("System", "WindowMainY", Settings.Default.WindowMainY.ToString(), strFileName);
+            clsINI.SetInIValue("System", "Debug", Settings.Default.Debug.ToString(), strFileName);
+            clsINI.SetInIValue("AppData", "IsGroupOnly", Settings.Default.IsGroupOnly.ToString(), strFileName);
+            clsINI.SetInIValue("AppData", "IsHideOthers", Settings.Default.IsHideOthers.ToString(), strFileName);
+            clsINI.SetInIValue("AppData", "LogTimeFormat", Settings.Default.LogTimeFormat.ToString(), strFileName);
+            clsINI.SetInIValue("AppData", "SortType", Settings.Default.SortType.ToString(), strFileName);
+            clsINI.SetInIValue("AppData", "YouAlias", Settings.Default.YouAlias.ToString(), strFileName);
+            clsINI.SetInIValue("AppData", "DisplayType", Settings.Default.DisplayType.ToString(), strFileName);
+
             // system.ovr파일 0으로 변경
             try
             {
