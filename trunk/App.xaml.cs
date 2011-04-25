@@ -88,6 +88,12 @@ namespace KingsDamageMeter
             //NotifyIcon.Hide();
             Settings.Default.Save();
 
+            // 환경변수 저장
+            classINI clsINI = new classINI();
+            clsINI.SetInIValue("viewContents", "YouAlias", Settings.Default.YouAlias, System.Environment.CurrentDirectory + "\\SDM.cfg");
+            clsINI.SetInIValue("viewContents", "SortType", Settings.Default.SortType.ToString(), System.Environment.CurrentDirectory + "\\SDM.cfg");
+            clsINI.SetInIValue("viewContents", "DisplayType", Settings.Default.DisplayType.ToString(), System.Environment.CurrentDirectory + "\\SDM.cfg");
+            
             // system.ovr파일 0으로 변경
             try
             {
