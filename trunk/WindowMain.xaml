@@ -419,7 +419,7 @@
                                   FontFamily="Verdana"
                                   IsChecked="{Binding WindowMainTopMost, Source={x:Static Properties:Settings.Default}}"
                                   ToolTip="{LocText KingsDamageMeter:WindowMainRes:TopMostCheckBoxToolTip}"
-                                  HorizontalAlignment="Center" Margin="5,0" />
+                                  HorizontalAlignment="Center" Margin="5,0"/>
                         <Thumb Grid.Column="2"
                                Cursor="SizeNWSE"
                                Name="ResizeThumb" 
