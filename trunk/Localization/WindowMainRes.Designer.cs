@@ -97,6 +97,15 @@ namespace KingsDamageMeter.Localization {
         }
         
         /// <summary>
+        ///   Chatlog 해제과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string ChatlogSetup {
+            get {
+                return ResourceManager.GetString("ChatlogSetup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   종료과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string CloseBtnToolTip {

@@ -453,7 +453,7 @@ namespace KingsDamageMeter
                     regex = "_GodStoneAttrDamageRegex";
                     return;
                 }
-
+                
                 matches = _CommandRegex.Matches(line);
                 if (matches.Count > 0)
                 {   // 정령 명령류 대미지 처리

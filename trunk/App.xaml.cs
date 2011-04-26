@@ -94,6 +94,7 @@ namespace KingsDamageMeter
                 Settings.Default.WindowMainX = int.Parse(clsINI.GetIniValue("System", "WindowMainX", strFileName));
                 Settings.Default.WindowMainY = int.Parse(clsINI.GetIniValue("System", "WindowMainY", strFileName));
                 Settings.Default.Debug = bool.Parse(clsINI.GetIniValue("System", "Debug", strFileName));
+                Settings.Default.IsChatlogOff = bool.Parse(clsINI.GetIniValue("System", "IsChatlogOff", strFileName));
                 Settings.Default.IsGroupOnly = bool.Parse(clsINI.GetIniValue("AppData", "IsGroupOnly", strFileName));
                 Settings.Default.IsHideOthers = bool.Parse(clsINI.GetIniValue("AppData", "IsHideOthers", strFileName));
                 Settings.Default.LogTimeFormat = clsINI.GetIniValue("AppData", "LogTimeFormat", strFileName);
@@ -167,6 +168,7 @@ namespace KingsDamageMeter
             clsINI.SetInIValue("System", "WindowMainX", Settings.Default.WindowMainX.ToString(), strFileName);
             clsINI.SetInIValue("System", "WindowMainY", Settings.Default.WindowMainY.ToString(), strFileName);
             clsINI.SetInIValue("System", "Debug", Settings.Default.Debug.ToString(), strFileName);
+            clsINI.SetInIValue("System", "IsChatlogOff", Settings.Default.IsChatlogOff.ToString(), strFileName);
             clsINI.SetInIValue("AppData", "IsGroupOnly", Settings.Default.IsGroupOnly.ToString(), strFileName);
             clsINI.SetInIValue("AppData", "IsHideOthers", Settings.Default.IsHideOthers.ToString(), strFileName);
             clsINI.SetInIValue("AppData", "LogTimeFormat", Settings.Default.LogTimeFormat.ToString(), strFileName);
@@ -174,30 +176,33 @@ namespace KingsDamageMeter
             clsINI.SetInIValue("AppData", "YouAlias", Settings.Default.YouAlias.ToString(), strFileName);
             clsINI.SetInIValue("AppData", "DisplayType", Settings.Default.DisplayType.ToString(), strFileName);
 
-            // system.ovr파일 0으로 변경
-            try
+            if (Settings.Default.IsChatlogOff == true)
             {
-                string straionpath = Settings.Default.AionLogPath;
-                straionpath = straionpath.Substring(0, straionpath.Length - 9);
-                string strsystemovr = straionpath + "\\system.ovr";
-                if (File.Exists(strsystemovr)) File.Delete(strsystemovr);
-                FileStream fs = new FileStream(strsystemovr, FileMode.Create);
-                StreamWriter writer = new StreamWriter(fs, System.Text.Encoding.ASCII);
-                writer.Write("g_chatlog = \"0\"");
-                writer.WriteLine();
-                writer.Write("log_IncludeTime = \"0\"");
-                writer.WriteLine();
-                writer.Write("log_Verbosity = \"0\"");
-                writer.WriteLine();
-                writer.Write("log_FileVerbosity = \"0\"");
-                writer.Close();
-                fs.Close();
-            }
-            catch (Exception e1)
-            {
-                MessageBox.Show("system.ovr파일을 변경하지 못했습니다.\n\n" +
-                    "혹시 윈도우7인 경우에는 프로그램에 아이콘에서\n\n" +
-                    "[마우스 우측 클릭 우측버튼 클릭]-[관리자 권한으로 실행]을 선택해주시면 해결됩니다.\n\n\n\n" + e1.Message);
+                // system.ovr파일 0으로 변경
+                try
+                {
+                    string straionpath = Settings.Default.AionLogPath;
+                    straionpath = straionpath.Substring(0, straionpath.Length - 9);
+                    string strsystemovr = straionpath + "\\system.ovr";
+                    if (File.Exists(strsystemovr)) File.Delete(strsystemovr);
+                    FileStream fs = new FileStream(strsystemovr, FileMode.CreateNew);
+                    StreamWriter writer = new StreamWriter(fs, System.Text.Encoding.ASCII);
+                    writer.Write("g_chatlog = \"0\"");
+                    writer.WriteLine();
+                    writer.Write("log_IncludeTime = \"0\"");
+                    writer.WriteLine();
+                    writer.Write("log_Verbosity = \"0\"");
+                    writer.WriteLine();
+                    writer.Write("log_FileVerbosity = \"0\"");
+                    writer.Close();
+                    fs.Close();
+                }
+                catch (Exception e1)
+                {
+                    MessageBox.Show("system.ovr파일을 변경하지 못했습니다.\n\n" +
+                        "혹시 윈도우7인 경우에는 프로그램에 아이콘에서\n\n" +
+                        "[마우스 우측 클릭 우측버튼 클릭]-[관리자 권한으로 실행]을 선택해주시면 해결됩니다.\n\n\n\n" + e1.Message);
+                }
             }
             try
             {
