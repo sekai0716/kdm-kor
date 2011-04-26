@@ -115,7 +115,6 @@ namespace KingsDamageMeter
 
         // 정리가 안된 부분
         private Regex _CommonSummonedSumAtk;        
-        private Regex _YouSummonedRegex;
         private Regex _CommonSummonedRegex;         // 정령류
         private Regex _CommonSummonedOffRegex;      // 정령해제
         private Regex _EnergySummonedRegex;
@@ -226,7 +225,7 @@ namespace KingsDamageMeter
 
             // 정리가 안된 부분            
             _CommonSummonedSumAtk = new Regex(_TimestampRegex + Localization.Regex.CommonSummonedSumAtk, RegexOptions.Compiled);
-            _YouSummonedRegex = new Regex(_TimestampRegex + Localization.Regex.YouSummonedRegex, RegexOptions.Compiled);
+            //_YouSummonedRegex = new Regex(_TimestampRegex + Localization.Regex.YouSummonedRegex, RegexOptions.Compiled);
             _CommonSummonedRegex = new Regex(_TimestampRegex + Localization.Regex.CommonSummonedRegex, RegexOptions.Compiled);
             _CommonSummonedOffRegex = new Regex(_TimestampRegex + Localization.Regex.CommonSummonedOffRegex, RegexOptions.Compiled);
             _EnergySummonedRegex = new Regex(_TimestampRegex + Localization.Regex.EnergySummonedRegex, RegexOptions.Compiled);
@@ -611,7 +610,7 @@ namespace KingsDamageMeter
                     else if (_Pets.ContainsKey(name))
                     {
                         string pet = name;
-                        name = _Pets[pet];
+                        name = _Pets[pet].Split('^')[0];
 
                         if (SkillDamageInflicted != null)
                         {
@@ -783,7 +782,7 @@ namespace KingsDamageMeter
                     string skill = matches[0].Groups[_SkillGroupName].Value;
                     string pet = matches[0].Groups[_PetGroupName].Value;
 
-                    if (name == "") name = Settings.Default.YouAlias;
+                    if (name.Trim().Length == 0) name = Settings.Default.YouAlias;
                     if ( _Energy.ContainsKey(pet + "^" + target))
                     {
                         _Energy[pet + "^" + target] = name + "^" + time.ToString()  + "^" + skill;
@@ -792,9 +791,8 @@ namespace KingsDamageMeter
                     {
                         _Energy.Add(pet + "^" + target, name + "^" + time.ToString() + "^" + skill);
                     }
-
+                    debugprint += "유저:[[" + name + "]], 타겟:[[" + target + "]], 소환:[[" + pet + "]], 스킬:[[" + skill + "]] - 기운,소환:_EnergySummonedRegex";
                     matched = true;
-                    regex = "_EnergySummonedRegex";
                     return;
                 }
 
@@ -805,22 +803,23 @@ namespace KingsDamageMeter
                     string name = matches[0].Groups[_NameGroupName].Value;
                     string skill = matches[0].Groups[_SkillGroupName].Value;
                     string pet = matches[0].Groups[_PetGroupName].Value;
-
-                    if (name == "") name = Settings.Default.YouAlias;
-                    if (_Pets.ContainsKey(pet))
+                    string strkey = pet;
+                    // 음...이 부분은 좀더 지켜봐야할듯..
+                    if(pet.Contains("덫")) strkey = skill + pet;
+                    if (name.Trim().Length == 0) name = Settings.Default.YouAlias;
+                    if (_Pets.ContainsKey(strkey))
                     {
-                        if (_Pets[pet] != name)
+                        if (!_Pets[strkey].Contains(name))
                         {
-                            _Pets[pet] = name;
+                            _Pets[strkey] = name + "^" + time.ToString();
                         }
                     }
                     else
                     {
-                        _Pets.Add(pet, name);
+                        _Pets.Add(strkey, name + "^" + time.ToString());
                     }
-
+                    debugprint += "유저:[[" + name + "]], 소환:[[" + pet + "]], 스킬:[[" + skill + "]] - 소환:_CommonSummonedRegex";
                     matched = true;
-                    regex = "_CommonSummonedRegex";
                     return;
                 }
 
@@ -832,36 +831,11 @@ namespace KingsDamageMeter
 
                     if (_Pets.ContainsKey(pet))
                     {
-                        _Pets.Remove(pet);
+                        debugprint += "유저:[[" + _Pets[pet] + "]], 소환:[[" + pet + "]] - 소환해제:";
+                        _Pets.Remove(pet);                        
                     }
-
+                    debugprint += "_CommonSummonedOffRegex";
                     matched = true;
-                    regex = "_CommonSummonedOffRegex";
-                    return;
-                }
-
-                matches = _YouSummonedRegex.Matches(line);
-                if (matches.Count > 0)
-                {
-                    DateTime time = matches[0].Groups[_TimeGroupName].Value.GetTime(_TimeFormat);
-                    string target = matches[0].Groups[_TargetGroupName].Value;
-                    string skill = matches[0].Groups[_SkillGroupName].Value;
-                    string pet = matches[0].Groups[_PetGroupName].Value;
-
-                    if (_Pets.ContainsKey(skill + pet))
-                    {
-                        if (_Pets[skill + pet] != Settings.Default.YouAlias + "^" + time.ToString())
-                        {
-                            _Pets[skill + pet] = Settings.Default.YouAlias + "^" + time.ToString();
-                        }
-                    }
-                    else
-                    {
-                        _Pets.Add(skill + pet, Settings.Default.YouAlias + "^" + time.ToString());
-                    }
-
-                    matched = true;
-                    regex = "_YouSummonedRegex";
                     return;
                 }
 
