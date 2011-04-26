@@ -231,4 +231,7 @@
   <data name="AionWebPage" xml:space="preserve">
     <value>아이온 웹사이트 열기</value>
   </data>
+  <data name="ChatlogSetup" xml:space="preserve">
+    <value>Chatlog 해제</value>
+  </data>
 </root>

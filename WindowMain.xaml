@@ -147,6 +147,11 @@
                                                   Header="{LocText KingsDamageMeter:WindowMainRes:AionWebPage}"
                                                   Click="MainContextMenuAionWebPage_Click" />
                                         <Separator />
+                                        
+                                        <MenuItem Header="{LocText KingsDamageMeter:WindowMainRes:ChatlogSetup}" 
+                                                  IsCheckable="True" 
+                                                  IsChecked="{Binding IsChatlogOff, Source={x:Static Properties:Settings.Default}}"/>
+                                        <Separator />
                                         <MenuItem Name="MainContextView"  
                                                   Header="{LocText KingsDamageMeter:WindowMainRes:MainViewMenuHeader}">
                                             <!--MenuItem Name="MainContextViewDamage" 

@@ -230,6 +230,11 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Localization\WindowMainRes.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WindowMainRes.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\classINI.cs" />
     <Compile Include="WindowMain.xaml.cs">
       <DependentUpon>WindowMain.xaml</DependentUpon>
@@ -330,11 +335,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SkillsFormRes.resx</DependentUpon>
     </Compile>
-    <Compile Include="Localization\WindowMainRes.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>WindowMainRes.resx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -419,8 +419,8 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Localization\WindowMainRes.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>WindowMainRes.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>WindowMainRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
