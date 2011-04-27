@@ -95,6 +95,8 @@ namespace KingsDamageMeter
                 Settings.Default.WindowMainY = int.Parse(clsINI.GetIniValue("System", "WindowMainY", strFileName));
                 Settings.Default.Debug = bool.Parse(clsINI.GetIniValue("System", "Debug", strFileName));
                 Settings.Default.IsChatlogOff = bool.Parse(clsINI.GetIniValue("System", "IsChatlogOff", strFileName));
+                Settings.Default.IsGodStone = bool.Parse(clsINI.GetIniValue("AppData", "IsGodStone", strFileName));
+                Settings.Default.IsOneClass = bool.Parse(clsINI.GetIniValue("AppData", "IsOneClass", strFileName));
                 Settings.Default.IsGroupOnly = bool.Parse(clsINI.GetIniValue("AppData", "IsGroupOnly", strFileName));
                 Settings.Default.IsHideOthers = bool.Parse(clsINI.GetIniValue("AppData", "IsHideOthers", strFileName));
                 Settings.Default.LogTimeFormat = clsINI.GetIniValue("AppData", "LogTimeFormat", strFileName);
@@ -169,6 +171,8 @@ namespace KingsDamageMeter
             clsINI.SetInIValue("System", "WindowMainY", Settings.Default.WindowMainY.ToString(), strFileName);
             clsINI.SetInIValue("System", "Debug", Settings.Default.Debug.ToString(), strFileName);
             clsINI.SetInIValue("System", "IsChatlogOff", Settings.Default.IsChatlogOff.ToString(), strFileName);
+            clsINI.SetInIValue("AppData", "IsGodStone", Settings.Default.IsGodStone.ToString(), strFileName);
+            clsINI.SetInIValue("AppData", "IsOneClass", Settings.Default.IsOneClass.ToString(), strFileName);
             clsINI.SetInIValue("AppData", "IsGroupOnly", Settings.Default.IsGroupOnly.ToString(), strFileName);
             clsINI.SetInIValue("AppData", "IsHideOthers", Settings.Default.IsHideOthers.ToString(), strFileName);
             clsINI.SetInIValue("AppData", "LogTimeFormat", Settings.Default.LogTimeFormat.ToString(), strFileName);

@@ -151,6 +151,12 @@
                                         <MenuItem Header="{LocText KingsDamageMeter:WindowMainRes:ChatlogSetup}" 
                                                   IsCheckable="True" 
                                                   IsChecked="{Binding IsChatlogOff, Source={x:Static Properties:Settings.Default}}"/>
+                                        <MenuItem Header="{LocText KingsDamageMeter:WindowMainRes:OneClass}" 
+                                                  IsCheckable="True" 
+                                                  IsChecked="{Binding IsOneClass, Source={x:Static Properties:Settings.Default}}"/>
+                                        <MenuItem Header="{LocText KingsDamageMeter:WindowMainRes:GodStone}" 
+                                                  IsCheckable="True" 
+                                                  IsChecked="{Binding IsGodStone, Source={x:Static Properties:Settings.Default}}"/>
                                         <Separator />
                                         <MenuItem Name="MainContextView"  
                                                   Header="{LocText KingsDamageMeter:WindowMainRes:MainViewMenuHeader}">

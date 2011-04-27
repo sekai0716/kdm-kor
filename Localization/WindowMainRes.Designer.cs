@@ -169,11 +169,11 @@ namespace KingsDamageMeter.Localization {
         }
         
         /// <summary>
-        ///   신석대미지과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   신석대미지 표시과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
-        internal static string GodStoneMainViewMenuHeader {
+        internal static string GodStone {
             get {
-                return ResourceManager.GetString("GodStoneMainViewMenuHeader", resourceCulture);
+                return ResourceManager.GetString("GodStone", resourceCulture);
             }
         }
         
@@ -291,6 +291,15 @@ namespace KingsDamageMeter.Localization {
         internal static string NameTakenMessage {
             get {
                 return ResourceManager.GetString("NameTakenMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   1인1직업(던전)과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string OneClass {
+            get {
+                return ResourceManager.GetString("OneClass", resourceCulture);
             }
         }
         

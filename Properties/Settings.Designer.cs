@@ -248,5 +248,29 @@ namespace KingsDamageMeter.Properties {
                 this["IsChatlogOff"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool IsGodStone {
+            get {
+                return ((bool)(this["IsGodStone"]));
+            }
+            set {
+                this["IsGodStone"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool IsOneClass {
+            get {
+                return ((bool)(this["IsOneClass"]));
+            }
+            set {
+                this["IsOneClass"] = value;
+            }
+        }
     }
 }
