@@ -768,6 +768,12 @@ namespace KingsDamageMeter
                             SkillDamageInflicted(this, new PlayerSkillDamageEventArgs(time, _Effects[skill], damage, skill));
                         }
                     }
+                    else
+                    {
+                        debugprint += "유저:[[1인1직업]], 타겟 [[" + target +
+                                        "]], 대미지 [[" + damage.ToString() + "]], 스킬명[[" + skill + "]] - 도트대미지:";
+                        SkillDamageInflicted(this, new PlayerSkillDamageEventArgs(time, "OneClass", damage, skill));
+                    }
                     debugprint += "_ContinuousDamage";
                     matched = true;
                     return;
