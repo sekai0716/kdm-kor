@@ -379,6 +379,17 @@ namespace KingsDamageMeter
         /// <param name="damage">The total damage the player has dealt</param>
         public void UpdatePlayerDamage(string name, int damage, string skill)
         {
+            if (name == "OneClass" && Settings.Default.IsOneClass == true)
+            {
+                // 스킬명으로 무슨 직업인지 검색
+
+                // players 변수에서 해당 직업이 누구인지 검색하여 이름 변경
+                //for (var i = 0; i < Players.Count; i++ )
+                //{
+                    //todo
+
+                //}
+            }
             if (Settings.Default.IgnoreList.Contains(name))
             {
                 return;
@@ -496,7 +507,7 @@ namespace KingsDamageMeter
         /// </summary>
         public void AddPlayer(string name, bool isGroupMember)
         {
-            if( name.Contains("신석(") & name.Contains("속성)"))
+            if(Settings.Default.IsGodStone == true && (name.Contains("신석(") & name.Contains("속성)")))
             {
                 Player p;
                 p = new Player
