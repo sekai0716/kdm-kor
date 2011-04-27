@@ -132,7 +132,7 @@
     <value>(?&lt;pet&gt;.+)의 소환이 해제됐습니다\.</value>
   </data>
   <data name="CommonSummonedRegex" xml:space="preserve">
-    <value>(((?&lt;name&gt;.+)[이가] )?소환: |((?&lt;name&gt;.+)[이가] )?[이가] )(?&lt;skill&gt;.+)[을를] 사용해 (?&lt;pet&gt;.+)[을를] 소환했습니다\.</value>
+    <value>(((?&lt;name&gt;.+)[이가] )?소환: |((?&lt;name&gt;.+)[이가] )?)(?&lt;skill&gt;.+)[을를] 사용해 (?&lt;pet&gt;.+)[을를] 소환했습니다\.</value>
     <comment>자신,타 유저 정령류 소환</comment>
   </data>
   <data name="CommonSummonedSumAtk" xml:space="preserve">

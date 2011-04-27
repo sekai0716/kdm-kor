@@ -114,7 +114,7 @@ namespace KingsDamageMeter
 
 
         // 정리가 안된 부분
-        private Regex _CommonSummonedSumAtk;        
+        private Regex _CommonSummonedSumAtk;
         private Regex _CommonSummonedRegex;         // 정령류
         private Regex _CommonSummonedOffRegex;      // 정령해제
         private Regex _EnergySummonedRegex;
@@ -208,7 +208,7 @@ namespace KingsDamageMeter
             _DelayedRegex = new Regex(_TimestampRegex + Localization.Regex.DelayedRegex, RegexOptions.Compiled);
             _EffectRegex = new Regex(_TimestampRegex + Localization.Regex.EffectRegex, RegexOptions.Compiled);
             _EffectDamageRegex = new Regex(_TimestampRegex + Localization.Regex.EffectDamageRegex, RegexOptions.Compiled);
-            
+
             _GodStoneAttrDamageRegex = new Regex(_TimestampRegex + Localization.Regex.GodStoneAttrDamageRegex, RegexOptions.Compiled);
 
             // 기타
@@ -219,9 +219,9 @@ namespace KingsDamageMeter
             _YouEarnedKinahRegex = new Regex(_TimestampRegex + Localization.Regex.YouEarnedKinahRegex, RegexOptions.Compiled);
             _YouSpentKinahRegex = new Regex(_TimestampRegex + Localization.Regex.YouSpentKinahRegex, RegexOptions.Compiled);
             _YouGainedApRegex = new Regex(_TimestampRegex + Localization.Regex.YouGainedApRegex, RegexOptions.Compiled);
-            
+
             // 추후에 삭제 할 부분
-            
+
 
             // 정리가 안된 부분            
             _CommonSummonedSumAtk = new Regex(_TimestampRegex + Localization.Regex.CommonSummonedSumAtk, RegexOptions.Compiled);
@@ -429,31 +429,44 @@ namespace KingsDamageMeter
                     string target = matches[0].Groups[_TargetGroupName].Value;
                     string effect = matches[0].Groups[_EffectGroupName].Value;
                     string name = "";
-                    if( 1 <= damage & damage <= 150) {
+                    if (1 <= damage & damage <= 150)
+                    {
                         name = "신석" + effect + "150";
-                    } else if(151 <= damage & damage <= 500) {
+                    }
+                    else if (151 <= damage & damage <= 500)
+                    {
                         name = "신석" + effect + "500";
-                    } else if(501 <= damage & damage <= 900) {
+                    }
+                    else if (501 <= damage & damage <= 900)
+                    {
                         name = "신석" + effect + "900";
-                    } else if(901 <= damage & damage <= 1800) {
+                    }
+                    else if (901 <= damage & damage <= 1800)
+                    {
                         name = "신석" + effect + "1800";
-                    } else if(1801 <= damage & damage <= 2000) {
+                    }
+                    else if (1801 <= damage & damage <= 2000)
+                    {
                         name = "신석" + effect + "2000";
-                    } else if(2001 <= damage) {
+                    }
+                    else if (2001 <= damage)
+                    {
                         name = "신석" + effect + "2000~";
-                    } else {
+                    }
+                    else
+                    {
                         return;
                     }
 
                     if (DamageInflicted != null)
                     {
                         DamageInflicted(this, new PlayerDamageEventArgs(time, name, damage));
-                    }                   
+                    }
                     matched = true;
                     regex = "_GodStoneAttrDamageRegex";
                     return;
                 }
-                
+
                 matches = _CommandRegex.Matches(line);
                 if (matches.Count > 0)
                 {   // 정령 명령류 대미지 처리
@@ -477,69 +490,57 @@ namespace KingsDamageMeter
                     matched = true;
                     return;
                 }
-                
-                matches = _InflictedSkillRegex.Matches(line);
+
+                matches = _EnergySummonedRegex.Matches(line);
+                if (matches.Count > 0)
+                {
+                    DateTime time = matches[0].Groups[_TimeGroupName].Value.GetTime(_TimeFormat);
+                    string name = matches[0].Groups[_NameGroupName].Value;
+                    string target = matches[0].Groups[_TargetGroupName].Value;
+                    string skill = matches[0].Groups[_SkillGroupName].Value;
+                    string pet = matches[0].Groups[_PetGroupName].Value;
+
+                    if (name.Trim().Length == 0) name = Settings.Default.YouAlias;
+                    if (_Energy.ContainsKey(pet + "^" + target))
+                    {
+                        _Energy[pet + "^" + target] = name + "^" + time.ToString() + "^" + skill;
+                    }
+                    else
+                    {
+                        _Energy.Add(pet + "^" + target, name + "^" + time.ToString() + "^" + skill);
+                    }
+                    debugprint += "유저:[[" + name + "]], 타겟:[[" + target + "]], 소환:[[" + pet + "]], 스킬:[[" + skill + "]] - 기운,소환:_EnergySummonedRegex";
+                    matched = true;
+                    return;
+                }
+
+                matches = _CommonSummonedRegex.Matches(line);
                 if (matches.Count > 0)
                 {
                     DateTime time = matches[0].Groups[_TimeGroupName].Value.GetTime(_TimeFormat);
                     string name = matches[0].Groups[_NameGroupName].Value;
                     string skill = matches[0].Groups[_SkillGroupName].Value;
-                    string target = matches[0].Groups[_TargetGroupName].Value;
-                    int damage = matches[0].Groups[_DamageGroupName].Value.GetDigits();
-
-                    if (skill.Contains(" 효과")) skill = skill.Substring(0, skill.IndexOf(" 효과"));
+                    string pet = matches[0].Groups[_PetGroupName].Value;
+                    string strkey = pet;
+                    // 음...이 부분은 좀더 지켜봐야할듯..
+                    if (pet.Contains("덫")) strkey = skill + pet;
                     if (name.Trim().Length == 0) name = Settings.Default.YouAlias;
-                    if (name.Contains(" "))
-                    {                        
-                        if (_Pets.ContainsKey(skill + name))
-                        {   // 덫 스킬(폭발의 덫)
-                            name = _Pets[skill + name].Split('^')[0];
-                            if (SkillDamageInflicted != null)
-                            {
-                                debugprint += "유저:[[" + name + "]], 타겟 [[" + target +
-                                        "]], 대미지 [[" + damage.ToString() + "]], 스킬명[[" + skill + "]] - 덫스킬:";
-                                SkillDamageInflicted(this, new PlayerSkillDamageEventArgs(time, name, damage, skill));
-                            }
-                        }
-                        else if (_Dots.ContainsKey(skill))
-                        {   // 태풍소환
-                            string[] strvalue = _Dots[skill].Split('^');
-                            if (SkillDamageInflicted != null)
-                            {
-                                debugprint += "유저:[[" + strvalue[0] + "]], 타겟 [[" + target +
-                                        "]], 대미지 [[" + damage.ToString() + "]], 스킬명[[" + skill + "]] - 태풍소환:";
-                                SkillDamageInflicted(this, new PlayerSkillDamageEventArgs(time, strvalue[0], damage, skill));
-                            }
+                    if (_Pets.ContainsKey(strkey))
+                    {
+                        if (!_Pets[strkey].Contains(name))
+                        {
+                            _Pets[strkey] = name + "^" + time.ToString();
                         }
                     }
                     else
                     {
-                        if (SkillDamageInflicted != null)
-                        {
-                            debugprint += "유저:[[" + name + "]], 타겟 [[" + target +
-                                        "]], 대미지 [[" + damage.ToString() + "]], 스킬명[[" + skill + "]] - 일반스킬:";
-                            SkillDamageInflicted(this, new PlayerSkillDamageEventArgs(time, name, damage, skill));
-                        }
-                        if (line.Contains("일부 강화 마법이 제거됐습니다") | skill.Contains("고갈의 문양 폭발"))
-                        {   //마법역류 스킬류는 도트 스킬임, 고갈 문양 폭발 추가 대미지 발생
-                            if (_Dots.ContainsKey(skill + "^" + target))
-                            {
-                                _Dots[skill + "^" + target] = name + "^" + time.ToString();
-                            }
-                            else
-                            {
-                                _Dots.Add(skill + "^" + target, name + "^" + time.ToString());
-                            }
-                            DebugLogger.Write(debugprint + "_InflictedSkillRegex");
-                            debugprint = ">>>>>유저:[[" + name + "]], 타겟 [[" + target +
-                                        "]], 스킬명[[" + skill + "]] - 도트추가:";
-                        }
+                        _Pets.Add(strkey, name + "^" + time.ToString());
                     }
-                    debugprint += "_InflictedSkillRegex";
+                    debugprint += "유저:[[" + name + "]], 소환:[[" + pet + "]], 스킬:[[" + skill + "]] - 소환:_CommonSummonedRegex";
                     matched = true;
                     return;
                 }
-                
+
                 // 트랩보다 상위에 있어야함
                 matches = _CommonSummonedSumAtk.Matches(line);
                 if (matches.Count > 0)
@@ -574,6 +575,80 @@ namespace KingsDamageMeter
                     }
                     matched = true;
                     regex = "_CommonSummonedSumAtk";
+                    return;
+                }
+
+                matches = _InflictedSkillRegex.Matches(line);
+                if (matches.Count > 0)
+                {
+                    DateTime time = matches[0].Groups[_TimeGroupName].Value.GetTime(_TimeFormat);
+                    string name = matches[0].Groups[_NameGroupName].Value;
+                    string skill = matches[0].Groups[_SkillGroupName].Value;
+                    string target = matches[0].Groups[_TargetGroupName].Value;
+                    int damage = matches[0].Groups[_DamageGroupName].Value.GetDigits();
+
+                    if (skill.Contains(" 효과")) skill = skill.Substring(0, skill.IndexOf(" 효과"));
+                    if (name.Trim().Length == 0) name = Settings.Default.YouAlias;
+                    if (name.Contains(" "))
+                    {
+                        if (_Pets.ContainsKey(skill + name))
+                        {   // 덫 스킬(폭발의 덫)
+                            name = _Pets[skill + name].Split('^')[0];
+                            if (SkillDamageInflicted != null)
+                            {
+                                debugprint += "유저:[[" + name + "]], 타겟 [[" + target +
+                                        "]], 대미지 [[" + damage.ToString() + "]], 스킬명[[" + skill + "]] - 덫스킬:";
+                                SkillDamageInflicted(this, new PlayerSkillDamageEventArgs(time, name, damage, skill));
+                            }
+                        }
+                        else if (_Dots.ContainsKey(skill))
+                        {   // 태풍소환
+                            string[] strvalue = _Dots[skill].Split('^');
+                            if (SkillDamageInflicted != null)
+                            {
+                                debugprint += "유저:[[" + strvalue[0] + "]], 타겟 [[" + target +
+                                        "]], 대미지 [[" + damage.ToString() + "]], 스킬명[[" + skill + "]] - 태풍소환:";
+                                SkillDamageInflicted(this, new PlayerSkillDamageEventArgs(time, strvalue[0], damage, skill));
+                            }
+                        }
+                        else if (_Energy.ContainsKey(name + "^" + target)) {
+                            // 고결한 기운
+                            string[] strvalue = _Energy[name + "^" + target].Split('^');
+                            if( strvalue.Length == 3 ) {
+                                skill = strvalue[2];
+                            } else {
+                                skill = "스킬오류";
+                            }
+                            debugprint += "유저:[[" + strvalue[0] + "]], 타겟 [[" + target +
+                                        "]], 대미지 [[" + damage.ToString() + "]], 스킬명[[" + skill + "]] - 기운:";
+                                SkillDamageInflicted(this, new PlayerSkillDamageEventArgs(time, strvalue[0], damage, skill));
+                        }
+                    }
+                    else
+                    {
+                        if (SkillDamageInflicted != null)
+                        {
+                            debugprint += "유저:[[" + name + "]], 타겟 [[" + target +
+                                        "]], 대미지 [[" + damage.ToString() + "]], 스킬명[[" + skill + "]] - 일반스킬:";
+                            SkillDamageInflicted(this, new PlayerSkillDamageEventArgs(time, name, damage, skill));
+                        }
+                        if (line.Contains("일부 강화 마법이 제거됐습니다") | skill.Contains("고갈의 문양 폭발"))
+                        {   //마법역류 스킬류는 도트 스킬임, 고갈 문양 폭발 추가 대미지 발생
+                            if (_Dots.ContainsKey(skill + "^" + target))
+                            {
+                                _Dots[skill + "^" + target] = name + "^" + time.ToString();
+                            }
+                            else
+                            {
+                                _Dots.Add(skill + "^" + target, name + "^" + time.ToString());
+                            }
+                            DebugLogger.Write(debugprint + "_InflictedSkillRegex");
+                            debugprint = ">>>>>유저:[[" + name + "]], 타겟 [[" + target +
+                                        "]], 스킬명[[" + skill + "]] - 도트추가:";
+                        }
+                    }
+                    debugprint += "_InflictedSkillRegex";
+                    matched = true;
                     return;
                 }
 
@@ -641,7 +716,8 @@ namespace KingsDamageMeter
                     string skill = matches[0].Groups[_SkillGroupName].Value;
                     string target = matches[0].Groups[_TargetGroupName].Value;
 
-                    if (name.Contains(" ")) {
+                    if (name.Contains(" "))
+                    {
                         if (skill.Contains(" 효과")) skill = skill.Substring(0, skill.IndexOf(" 효과"));
                         if (_Pets.ContainsKey(skill + name)) name = _Pets[skill + name].Split('^')[0];
                     }
@@ -707,9 +783,12 @@ namespace KingsDamageMeter
 
                     if (name.Trim().Length == 0) name = Settings.Default.YouAlias;
                     string strKey = "";
-                    if (target.Trim().Length == 0) {
+                    if (target.Trim().Length == 0)
+                    {
                         strKey = skill;
-                    } else {
+                    }
+                    else
+                    {
                         strKey = skill + "^" + target;
                     }
                     if (_Dots.ContainsKey(strKey))
@@ -773,56 +852,6 @@ namespace KingsDamageMeter
                     return;
                 }
 
-                matches = _EnergySummonedRegex.Matches(line);
-                if (matches.Count > 0)
-                {
-                    DateTime time = matches[0].Groups[_TimeGroupName].Value.GetTime(_TimeFormat);
-                    string name = matches[0].Groups[_NameGroupName].Value;
-                    string target = matches[0].Groups[_TargetGroupName].Value;
-                    string skill = matches[0].Groups[_SkillGroupName].Value;
-                    string pet = matches[0].Groups[_PetGroupName].Value;
-
-                    if (name.Trim().Length == 0) name = Settings.Default.YouAlias;
-                    if ( _Energy.ContainsKey(pet + "^" + target))
-                    {
-                        _Energy[pet + "^" + target] = name + "^" + time.ToString()  + "^" + skill;
-                    }
-                    else
-                    {
-                        _Energy.Add(pet + "^" + target, name + "^" + time.ToString() + "^" + skill);
-                    }
-                    debugprint += "유저:[[" + name + "]], 타겟:[[" + target + "]], 소환:[[" + pet + "]], 스킬:[[" + skill + "]] - 기운,소환:_EnergySummonedRegex";
-                    matched = true;
-                    return;
-                }
-
-                matches = _CommonSummonedRegex.Matches(line);
-                if (matches.Count > 0)
-                {
-                    DateTime time = matches[0].Groups[_TimeGroupName].Value.GetTime(_TimeFormat);
-                    string name = matches[0].Groups[_NameGroupName].Value;
-                    string skill = matches[0].Groups[_SkillGroupName].Value;
-                    string pet = matches[0].Groups[_PetGroupName].Value;
-                    string strkey = pet;
-                    // 음...이 부분은 좀더 지켜봐야할듯..
-                    if(pet.Contains("덫")) strkey = skill + pet;
-                    if (name.Trim().Length == 0) name = Settings.Default.YouAlias;
-                    if (_Pets.ContainsKey(strkey))
-                    {
-                        if (!_Pets[strkey].Contains(name))
-                        {
-                            _Pets[strkey] = name + "^" + time.ToString();
-                        }
-                    }
-                    else
-                    {
-                        _Pets.Add(strkey, name + "^" + time.ToString());
-                    }
-                    debugprint += "유저:[[" + name + "]], 소환:[[" + pet + "]], 스킬:[[" + skill + "]] - 소환:_CommonSummonedRegex";
-                    matched = true;
-                    return;
-                }
-
                 matches = _CommonSummonedOffRegex.Matches(line);
                 if (matches.Count > 0)
                 {
@@ -832,7 +861,7 @@ namespace KingsDamageMeter
                     if (_Pets.ContainsKey(pet))
                     {
                         debugprint += "유저:[[" + _Pets[pet] + "]], 소환:[[" + pet + "]] - 소환해제:";
-                        _Pets.Remove(pet);                        
+                        _Pets.Remove(pet);
                     }
                     debugprint += "_CommonSummonedOffRegex";
                     matched = true;
@@ -935,7 +964,7 @@ namespace KingsDamageMeter
                     regex = "_YouSpentKinahRegex";
                     return;
                 }
-                
+
                 matches = _YouGainedApRegex.Matches(line);
                 if (matches.Count > 0)
                 {
@@ -992,7 +1021,7 @@ namespace KingsDamageMeter
                         string strkey = each.Key;
                         string strvalue = each.Value;
                         string[] strvaluesplit = strvalue.Split('^');
-                        if (strkey.Substring(strkey.Length-1, 1) == "덫")
+                        if (strkey.Substring(strkey.Length - 1, 1) == "덫")
                         {
                             DateTime chktime = Convert.ToDateTime(strvaluesplit[1]);
                             DateTime chknow = matches[0].Groups[_TimeGroupName].Value.GetTime(_TimeFormat);
