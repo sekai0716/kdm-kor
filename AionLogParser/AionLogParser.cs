@@ -109,11 +109,6 @@ namespace KingsDamageMeter
         private Regex _YouEarnedKinahRegex;
         private Regex _YouSpentKinahRegex;
         private Regex _YouGainedApRegex;
-
-        // 추후에 삭제 할 부분
-
-
-        // 정리가 안된 부분
         private Regex _CommonSummonedSumAtk;
         private Regex _CommonSummonedRegex;         // 정령류
         private Regex _CommonSummonedOffRegex;      // 정령해제
@@ -193,6 +188,36 @@ namespace KingsDamageMeter
         /// Occurs when you gain abyss points.
         /// </summary>
         public event AbyssPointsEventHandler AbyssPointsGained;
+
+        public void setEffect(string name, string effect)
+        {
+            if (_Effects.ContainsKey(effect))
+            {
+                if (_Effects[effect] != name)
+                {
+                    _Effects[effect] = name;
+                }
+            }
+            else
+            {
+                _Effects.Add(effect, name);
+            }
+        }
+
+        public void setPet(string name, string pet, string time)
+        {
+            if (_Pets.ContainsKey(pet))
+            {
+                if (!_Pets[pet].Contains(name))
+                {
+                    _Pets[pet] = name + "^" + time;
+                }
+            }
+            else
+            {
+                _Pets.Add(pet, name + "^" + time);
+            }
+        }
 
         public void Initialize()
         {
@@ -522,7 +547,6 @@ namespace KingsDamageMeter
                     string skill = matches[0].Groups[_SkillGroupName].Value;
                     string pet = matches[0].Groups[_PetGroupName].Value;
                     string strkey = pet;
-                    // 음...이 부분은 좀더 지켜봐야할듯..
                     if (pet.Contains("덫")) strkey = skill + pet;
                     if (name.Trim().Length == 0) name = Settings.Default.YouAlias;
                     if (_Pets.ContainsKey(strkey))
