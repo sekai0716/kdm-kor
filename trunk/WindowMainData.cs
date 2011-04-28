@@ -59,7 +59,6 @@ namespace KingsDamageMeter
         private readonly Timer sortTimer = new Timer();
         //private readonly Timer dpsTimeoutTimer = new Timer();
 
-
         #region Properties
 
         public bool IsEnabled
@@ -372,6 +371,20 @@ namespace KingsDamageMeter
             _LogParser.Stop();
         }
 
+        private string getNameForClass(ClassType classtype)
+        {
+            string name = "";
+            // 해당 클래스가 현재 유저에 있는지 검색
+            for (var i = 0; i < Players.Count; i++)
+            {
+                if (Players[i].PlayerClass == classtype)
+                {
+                    name = Players[i].PlayerName;
+                    break;
+                }
+            }
+            return name;
+        }
         /// <summary>
         /// Update a player's damage.
         /// </summary>
@@ -379,17 +392,41 @@ namespace KingsDamageMeter
         /// <param name="damage">The total damage the player has dealt</param>
         public void UpdatePlayerDamage(string name, int damage, string skill)
         {
-            if (name == "OneClass" && Settings.Default.IsOneClass == true)
+            if ((name == "OneClass" | name == "바람의 정령" | name == "불의 정령" | name == "땅의 정령" | name == "물의 정령" | name == "태풍의 정령" | name == "용암의 정령") && Settings.Default.IsOneClass == true)
             {
-                // 스킬명으로 무슨 직업인지 검색
+                ClassType classtype;
+                string username;
+                if (name.Contains(" ") && (name == "바람의 정령" | name == "불의 정령" | name == "땅의 정령" | name == "물의 정령" | name == "태풍의 정령" | name == "용암의 정령"))
+                {
+                    classtype = ClassType.정령성;
+                    username = getNameForClass(classtype);
+                    if (username.Trim().Length != 0) _LogParser.setPet(username, name, DateTime.Now.ToString());
+                    if (skill == "평타 대미지") skill = name;
+                }
+                else
+                {
+                    classtype = SkillDictionary.GetClass(skill);
+                    username = getNameForClass(classtype);
+                    if (username.Trim().Length != 0)
+                    {
+                        if (skill.Contains("바람의 약속"))
+                        {
+                            _LogParser.setEffect(username, skill);
+                        }
+                    }
+                }
 
-                // players 변수에서 해당 직업이 누구인지 검색하여 이름 변경
-                //for (var i = 0; i < Players.Count; i++ )
-                //{
-                    //todo
-
-                //}
+                if (username.Trim().Length == 0)
+                {
+                    return;
+                }
+                else
+                {
+                    DebugLogger.Write( "=====> 1인1직업 추가 : 유저:[[" + username + "]], 스킬:[[" + skill + "]] <=====");
+                    name = username;
+                }
             }
+
             if (Settings.Default.IgnoreList.Contains(name))
             {
                 return;
