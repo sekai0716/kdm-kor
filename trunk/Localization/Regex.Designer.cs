@@ -61,7 +61,7 @@ namespace KingsDamageMeter.Localization {
         }
         
         /// <summary>
-        ///   (?&lt;target&gt;.+)가 (?&lt;skill&gt;.+) 추가 효과의 효과로 (?&lt;damage&gt;[^a-zA-Z]+)의 대미지를 받았습니다과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   (?&lt;target&gt;.+)[이가] (?&lt;skill&gt;.+) 추가 효과의 효과로 (?&lt;damage&gt;[^a-zA-Z]+)의 대미지를 받았습니다과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string AddDamageRegex {
             get {
@@ -183,6 +183,15 @@ namespace KingsDamageMeter.Localization {
         internal static string GodStoneAttrDamageRegex {
             get {
                 return ResourceManager.GetString("GodStoneAttrDamageRegex", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   (?&lt;target&gt;.+)[이가] 중독의 효과로 (?&lt;damage&gt;[^a-zA-Z]+)의 중독 대미지를 받았습니다\.과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string GodStonePoisonRegex {
+            get {
+                return ResourceManager.GetString("GodStonePoisonRegex", resourceCulture);
             }
         }
         

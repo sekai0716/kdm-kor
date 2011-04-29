@@ -90,18 +90,23 @@ namespace KingsDamageMeter
         private Regex _ChatRegex;
 
         // 대미지 관련
-        private Regex _AddDamageRegex;              // 추가 대미지
+        private Regex _GodStoneAttrDamageRegex;     // 신석대미지 - 자신,타인 대미지
+        private Regex _GodStonePoisonRegex;         // 신석대미지 - 중독
         private Regex _CommandRegex;                // 정령성 : 정령의 명령 스킬 대미지
+        private Regex _EnergySummonedRegex;
+        private Regex _CommonSummonedRegex;         // 정령류
+        private Regex _CommonSummonedSumAtk;
         private Regex _InflictedSkillRegex;         // 스킬 사용 대미지
         private Regex _InflictedRegex;              // 일반적인 대미지
         private Regex _ContinuousRegex;             // 일반적인 도트 추가
+        private Regex _AddDamageRegex;              // 추가 대미지
         private Regex _ContinuousDamage;            // 일반적인 도트 대미지
         private Regex _DelayedRegex;                // 지연폭발, 태풍소환류 도트 추가
         private Regex _EffectRegex;                 // 자체 공격대미지 주는 버프 메세지 (폭약,바람의약속 등)
         private Regex _EffectDamageRegex;           // ex)호법성 자체 버프-바람의 약속
-        private Regex _GodStoneAttrDamageRegex;     // 신석대미지 - 자신,타인 대미지
 
         // 기타
+        private Regex _CommonSummonedOffRegex;      // 정령해제
         private Regex _KickedFromGroupRegex;
         private Regex _JoinedGroupRegex;
         private Regex _LeftGroupRegex;
@@ -109,10 +114,6 @@ namespace KingsDamageMeter
         private Regex _YouEarnedKinahRegex;
         private Regex _YouSpentKinahRegex;
         private Regex _YouGainedApRegex;
-        private Regex _CommonSummonedSumAtk;
-        private Regex _CommonSummonedRegex;         // 정령류
-        private Regex _CommonSummonedOffRegex;      // 정령해제
-        private Regex _EnergySummonedRegex;
 
         /// <summary>
         /// Occurs when the parser is starting.
@@ -224,19 +225,22 @@ namespace KingsDamageMeter
             _TimestampRegex = Localization.Regex.TimestampRegex;
             _ChatRegex = new Regex(Localization.Regex.Chat, RegexOptions.Compiled);
             // 대미지 관련
-            _AddDamageRegex = new Regex(_TimestampRegex + Localization.Regex.AddDamageRegex, RegexOptions.Compiled);
+            _GodStoneAttrDamageRegex = new Regex(_TimestampRegex + Localization.Regex.GodStoneAttrDamageRegex, RegexOptions.Compiled);
+            _GodStonePoisonRegex = new Regex(_TimestampRegex + Localization.Regex.GodStonePoisonRegex, RegexOptions.Compiled);
             _CommandRegex = new Regex(_TimestampRegex + Localization.Regex.CommandRegex, RegexOptions.Compiled);
+            _EnergySummonedRegex = new Regex(_TimestampRegex + Localization.Regex.EnergySummonedRegex, RegexOptions.Compiled);
+            _CommonSummonedRegex = new Regex(_TimestampRegex + Localization.Regex.CommonSummonedRegex, RegexOptions.Compiled);
+            _CommonSummonedSumAtk = new Regex(_TimestampRegex + Localization.Regex.CommonSummonedSumAtk, RegexOptions.Compiled);
             _InflictedSkillRegex = new Regex(_TimestampRegex + Localization.Regex.InflictedSkillRegex, RegexOptions.Compiled);
             _InflictedRegex = new Regex(_TimestampRegex + Localization.Regex.InflictedRegex, RegexOptions.Compiled);
             _ContinuousRegex = new Regex(_TimestampRegex + Localization.Regex.ContinuousRegex, RegexOptions.Compiled);
             _ContinuousDamage = new Regex(_TimestampRegex + Localization.Regex.ContinuousDamage, RegexOptions.Compiled);
+            _AddDamageRegex = new Regex(_TimestampRegex + Localization.Regex.AddDamageRegex, RegexOptions.Compiled);
             _DelayedRegex = new Regex(_TimestampRegex + Localization.Regex.DelayedRegex, RegexOptions.Compiled);
             _EffectRegex = new Regex(_TimestampRegex + Localization.Regex.EffectRegex, RegexOptions.Compiled);
-            _EffectDamageRegex = new Regex(_TimestampRegex + Localization.Regex.EffectDamageRegex, RegexOptions.Compiled);
-
-            _GodStoneAttrDamageRegex = new Regex(_TimestampRegex + Localization.Regex.GodStoneAttrDamageRegex, RegexOptions.Compiled);
-
+            _EffectDamageRegex = new Regex(_TimestampRegex + Localization.Regex.EffectDamageRegex, RegexOptions.Compiled);            
             // 기타
+            _CommonSummonedOffRegex = new Regex(_TimestampRegex + Localization.Regex.CommonSummonedOffRegex, RegexOptions.Compiled);
             _JoinedGroupRegex = new Regex(_TimestampRegex + Localization.Regex.JoinedGroupRegex, RegexOptions.Compiled);
             _LeftGroupRegex = new Regex(_TimestampRegex + Localization.Regex.LeftGroupRegex, RegexOptions.Compiled);
             _KickedFromGroupRegex = new Regex(_TimestampRegex + Localization.Regex.KickedFromGroupRegex, RegexOptions.Compiled);
@@ -244,16 +248,6 @@ namespace KingsDamageMeter
             _YouEarnedKinahRegex = new Regex(_TimestampRegex + Localization.Regex.YouEarnedKinahRegex, RegexOptions.Compiled);
             _YouSpentKinahRegex = new Regex(_TimestampRegex + Localization.Regex.YouSpentKinahRegex, RegexOptions.Compiled);
             _YouGainedApRegex = new Regex(_TimestampRegex + Localization.Regex.YouGainedApRegex, RegexOptions.Compiled);
-
-            // 추후에 삭제 할 부분
-
-
-            // 정리가 안된 부분            
-            _CommonSummonedSumAtk = new Regex(_TimestampRegex + Localization.Regex.CommonSummonedSumAtk, RegexOptions.Compiled);
-            //_YouSummonedRegex = new Regex(_TimestampRegex + Localization.Regex.YouSummonedRegex, RegexOptions.Compiled);
-            _CommonSummonedRegex = new Regex(_TimestampRegex + Localization.Regex.CommonSummonedRegex, RegexOptions.Compiled);
-            _CommonSummonedOffRegex = new Regex(_TimestampRegex + Localization.Regex.CommonSummonedOffRegex, RegexOptions.Compiled);
-            _EnergySummonedRegex = new Regex(_TimestampRegex + Localization.Regex.EnergySummonedRegex, RegexOptions.Compiled);
         }
 
         /// <summary>
@@ -487,8 +481,26 @@ namespace KingsDamageMeter
                     {
                         DamageInflicted(this, new PlayerDamageEventArgs(time, name, damage));
                     }
+                    debugprint += "유저:[[" + name + "]], 타겟 [[" + target +
+                                        "]], 대미지 [[" + damage.ToString() + "]] - _GodStoneAttrDamageRegex:";
                     matched = true;
-                    regex = "_GodStoneAttrDamageRegex";
+                    return;
+                }
+
+                matches = _GodStonePoisonRegex.Matches(line);
+                if (matches.Count > 0)  // 중독신석
+                {
+                    DateTime time = matches[0].Groups[_TimeGroupName].Value.GetTime(_TimeFormat);
+                    int damage = matches[0].Groups[_DamageGroupName].Value.GetDigits();
+                    string target = matches[0].Groups[_TargetGroupName].Value;
+                    string name = "신석(중독)";                    
+                    if (DamageInflicted != null)
+                    {
+                        DamageInflicted(this, new PlayerDamageEventArgs(time, name, damage));
+                    }
+                    debugprint += "유저:[[" + name + "]], 타겟 [[" + target +
+                                        "]], 대미지 [[" + damage.ToString() + "]] - _GodStoneAttrDamageRegex:";
+                    matched = true;
                     return;
                 }
 
