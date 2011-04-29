@@ -209,7 +209,7 @@ namespace KingsDamageMeter
         {
             switch (e.PropertyName)
             {
-                case "IsGroupOnly":
+                case "IsGroupOnly":                    
                 case "IsHideOthers":
                     SetFilter();
                     UpdatePercents();
@@ -544,7 +544,7 @@ namespace KingsDamageMeter
         /// </summary>
         public void AddPlayer(string name, bool isGroupMember)
         {
-            if(Settings.Default.IsGodStone == true && (name.Contains("신석(") & name.Contains("속성)")))
+            if(Settings.Default.IsGodStone == true && ((name.Contains("신석(") & name.Contains("속성)")) | name == "신석(중독)"))
             {
                 Player p;
                 p = new Player

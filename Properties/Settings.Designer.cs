@@ -186,6 +186,7 @@ namespace KingsDamageMeter.Properties {
             }
             set {
                 this["IsGroupOnly"] = value;
+                if (value == true) this["IsHideOthers"] = false;
             }
         }
         
@@ -222,6 +223,7 @@ namespace KingsDamageMeter.Properties {
             }
             set {
                 this["IsHideOthers"] = value;
+                if (value == true) this["IsGroupOnly"] = false;
             }
         }
         

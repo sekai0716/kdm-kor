@@ -203,7 +203,7 @@
                                         </MenuItem>
                                         <MenuItem Header="{LocText KingsDamageMeter:WindowMainRes:HideOthersMenuHeader}" 
                                                   IsCheckable="True" 
-                                                  IsChecked="{Binding IsHideOthers, Source={x:Static Properties:Settings.Default}}"/>
+                                                  IsChecked="{Binding IsHideOthers, Source={x:Static Properties:Settings.Default}}" />
                                         <MenuItem Header="{LocText KingsDamageMeter:WindowMainRes:GroupOnlyMenuHeader}" 
                                                   IsCheckable="True" 
                                                   IsChecked="{Binding IsGroupOnly, Source={x:Static Properties:Settings.Default}}"/>
