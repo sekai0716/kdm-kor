@@ -443,6 +443,7 @@ namespace KingsDamageMeter
                 matches = _GodStoneAttrDamageRegex.Matches(line);
                 if (matches.Count > 0)
                 {
+                    if (Settings.Default.IsGodStone == false) return;
                     DateTime time = matches[0].Groups[_TimeGroupName].Value.GetTime(_TimeFormat);
                     int damage = matches[0].Groups[_DamageGroupName].Value.GetDigits();
                     string target = matches[0].Groups[_TargetGroupName].Value;
@@ -490,6 +491,7 @@ namespace KingsDamageMeter
                 matches = _GodStonePoisonRegex.Matches(line);
                 if (matches.Count > 0)  // 중독신석
                 {
+                    if (Settings.Default.IsGodStone == false) return;
                     DateTime time = matches[0].Groups[_TimeGroupName].Value.GetTime(_TimeFormat);
                     int damage = matches[0].Groups[_DamageGroupName].Value.GetDigits();
                     string target = matches[0].Groups[_TargetGroupName].Value;
@@ -808,7 +810,7 @@ namespace KingsDamageMeter
                     {
                         debugprint += "유저:[[1인1직업]], 타겟 [[" + target +
                                         "]], 대미지 [[" + damage.ToString() + "]], 스킬명[[" + skill + "]] - 도트대미지:";
-                        SkillDamageInflicted(this, new PlayerSkillDamageEventArgs(time, "OneClass", damage, skill));
+                        SkillDamageInflicted(this, new PlayerSkillDamageEventArgs(time, "%%OneClass%%", damage, skill));
                     }
                     debugprint += "_ContinuousDamage";
                     matched = true;

@@ -392,11 +392,11 @@ namespace KingsDamageMeter
         /// <param name="damage">The total damage the player has dealt</param>
         public void UpdatePlayerDamage(string name, int damage, string skill)
         {
-            if ((name == "OneClass" | name == "바람의 정령" | name == "불의 정령" | name == "땅의 정령" | name == "물의 정령" | name == "태풍의 정령" | name == "용암의 정령") && Settings.Default.IsOneClass == true)
+            if (Settings.Default.IsOneClass == true & (name == "%%OneClass%%" | name == "바람의 정령" | name == "불의 정령" | name == "땅의 정령" | name == "물의 정령" | name == "태풍의 정령" | name == "용암의 정령"))
             {
                 ClassType classtype;
                 string username;
-                if (name.Contains(" ") && (name == "바람의 정령" | name == "불의 정령" | name == "땅의 정령" | name == "물의 정령" | name == "태풍의 정령" | name == "용암의 정령"))
+                if (name.Contains(" ") & (name == "바람의 정령" | name == "불의 정령" | name == "땅의 정령" | name == "물의 정령" | name == "태풍의 정령" | name == "용암의 정령"))
                 {
                     classtype = ClassType.정령성;
                     username = getNameForClass(classtype);
@@ -415,7 +415,7 @@ namespace KingsDamageMeter
                         }
                     }
                 }
-
+                
                 if (username.Trim().Length == 0)
                 {
                     return;
@@ -544,7 +544,7 @@ namespace KingsDamageMeter
         /// </summary>
         public void AddPlayer(string name, bool isGroupMember)
         {
-            if(Settings.Default.IsGodStone == true && ((name.Contains("신석(") & name.Contains("속성)")) | name == "신석(중독)"))
+            if((name.Contains("신석(") & name.Contains("속성)")) | name == "신석(중독)")
             {
                 Player p;
                 p = new Player
