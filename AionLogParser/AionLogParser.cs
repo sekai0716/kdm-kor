@@ -520,9 +520,10 @@ namespace KingsDamageMeter
                     {
                         if (SkillDamageInflicted != null)
                         {
-                            debugprint += "유저:[[" + _Pets[pet] + "]], 타겟 [[" + target +
+                            string name = _Pets[pet].Split('^')[0];
+                            debugprint += "유저:[[" + name + "]], 타겟 [[" + target +
                                         "]], 대미지 [[" + damage.ToString() + "]], 스킬명[[" + skill + "]] - CommandRegex:";
-                            SkillDamageInflicted(this, new PlayerSkillDamageEventArgs(time, _Pets[pet], damage, skill));
+                            SkillDamageInflicted(this, new PlayerSkillDamageEventArgs(time, name, damage, skill));
                         }
                     }
                     debugprint += "_CommandRegex";
