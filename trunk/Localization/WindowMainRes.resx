@@ -226,7 +226,7 @@
     <value>정말로 종료 하시겠습니까?</value>
   </data>
   <data name="AionWebPage" xml:space="preserve">
-    <value>아이온 웹사이트 열기</value>
+    <value>아이온 웹 사이트 열기</value>
   </data>
   <data name="ChatlogSetup" xml:space="preserve">
     <value>Chatlog 해제</value>
@@ -236,5 +236,14 @@
   </data>
   <data name="OneClass" xml:space="preserve">
     <value>1인1직업(던전)</value>
+  </data>
+  <data name="AionInvenWebage" xml:space="preserve">
+    <value>아이온 인벤 웹사이트 열기</value>
+  </data>
+  <data name="DeveloperBlog" xml:space="preserve">
+    <value>개발자 블로그 열기</value>
+  </data>
+  <data name="WebPageMenuHeader" xml:space="preserve">
+    <value>웹 사이트 열기</value>
   </data>
 </root>

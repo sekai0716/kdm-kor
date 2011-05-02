@@ -65,5 +65,23 @@
     <Setting Name="IsOneClass" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="WindowSkillListWidth" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">413</Value>
+    </Setting>
+    <Setting Name="WindowSkillListHeight" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">150</Value>
+    </Setting>
+    <Setting Name="WindowSkillListColumn1Width" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">125</Value>
+    </Setting>
+    <Setting Name="WindowSkillListColumn2Width" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">75</Value>
+    </Setting>
+    <Setting Name="WindowSkillListColumn3Width" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">60</Value>
+    </Setting>
+    <Setting Name="WindowSkillListColumn4Width" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">60</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

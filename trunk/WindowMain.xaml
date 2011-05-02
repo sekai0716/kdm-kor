@@ -143,9 +143,18 @@
                                                   Header="{LocText KingsDamageMeter:WindowMainRes:SetYouAliasMenuHeader}" 
                                                   Click="MainContextMenuSetYouAlias_Click" />
                                         <Separator />
-                                        <MenuItem Name="AionWebPage"
+                                        <MenuItem Name="WebPageMenuHeader"  
+                                                  Header="{LocText KingsDamageMeter:WindowMainRes:WebPageMenuHeader}">
+                                            <MenuItem Name="DeveloperBlog"
+                                                  Header="{LocText KingsDamageMeter:WindowMainRes:DeveloperBlog}"
+                                                  Click="MainContextMenuDeveloperBlog_Click" />
+                                            <MenuItem Name="AionWebPage"
                                                   Header="{LocText KingsDamageMeter:WindowMainRes:AionWebPage}"
                                                   Click="MainContextMenuAionWebPage_Click" />
+                                            <MenuItem Name="AionInvenWebage"
+                                                  Header="{LocText KingsDamageMeter:WindowMainRes:AionInvenWebage}"
+                                                  Click="MainContextMenuAionInvenWebage_Click" />
+                                        </MenuItem>
                                         <Separator />
                                         
                                         <MenuItem Header="{LocText KingsDamageMeter:WindowMainRes:ChatlogSetup}" 

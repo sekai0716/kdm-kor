@@ -20,6 +20,7 @@
 using System.Windows.Forms;
 
 using KingsDamageMeter.Combat;
+using KingsDamageMeter.Properties;
 
 namespace KingsDamageMeter.Forms
 {
@@ -86,6 +87,20 @@ namespace KingsDamageMeter.Forms
             }
 
             SkillList.Sort();
+        }
+
+        private void SkillList_Resize(object sender, System.EventArgs e)
+        {
+            Settings.Default.WindowSkillListWidth = this.Width;
+            Settings.Default.WindowSkillListHeight = this.Height;
+        }
+
+        private void SkillList_ColumnWidthChanged(object sender, ColumnWidthChangedEventArgs e)
+        {
+            Settings.Default.WindowSkillListColumn1Width = columnHeader1.Width;
+            Settings.Default.WindowSkillListColumn2Width = columnHeader2.Width;
+            Settings.Default.WindowSkillListColumn3Width = columnHeader3.Width;
+            Settings.Default.WindowSkillListColumn4Width = columnHeader4.Width;
         }
     }
 }
