@@ -24,6 +24,9 @@ using System.ComponentModel;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
+using System.Net;   //  업데이트 체크를 위해서
+using System.Text;  //  업데이트 체크시 인코딩을 위해서
+using System.Reflection;    //  자기 자신의 어셈블리 버전 가져오기 위해서
 using System.IO;
 using Microsoft.Win32;
 using System.Diagnostics;
@@ -40,6 +43,51 @@ namespace KingsDamageMeter
         public WindowMain()
         {
             InitializeComponent();
+
+            //  개발자 블로그의 소스를 가져오는 부분
+            WebRequest req = WebRequest.Create("http://sdmeter.tistory.com");
+            WebResponse res = req.GetResponse();
+            StreamReader sr = new StreamReader(res.GetResponseStream(), Encoding.UTF8);
+            string result = sr.ReadToEnd().Replace("\n", "\r\n");
+
+            res.Close();
+            sr.Close();
+
+            //  블로그 소스에 <!-- SDMVERSION x.x.x --> 이부분에서 x.x.x.x를 추출
+            int index_start = result.IndexOf("<!-- SDMVERSION ") + "<!-- SDMVERSION ".Length;
+            
+            if (index_start != "<!-- SDMVERSION ".Length)   //  만약 SDM버전을 찾았으면
+            {
+                int index_end = result.IndexOf(" -->", index_start);
+                //  서버의 최신 버전
+                string server_version = result.Substring(index_start, index_end - index_start);
+                //  현재 프로그램의 버전
+                string current_version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
+
+
+                if (index_start != "<!-- SDMDOWNLOAD ".Length)   //  만약 SDM다운로드 링크를 찾았으면
+                {
+                    //  블로그 소스에 <!-- SDMDOWNLOAD http://..... --> 이부분에서 http://......을 추출
+                    index_start = result.IndexOf("<!-- SDMDOWNLOAD ") + "<!-- SDMDOWNLOAD ".Length;
+                    index_end = result.IndexOf(" -->", index_start);
+
+                    //  다운로드 링크
+                    string sdm_download = result.Substring(index_start, index_end - index_start);
+
+                    if (server_version != current_version)
+                    {
+                        if (MessageBox.Show("SDM의 최신버전이 나왔습니다. 다운받으시겠습니까?", "최신버전 확인", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                        {
+                            System.Diagnostics.Process download = System.Diagnostics.Process.Start(sdm_download);   //  다운로드 링크 실행
+                            System.Diagnostics.Process site = System.Diagnostics.Process.Start(@"http://sdmeter.tistory.com/entry/SDM");    //  제작자 블로그 실행
+
+                            //  프로그램 종료가 되어야 하는데 방법을 찾을 수 없음.
+                            //  Close(); 사용시 에러가 뜨므로, 일단 사이트만 열리게 해놓음
+                        }
+                    }
+                }
+            }
+            
 
             // 이건 윈도7 64bit 아이온 설치 경로입니다.
             string logpath = "";
@@ -276,9 +324,19 @@ namespace KingsDamageMeter
             }
         }
 
-        private void MainContextMenuAionWebPage_Click(object sender, RoutedEventArgs e) //  아이온 웹사이트 실행
+        private void MainContextMenuDeveloperBlog_Click(object sender, RoutedEventArgs e) //  개발자 블로그 열기
+        {
+            System.Diagnostics.Process program = System.Diagnostics.Process.Start(@"http://sdmeter.tistory.com");
+        }
+
+        private void MainContextMenuAionWebPage_Click(object sender, RoutedEventArgs e) //  아이온 웹사이트 열기
         {
             System.Diagnostics.Process program = System.Diagnostics.Process.Start(@"http://aion.plaync.co.kr");
+        }
+
+        private void MainContextMenuAionInvenWebage_Click(object sender, RoutedEventArgs e) //  아이온 인벤 웹사이트 열기
+        {
+            System.Diagnostics.Process program = System.Diagnostics.Process.Start(@"http://aion.inven.co.kr");
         }
 
         #endregion

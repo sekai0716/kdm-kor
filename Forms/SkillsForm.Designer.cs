@@ -70,6 +70,8 @@ namespace KingsDamageMeter.Forms
             this.SkillList.UseCompatibleStateImageBehavior = false;
             this.SkillList.View = System.Windows.Forms.View.Details;
             this.SkillList.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.SkillList_ColumnClick);
+            this.SkillList.ColumnWidthChanged += new System.Windows.Forms.ColumnWidthChangedEventHandler(this.SkillList_ColumnWidthChanged);
+            this.SkillList.Resize += new System.EventHandler(this.SkillList_Resize);
             // 
             // columnHeader1
             // 
@@ -110,9 +112,9 @@ namespace KingsDamageMeter.Forms
         #endregion
 
         private System.Windows.Forms.ListView SkillList;
-        private System.Windows.Forms.ColumnHeader columnHeader1;
-        private System.Windows.Forms.ColumnHeader columnHeader2;
-        private System.Windows.Forms.ColumnHeader columnHeader3;
-        private System.Windows.Forms.ColumnHeader columnHeader4;
+        public System.Windows.Forms.ColumnHeader columnHeader1;
+        public System.Windows.Forms.ColumnHeader columnHeader2;
+        public System.Windows.Forms.ColumnHeader columnHeader3;
+        public System.Windows.Forms.ColumnHeader columnHeader4;
     }
 }

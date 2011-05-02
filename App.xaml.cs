@@ -93,6 +93,12 @@ namespace KingsDamageMeter
                 Settings.Default.WindowMainWidth = int.Parse(clsINI.GetIniValue("System", "WindowMainWidth", strFileName));
                 Settings.Default.WindowMainX = int.Parse(clsINI.GetIniValue("System", "WindowMainX", strFileName));
                 Settings.Default.WindowMainY = int.Parse(clsINI.GetIniValue("System", "WindowMainY", strFileName));
+                Settings.Default.WindowSkillListHeight = int.Parse(clsINI.GetIniValue("System", "WindowSkillListHeight", strFileName));
+                Settings.Default.WindowSkillListWidth = int.Parse(clsINI.GetIniValue("System", "WindowSkillListWidth", strFileName));
+                Settings.Default.WindowSkillListColumn1Width = int.Parse(clsINI.GetIniValue("System", "WindowSkillListColumn1Width", strFileName));
+                Settings.Default.WindowSkillListColumn2Width = int.Parse(clsINI.GetIniValue("System", "WindowSkillListColumn2Width", strFileName));
+                Settings.Default.WindowSkillListColumn3Width = int.Parse(clsINI.GetIniValue("System", "WindowSkillListColumn3Width", strFileName));
+                Settings.Default.WindowSkillListColumn4Width = int.Parse(clsINI.GetIniValue("System", "WindowSkillListColumn4Width", strFileName));
                 Settings.Default.Debug = bool.Parse(clsINI.GetIniValue("System", "Debug", strFileName));
                 Settings.Default.IsChatlogOff = bool.Parse(clsINI.GetIniValue("System", "IsChatlogOff", strFileName));
                 Settings.Default.IsGodStone = bool.Parse(clsINI.GetIniValue("AppData", "IsGodStone", strFileName));
@@ -169,6 +175,12 @@ namespace KingsDamageMeter
             clsINI.SetInIValue("System", "WindowMainWidth", Settings.Default.WindowMainWidth.ToString(), strFileName);
             clsINI.SetInIValue("System", "WindowMainX", Settings.Default.WindowMainX.ToString(), strFileName);
             clsINI.SetInIValue("System", "WindowMainY", Settings.Default.WindowMainY.ToString(), strFileName);
+            clsINI.SetInIValue("System", "WindowSkillListHeight", Settings.Default.WindowSkillListHeight.ToString(), strFileName);
+            clsINI.SetInIValue("System", "WindowSkillListWidth", Settings.Default.WindowSkillListWidth.ToString(), strFileName);
+            clsINI.SetInIValue("System", "WindowSkillListColumn1Width", Settings.Default.WindowSkillListColumn1Width.ToString(), strFileName);
+            clsINI.SetInIValue("System", "WindowSkillListColumn2Width", Settings.Default.WindowSkillListColumn2Width.ToString(), strFileName);
+            clsINI.SetInIValue("System", "WindowSkillListColumn3Width", Settings.Default.WindowSkillListColumn3Width.ToString(), strFileName);
+            clsINI.SetInIValue("System", "WindowSkillListColumn4Width", Settings.Default.WindowSkillListColumn4Width.ToString(), strFileName);
             clsINI.SetInIValue("System", "Debug", Settings.Default.Debug.ToString(), strFileName);
             clsINI.SetInIValue("System", "IsChatlogOff", Settings.Default.IsChatlogOff.ToString(), strFileName);
             clsINI.SetInIValue("AppData", "IsGodStone", Settings.Default.IsGodStone.ToString(), strFileName);

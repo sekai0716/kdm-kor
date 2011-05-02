@@ -79,7 +79,16 @@ namespace KingsDamageMeter.Localization {
         }
         
         /// <summary>
-        ///   아이온 웹사이트 열기과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   아이온 인벤 웹사이트 열기과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string AionInvenWebage {
+            get {
+                return ResourceManager.GetString("AionInvenWebage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   아이온 웹 사이트 열기과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string AionWebPage {
             get {
@@ -138,6 +147,15 @@ namespace KingsDamageMeter.Localization {
         internal static string DamageMainViewMenuHeader {
             get {
                 return ResourceManager.GetString("DamageMainViewMenuHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   개발자 블로그 열기과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string DeveloperBlog {
+            get {
+                return ResourceManager.GetString("DeveloperBlog", resourceCulture);
             }
         }
         
@@ -417,6 +435,15 @@ namespace KingsDamageMeter.Localization {
         internal static string TopMostCheckBoxToolTip {
             get {
                 return ResourceManager.GetString("TopMostCheckBoxToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   웹 사이트 열기과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string WebPageMenuHeader {
+            get {
+                return ResourceManager.GetString("WebPageMenuHeader", resourceCulture);
             }
         }
     }

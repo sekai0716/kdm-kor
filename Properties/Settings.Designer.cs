@@ -186,7 +186,6 @@ namespace KingsDamageMeter.Properties {
             }
             set {
                 this["IsGroupOnly"] = value;
-                if (value == true) this["IsHideOthers"] = false;
             }
         }
         
@@ -223,7 +222,6 @@ namespace KingsDamageMeter.Properties {
             }
             set {
                 this["IsHideOthers"] = value;
-                if (value == true) this["IsGroupOnly"] = false;
             }
         }
         
@@ -272,6 +270,78 @@ namespace KingsDamageMeter.Properties {
             }
             set {
                 this["IsOneClass"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("413")]
+        public int WindowSkillListWidth {
+            get {
+                return ((int)(this["WindowSkillListWidth"]));
+            }
+            set {
+                this["WindowSkillListWidth"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("150")]
+        public int WindowSkillListHeight {
+            get {
+                return ((int)(this["WindowSkillListHeight"]));
+            }
+            set {
+                this["WindowSkillListHeight"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("125")]
+        public int WindowSkillListColumn1Width {
+            get {
+                return ((int)(this["WindowSkillListColumn1Width"]));
+            }
+            set {
+                this["WindowSkillListColumn1Width"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("75")]
+        public int WindowSkillListColumn2Width {
+            get {
+                return ((int)(this["WindowSkillListColumn2Width"]));
+            }
+            set {
+                this["WindowSkillListColumn2Width"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("60")]
+        public int WindowSkillListColumn3Width {
+            get {
+                return ((int)(this["WindowSkillListColumn3Width"]));
+            }
+            set {
+                this["WindowSkillListColumn3Width"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("60")]
+        public int WindowSkillListColumn4Width {
+            get {
+                return ((int)(this["WindowSkillListColumn4Width"]));
+            }
+            set {
+                this["WindowSkillListColumn4Width"] = value;
             }
         }
     }
