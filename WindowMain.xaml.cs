@@ -76,7 +76,7 @@ namespace KingsDamageMeter
 
                     if (server_version != current_version)
                     {
-                        if (MessageBox.Show("SDM의 최신버전이 나왔습니다. 다운받으시겠습니까?", "최신버전 확인", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                        if (MessageBox.Show("SDM의 최신버전이 나왔습니다.\n다운받으시겠습니까?\n\n현재 버전: " + current_version + "\n최신 버전: " + server_version, "자동 업데이트 체크", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                         {
                             System.Diagnostics.Process download = System.Diagnostics.Process.Start(sdm_download);   //  다운로드 링크 실행
                             System.Diagnostics.Process site = System.Diagnostics.Process.Start(@"http://sdmeter.tistory.com/entry/SDM");    //  제작자 블로그 실행
