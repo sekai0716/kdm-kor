@@ -44,49 +44,54 @@ namespace KingsDamageMeter
         {
             InitializeComponent();
 
+            //  여기부터 자동 업데이트 부분
             //  개발자 블로그의 소스를 가져오는 부분
-            WebRequest req = WebRequest.Create("http://sdmeter.tistory.com");
-            WebResponse res = req.GetResponse();
-            StreamReader sr = new StreamReader(res.GetResponseStream(), Encoding.UTF8);
-            string result = sr.ReadToEnd().Replace("\n", "\r\n");
-
-            res.Close();
-            sr.Close();
-
-            //  블로그 소스에 <!-- SDMVERSION x.x.x --> 이부분에서 x.x.x.x를 추출
-            int index_start = result.IndexOf("<!-- SDMVERSION ") + "<!-- SDMVERSION ".Length;
-            
-            if (index_start != "<!-- SDMVERSION ".Length)   //  만약 SDM버전을 찾았으면
+            if (Settings.Default.IsUpdateCheck)
             {
-                int index_end = result.IndexOf(" -->", index_start);
-                //  서버의 최신 버전
-                string server_version = result.Substring(index_start, index_end - index_start);
-                //  현재 프로그램의 버전
-                string current_version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
+                WebRequest req = WebRequest.Create("http://sdmeter.tistory.com");
+                WebResponse res = req.GetResponse();
+                StreamReader sr = new StreamReader(res.GetResponseStream(), Encoding.UTF8);
+                string result = sr.ReadToEnd().Replace("\n", "\r\n");
 
+                res.Close();
+                sr.Close();
 
-                if (index_start != "<!-- SDMDOWNLOAD ".Length)   //  만약 SDM다운로드 링크를 찾았으면
+                //  블로그 소스에 <!-- SDMVERSION x.x.x --> 이부분에서 x.x.x.x를 추출
+                int index_start = result.IndexOf("<!-- SDMVERSION ") + "<!-- SDMVERSION ".Length;
+
+                if (index_start != "<!-- SDMVERSION ".Length)   //  만약 SDM버전을 찾았으면
                 {
-                    //  블로그 소스에 <!-- SDMDOWNLOAD http://..... --> 이부분에서 http://......을 추출
-                    index_start = result.IndexOf("<!-- SDMDOWNLOAD ") + "<!-- SDMDOWNLOAD ".Length;
-                    index_end = result.IndexOf(" -->", index_start);
+                    int index_end = result.IndexOf(" -->", index_start);
+                    //  서버의 최신 버전
+                    string server_version = result.Substring(index_start, index_end - index_start);
+                    //  현재 프로그램의 버전
+                    string current_version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
 
-                    //  다운로드 링크
-                    string sdm_download = result.Substring(index_start, index_end - index_start);
 
-                    if (server_version != current_version)
+                    if (index_start != "<!-- SDMDOWNLOAD ".Length)   //  만약 SDM다운로드 링크를 찾았으면
                     {
-                        if (MessageBox.Show("SDM의 최신버전이 나왔습니다.\n다운받으시겠습니까?\n\n현재 버전: " + current_version + "\n최신 버전: " + server_version, "자동 업데이트 체크", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
-                        {
-                            System.Diagnostics.Process download = System.Diagnostics.Process.Start(sdm_download);   //  다운로드 링크 실행
-                            System.Diagnostics.Process site = System.Diagnostics.Process.Start(@"http://sdmeter.tistory.com/entry/SDM");    //  제작자 블로그 실행
+                        //  블로그 소스에 <!-- SDMDOWNLOAD http://..... --> 이부분에서 http://......을 추출
+                        index_start = result.IndexOf("<!-- SDMDOWNLOAD ") + "<!-- SDMDOWNLOAD ".Length;
+                        index_end = result.IndexOf(" -->", index_start);
 
-                            //  프로그램 종료가 되어야 하는데 방법을 찾을 수 없음.
-                            //  Close(); 사용시 에러가 뜨므로, 일단 사이트만 열리게 해놓음
+                        //  다운로드 링크
+                        string sdm_download = result.Substring(index_start, index_end - index_start);
+
+                        if (server_version != current_version)
+                        {
+                            if (MessageBox.Show("SDM의 최신버전이 나왔습니다.\n다운받으시겠습니까?\n\n현재 버전: " + current_version + "\n최신 버전: " + server_version, "자동 업데이트 체크", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                            {
+                                System.Diagnostics.Process download = System.Diagnostics.Process.Start(sdm_download);   //  다운로드 링크 실행
+                                System.Diagnostics.Process site = System.Diagnostics.Process.Start(@"http://sdmeter.tistory.com/entry/SDM");    //  제작자 블로그 실행
+
+                                //  프로그램 종료가 되어야 하는데 방법을 찾을 수 없음.
+                                //  Close(); 사용시 에러가 뜨므로, 일단 사이트만 열리게 해놓음
+                            }
                         }
                     }
                 }
             }
+            //  자동 업데이트 부분 끝
             
 
             // 이건 윈도7 64bit 아이온 설치 경로입니다.
@@ -322,6 +327,12 @@ namespace KingsDamageMeter
                     Settings.Default.YouAlias = d.PlayerName;
                 }
             }
+        }
+
+        private void MainContextMenuGameStart_Click(object sender, RoutedEventArgs e) //  게임 시작 버튼
+        {
+            GameStartForm d = new GameStartForm();
+            d.Show();
         }
 
         private void MainContextMenuDeveloperBlog_Click(object sender, RoutedEventArgs e) //  개발자 블로그 열기

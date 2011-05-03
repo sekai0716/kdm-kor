@@ -344,5 +344,17 @@ namespace KingsDamageMeter.Properties {
                 this["WindowSkillListColumn4Width"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool IsUpdateCheck {
+            get {
+                return ((bool)(this["IsUpdateCheck"]));
+            }
+            set {
+                this["IsUpdateCheck"] = value;
+            }
+        }
     }
 }

@@ -100,6 +100,7 @@ namespace KingsDamageMeter
                 Settings.Default.WindowSkillListColumn3Width = int.Parse(clsINI.GetIniValue("System", "WindowSkillListColumn3Width", strFileName));
                 Settings.Default.WindowSkillListColumn4Width = int.Parse(clsINI.GetIniValue("System", "WindowSkillListColumn4Width", strFileName));
                 Settings.Default.Debug = bool.Parse(clsINI.GetIniValue("System", "Debug", strFileName));
+                Settings.Default.IsUpdateCheck = bool.Parse(clsINI.GetIniValue("System", "IsUpdateCheck", strFileName));
                 Settings.Default.IsChatlogOff = bool.Parse(clsINI.GetIniValue("System", "IsChatlogOff", strFileName));
                 Settings.Default.IsGodStone = bool.Parse(clsINI.GetIniValue("AppData", "IsGodStone", strFileName));
                 Settings.Default.IsOneClass = bool.Parse(clsINI.GetIniValue("AppData", "IsOneClass", strFileName));
@@ -182,6 +183,7 @@ namespace KingsDamageMeter
             clsINI.SetInIValue("System", "WindowSkillListColumn3Width", Settings.Default.WindowSkillListColumn3Width.ToString(), strFileName);
             clsINI.SetInIValue("System", "WindowSkillListColumn4Width", Settings.Default.WindowSkillListColumn4Width.ToString(), strFileName);
             clsINI.SetInIValue("System", "Debug", Settings.Default.Debug.ToString(), strFileName);
+            clsINI.SetInIValue("System", "IsUpdateCheck", Settings.Default.IsUpdateCheck.ToString(), strFileName);
             clsINI.SetInIValue("System", "IsChatlogOff", Settings.Default.IsChatlogOff.ToString(), strFileName);
             clsINI.SetInIValue("AppData", "IsGodStone", Settings.Default.IsGodStone.ToString(), strFileName);
             clsINI.SetInIValue("AppData", "IsOneClass", Settings.Default.IsOneClass.ToString(), strFileName);

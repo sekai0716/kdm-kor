@@ -187,6 +187,15 @@ namespace KingsDamageMeter.Localization {
         }
         
         /// <summary>
+        ///   아이온 실행(미구현)과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string GameStartHeader {
+            get {
+                return ResourceManager.GetString("GameStartHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   신석대미지 표시과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string GodStone {
@@ -435,6 +444,15 @@ namespace KingsDamageMeter.Localization {
         internal static string TopMostCheckBoxToolTip {
             get {
                 return ResourceManager.GetString("TopMostCheckBoxToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   자동 업데이트 체크과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string UpdateCheckHeader {
+            get {
+                return ResourceManager.GetString("UpdateCheckHeader", resourceCulture);
             }
         }
         
