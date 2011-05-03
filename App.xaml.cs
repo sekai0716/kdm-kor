@@ -233,6 +233,8 @@ namespace KingsDamageMeter
                     "[마우스 우측 클릭 우측버튼 클릭]-[관리자 권한으로 실행]을 선택해주시면 해결됩니다.\n\n\n\n" + e1.Message);
             }
             base.OnExit(e);
+            System.Diagnostics.Process proc = System.Diagnostics.Process.GetCurrentProcess(); //  가끔 프로그램이 종료되지 않고 프로세스에 남아있는 문제때문에 모든 종료 작업 후 자기 자신을 강제 종료
+            proc.Kill();
         }
 
         private void SettingsChanged(object sender, PropertyChangedEventArgs e)

@@ -247,7 +247,7 @@
     <value>웹 사이트 열기</value>
   </data>
   <data name="GameStartHeader" xml:space="preserve">
-    <value>아이온 실행(미구현)</value>
+    <value>아이온 런쳐 실행</value>
   </data>
   <data name="UpdateCheckHeader" xml:space="preserve">
     <value>자동 업데이트 체크</value>

@@ -187,7 +187,7 @@ namespace KingsDamageMeter.Localization {
         }
         
         /// <summary>
-        ///   아이온 실행(미구현)과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   아이온 런쳐 실행과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string GameStartHeader {
             get {

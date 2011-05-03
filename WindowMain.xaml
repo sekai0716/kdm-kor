@@ -146,9 +146,6 @@
                                         <MenuItem Name="GameStartHeader"
                                                   Header="{LocText KingsDamageMeter:WindowMainRes:GameStartHeader}"
                                                   Click="MainContextMenuGameStart_Click" />
-                                        <MenuItem Header="{LocText KingsDamageMeter:WindowMainRes:UpdateCheckHeader}"
-                                                  IsCheckable="True"
-                                                  IsChecked="{Binding IsUpdateCheck, Source={x:Static Properties:Settings.Default}}"/>
                                         <MenuItem Name="WebPageMenuHeader"  
                                                   Header="{LocText KingsDamageMeter:WindowMainRes:WebPageMenuHeader}">
                                             <MenuItem Name="DeveloperBlog"
@@ -162,6 +159,9 @@
                                                   Click="MainContextMenuAionInvenWebage_Click" />
                                         </MenuItem>
                                         <Separator />
+                                        <MenuItem Header="{LocText KingsDamageMeter:WindowMainRes:UpdateCheckHeader}"
+                                                  IsCheckable="True"
+                                                  IsChecked="{Binding IsUpdateCheck, Source={x:Static Properties:Settings.Default}}"/>
                                         <MenuItem Header="{LocText KingsDamageMeter:WindowMainRes:ChatlogSetup}" 
                                                   IsCheckable="True" 
                                                   IsChecked="{Binding IsChatlogOff, Source={x:Static Properties:Settings.Default}}"/>
