@@ -103,7 +103,7 @@ namespace KingsDamageMeter.Forms
             this.Name = "SkillsForm";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "사용한 스킬들";
+            this.Text = "{0}이(가) 사용한 스킬 리스트";
             this.TopMost = true;
             this.ResumeLayout(false);
 

@@ -37,6 +37,9 @@ namespace KingsDamageMeter.Controls
         /// <summary>
         /// A class that represents a player control.
         /// </summary>
+
+        static SkillsForm skilldlg;
+
         public PlayerControl()
         {
             InitializeComponent();
@@ -44,15 +47,24 @@ namespace KingsDamageMeter.Controls
 
         private void MenuItemViewSkills_Click(object sender, RoutedEventArgs e)
         {
-            SkillsForm s = new SkillsForm();
-            s.columnHeader1.Width = Settings.Default.WindowSkillListColumn1Width;
-            s.columnHeader2.Width = Settings.Default.WindowSkillListColumn2Width;
-            s.columnHeader3.Width = Settings.Default.WindowSkillListColumn3Width;
-            s.columnHeader4.Width = Settings.Default.WindowSkillListColumn4Width;
-            s.Size = new System.Drawing.Size(Settings.Default.WindowSkillListWidth, Settings.Default.WindowSkillListHeight);
-            s.Text = string.Format(SkillsFormRes.WindowTitle, ((Player) DataContext).PlayerName);
-            s.Populate(((Player)DataContext).Skills, ((Player)DataContext).Damage);
-            s.Show();
+            if (skilldlg == null)
+            {
+                skilldlg = new SkillsForm();
+            }
+            else
+            {
+                skilldlg.Dispose();
+                skilldlg = new SkillsForm();
+            }
+
+            skilldlg.columnHeader1.Width = Settings.Default.WindowSkillListColumn1Width;
+            skilldlg.columnHeader2.Width = Settings.Default.WindowSkillListColumn2Width;
+            skilldlg.columnHeader3.Width = Settings.Default.WindowSkillListColumn3Width;
+            skilldlg.columnHeader4.Width = Settings.Default.WindowSkillListColumn4Width;
+            skilldlg.Size = new System.Drawing.Size(Settings.Default.WindowSkillListWidth, Settings.Default.WindowSkillListHeight);
+            skilldlg.Text = string.Format(SkillsFormRes.WindowTitle, ((Player)DataContext).PlayerName);
+            skilldlg.Populate(((Player)DataContext).Skills, ((Player)DataContext).Damage);
+            skilldlg.Show();
         }
     }
 }

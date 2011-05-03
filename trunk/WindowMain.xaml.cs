@@ -84,8 +84,9 @@ namespace KingsDamageMeter
                                 System.Diagnostics.Process download = System.Diagnostics.Process.Start(sdm_download);   //  다운로드 링크 실행
                                 System.Diagnostics.Process site = System.Diagnostics.Process.Start(@"http://sdmeter.tistory.com/entry/SDM");    //  제작자 블로그 실행
 
-                                //  프로그램 종료가 되어야 하는데 방법을 찾을 수 없음.
-                                //  Close(); 사용시 에러가 뜨므로, 일단 사이트만 열리게 해놓음
+                                //  Close();로 종료시 에러가 생기므로, 프로세스를 강제종료함
+                                Process proc = Process.GetCurrentProcess();
+                                proc.Kill();
                             }
                         }
                     }
@@ -331,8 +332,10 @@ namespace KingsDamageMeter
 
         private void MainContextMenuGameStart_Click(object sender, RoutedEventArgs e) //  게임 시작 버튼
         {
-            GameStartForm d = new GameStartForm();
-            d.Show();
+            GameStartForm gamestartdlg;
+            gamestartdlg = new GameStartForm();
+            gamestartdlg.Text = WindowMainRes.GameStartHeader;
+            gamestartdlg.ShowDialog();
         }
 
         private void MainContextMenuDeveloperBlog_Click(object sender, RoutedEventArgs e) //  개발자 블로그 열기
