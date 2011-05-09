@@ -134,7 +134,10 @@ namespace KingsDamageMeter
                 
                 System.Diagnostics.Process enccfg = System.Diagnostics.Process.Start(strenccfg, strargs1 + " " + strargs2);   //  system.cfg파일 디코딩
                 enccfg.WaitForExit();   //  디코딩이 끝날때까지 대기함
-                File.Move(strsystemcfg, straionpath + "\\system.bak");  //  디코딩이 끝나면 bak파일로 바꿈
+                if (File.Exists(strsystemcfg))
+                {
+                    File.Delete(strsystemcfg);  //  디코딩이 끝나면 삭제
+                }
                 FileStream fs = new FileStream(strtemp, FileMode.Append);
                 StreamWriter writer = new StreamWriter(fs, System.Text.Encoding.ASCII);
 

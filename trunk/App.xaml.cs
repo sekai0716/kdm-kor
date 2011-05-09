@@ -207,38 +207,30 @@ namespace KingsDamageMeter
                     string strargs1 = "\"" + strsystemcfg + "\"";
                     string strargs2 = "\"" + strtemp + "\"";
 
-                    if (File.Exists(straionpath + "\\system.bak"))
+                    System.Diagnostics.Process enccfg = System.Diagnostics.Process.Start(strenccfg, strargs1 + " " + strargs2);   //  system.cfg파일 디코딩
+                    enccfg.WaitForExit();   //  디코딩이 끝날때까지 대기함
+                    if (File.Exists(strsystemcfg))
                     {
-                        if (File.Exists(strsystemcfg))
-                        {
-                            File.Delete(strsystemcfg);
-                        }
-                        File.Move(straionpath + "\\system.bak", strsystemcfg);
-                    }
-                    else
-                    {
-                        System.Diagnostics.Process enccfg = System.Diagnostics.Process.Start(strenccfg, strargs1 + " " + strargs2);   //  system.cfg파일 디코딩
-                        enccfg.WaitForExit();   //  디코딩이 끝날때까지 대기함
                         File.Delete(strsystemcfg);  //  디코딩이 끝나면 system.cfg파일 삭제
-                        FileStream fs = new FileStream(strtemp, FileMode.Append);
-                        StreamWriter writer = new StreamWriter(fs, System.Text.Encoding.ASCII);
+                    }
+                    FileStream fs = new FileStream(strtemp, FileMode.Append);
+                    StreamWriter writer = new StreamWriter(fs, System.Text.Encoding.ASCII);
 
-                        writer.Write("g_chatlog = \"0\"");
-                        writer.WriteLine();
-                        writer.Write("g_open_aion_web = \"1\"");
-                        writer.WriteLine();
-                        writer.Write("log_Verbosity = \"0\"");
-                        writer.WriteLine();
-                        writer.Write("log_FileVerbosity = \"0\"");
-                        writer.WriteLine();
-                        writer.Close();
-                        fs.Close();
-                        enccfg = System.Diagnostics.Process.Start(strenccfg, strargs2 + " " + strargs1);
-                        enccfg.WaitForExit();   //  인코딩이 끝날때까지 대기함
-                        if (File.Exists(strtemp))
-                        {
-                            File.Delete(strtemp);
-                        }
+                    writer.Write("g_chatlog = \"0\"");
+                    writer.WriteLine();
+                    writer.Write("g_open_aion_web = \"1\"");
+                    writer.WriteLine();
+                    writer.Write("log_Verbosity = \"0\"");
+                    writer.WriteLine();
+                    writer.Write("log_FileVerbosity = \"0\"");
+                    writer.WriteLine();
+                    writer.Close();
+                    fs.Close();
+                    enccfg = System.Diagnostics.Process.Start(strenccfg, strargs2 + " " + strargs1);
+                    enccfg.WaitForExit();   //  인코딩이 끝날때까지 대기함
+                    if (File.Exists(strtemp))
+                    {
+                        File.Delete(strtemp);
                     }
                 }
                 catch (Exception e1)
