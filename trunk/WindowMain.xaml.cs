@@ -28,6 +28,7 @@ using System.Net;   //  업데이트 체크를 위해서
 using System.Text;  //  업데이트 체크시 인코딩을 위해서
 using System.Reflection;    //  자기 자신의 어셈블리 버전 가져오기 위해서
 using System.IO;
+using System.Runtime.InteropServices;
 using Microsoft.Win32;
 using System.Diagnostics;
 using KingsDamageMeter.Controls;
@@ -120,28 +121,43 @@ namespace KingsDamageMeter
             }
             if( logpath != "") Settings.Default.AionLogPath = logpath + "\\Chat.log";
 
-            // system.ovr 파일 생성
+            // system.cfg 파일 생성
             try
             {
                 string straionpath = Settings.Default.AionLogPath;
                 straionpath = straionpath.Substring(0, straionpath.Length - 9);
-                string strsystemovr = straionpath + "\\system.ovr";
-                if (File.Exists(strsystemovr)) File.Delete(strsystemovr);
-                FileStream fs = new FileStream(strsystemovr, FileMode.Create);
+                string strsystemcfg = straionpath + "\\system.cfg";
+                string strenccfg = System.Environment.CurrentDirectory + "\\enccfg.exe";
+                string strtemp = straionpath + "\\temp.txt";
+                string strargs1 = "\"" + strsystemcfg + "\"";
+                string strargs2 = "\"" + strtemp + "\"";
+                
+                System.Diagnostics.Process enccfg = System.Diagnostics.Process.Start(strenccfg, strargs1 + " " + strargs2);   //  system.cfg파일 디코딩
+                enccfg.WaitForExit();   //  디코딩이 끝날때까지 대기함
+                File.Move(strsystemcfg, straionpath + "\\system.bak");  //  디코딩이 끝나면 bak파일로 바꿈
+                FileStream fs = new FileStream(strtemp, FileMode.Append);
                 StreamWriter writer = new StreamWriter(fs, System.Text.Encoding.ASCII);
+
                 writer.Write("g_chatlog = \"1\"");
                 writer.WriteLine();
-                writer.Write("log_IncludeTime = \"1\"");
+                writer.Write("g_open_aion_web = \"0\"");
                 writer.WriteLine();
                 writer.Write("log_Verbosity = \"1\"");
                 writer.WriteLine();
                 writer.Write("log_FileVerbosity = \"1\"");
+                writer.WriteLine();
                 writer.Close();
                 fs.Close();
+                enccfg = System.Diagnostics.Process.Start(strenccfg, strargs2 + " " + strargs1);
+                enccfg.WaitForExit();   //  인코딩이 끝날때까지 대기함
+                if (File.Exists(strtemp))
+                {
+                    File.Delete(strtemp);
+                }
             }
             catch (Exception e)
             {
-                MessageBox.Show("system.ovr파일을 자동으로 생성하지 못하였습니다.\n\n" +
+                MessageBox.Show("system.cfg파일을 자동으로 생성하지 못하였습니다.\n\n" +
                     "혹시 윈도우7인 경우에는 프로그램에 아이콘에서\n\n" +
                     "[마우스 우측 클릭 우측버튼 클릭]-[관리자 권한으로 실행]을 선택해주시면 해결됩니다.\n\n\n\n" + e.Message);
             }
