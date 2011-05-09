@@ -196,28 +196,54 @@ namespace KingsDamageMeter
 
             if (Settings.Default.IsChatlogOff == true)
             {
-                // system.ovr파일 0으로 변경
+                // system.cfg파일 초기값으로 변경
                 try
                 {
                     string straionpath = Settings.Default.AionLogPath;
                     straionpath = straionpath.Substring(0, straionpath.Length - 9);
-                    string strsystemovr = straionpath + "\\system.ovr";
-                    if (File.Exists(strsystemovr)) File.Delete(strsystemovr);
-                    FileStream fs = new FileStream(strsystemovr, FileMode.CreateNew);
-                    StreamWriter writer = new StreamWriter(fs, System.Text.Encoding.ASCII);
-                    writer.Write("g_chatlog = \"0\"");
-                    writer.WriteLine();
-                    writer.Write("log_IncludeTime = \"0\"");
-                    writer.WriteLine();
-                    writer.Write("log_Verbosity = \"0\"");
-                    writer.WriteLine();
-                    writer.Write("log_FileVerbosity = \"0\"");
-                    writer.Close();
-                    fs.Close();
+                    string strsystemcfg = straionpath + "\\system.cfg";
+                    string strenccfg = System.Environment.CurrentDirectory + "\\enccfg.exe";
+                    string strtemp = straionpath + "\\temp.txt";
+                    string strargs1 = "\"" + strsystemcfg + "\"";
+                    string strargs2 = "\"" + strtemp + "\"";
+
+                    if (File.Exists(straionpath + "\\system.bak"))
+                    {
+                        if (File.Exists(strsystemcfg))
+                        {
+                            File.Delete(strsystemcfg);
+                        }
+                        File.Move(straionpath + "\\system.bak", strsystemcfg);
+                    }
+                    else
+                    {
+                        System.Diagnostics.Process enccfg = System.Diagnostics.Process.Start(strenccfg, strargs1 + " " + strargs2);   //  system.cfg파일 디코딩
+                        enccfg.WaitForExit();   //  디코딩이 끝날때까지 대기함
+                        File.Delete(strsystemcfg);  //  디코딩이 끝나면 system.cfg파일 삭제
+                        FileStream fs = new FileStream(strtemp, FileMode.Append);
+                        StreamWriter writer = new StreamWriter(fs, System.Text.Encoding.ASCII);
+
+                        writer.Write("g_chatlog = \"0\"");
+                        writer.WriteLine();
+                        writer.Write("g_open_aion_web = \"1\"");
+                        writer.WriteLine();
+                        writer.Write("log_Verbosity = \"0\"");
+                        writer.WriteLine();
+                        writer.Write("log_FileVerbosity = \"0\"");
+                        writer.WriteLine();
+                        writer.Close();
+                        fs.Close();
+                        enccfg = System.Diagnostics.Process.Start(strenccfg, strargs2 + " " + strargs1);
+                        enccfg.WaitForExit();   //  인코딩이 끝날때까지 대기함
+                        if (File.Exists(strtemp))
+                        {
+                            File.Delete(strtemp);
+                        }
+                    }
                 }
                 catch (Exception e1)
                 {
-                    MessageBox.Show("system.ovr파일을 변경하지 못했습니다.\n\n" +
+                    MessageBox.Show("system.cfg파일을 변경하지 못했습니다.\n\n" +
                         "혹시 윈도우7인 경우에는 프로그램에 아이콘에서\n\n" +
                         "[마우스 우측 클릭 우측버튼 클릭]-[관리자 권한으로 실행]을 선택해주시면 해결됩니다.\n\n\n\n" + e1.Message);
                 }
