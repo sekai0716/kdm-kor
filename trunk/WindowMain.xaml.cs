@@ -129,11 +129,14 @@ namespace KingsDamageMeter
                 string strsystemcfg = straionpath + "\\system.cfg";
                 string strenccfg = System.Environment.CurrentDirectory + "\\enccfg.exe";
                 string strtemp = straionpath + "\\temp.txt";
-                string strargs1 = "\"" + strsystemcfg + "\"";
-                string strargs2 = "\"" + strtemp + "\"";
-                
-                System.Diagnostics.Process enccfg = System.Diagnostics.Process.Start(strenccfg, strargs1 + " " + strargs2);   //  system.cfg파일 디코딩
-                enccfg.WaitForExit();   //  디코딩이 끝날때까지 대기함
+
+                Cfgenc enc = new Cfgenc();
+                if (enc.CfgEncoding(strsystemcfg, strtemp)) //  제대로 인코딩/디코딩 됬으면
+                {
+                }
+                else
+                {
+                }
                 if (File.Exists(strsystemcfg))
                 {
                     File.Delete(strsystemcfg);  //  디코딩이 끝나면 삭제
@@ -151,8 +154,12 @@ namespace KingsDamageMeter
                 writer.WriteLine();
                 writer.Close();
                 fs.Close();
-                enccfg = System.Diagnostics.Process.Start(strenccfg, strargs2 + " " + strargs1);
-                enccfg.WaitForExit();   //  인코딩이 끝날때까지 대기함
+                if (enc.CfgEncoding(strtemp, strsystemcfg)) //  제대로 인코딩/디코딩 됬으면
+                {
+                }
+                else
+                {
+                }
                 if (File.Exists(strtemp))
                 {
                     File.Delete(strtemp);
