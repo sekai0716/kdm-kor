@@ -202,8 +202,12 @@ namespace KingsDamageMeter
                     string straionpath = Settings.Default.AionLogPath;
                     straionpath = straionpath.Substring(0, straionpath.Length - 9);
                     string strsystemcfg = straionpath + "\\system.cfg";
-                    string strenccfg = System.Environment.CurrentDirectory + "\\enccfg.exe";
                     string strtemp = straionpath + "\\temp.txt";
+
+                    if (File.Exists(straionpath + @"\system.ovr"))  //  만약 system.ovr파일이 있으면 삭제해줌
+                    {
+                        File.Delete(straionpath + @"\system.ovr");
+                    }
 
                     Cfgenc enc = new Cfgenc();
                     if (enc.CfgEncoding(strsystemcfg, strtemp)) //  제대로 인코딩/디코딩 됬으면
