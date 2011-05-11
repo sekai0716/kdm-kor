@@ -58,3 +58,4 @@ Version 1.2.0.1
 
 Version 1.2.0.2
 	기능 개선: system.cfg파일 수정부분 최적화
+	기능 개선: system.ovr파일 존재시 자동 삭제
