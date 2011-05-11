@@ -204,11 +204,6 @@ namespace KingsDamageMeter
                     string strsystemcfg = straionpath + "\\system.cfg";
                     string strtemp = straionpath + "\\temp.txt";
 
-                    if (File.Exists(straionpath + @"\system.ovr"))  //  만약 system.ovr파일이 있으면 삭제해줌
-                    {
-                        File.Delete(straionpath + @"\system.ovr");
-                    }
-
                     Cfgenc enc = new Cfgenc();
                     if (enc.CfgEncoding(strsystemcfg, strtemp)) //  제대로 인코딩/디코딩 됬으면
                     {
