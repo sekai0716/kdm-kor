@@ -235,6 +235,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Cfgenc.cs" />
     <Compile Include="Forms\GameStartForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -578,11 +579,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="꼭 읽어주세요.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="enccfg.exe">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
