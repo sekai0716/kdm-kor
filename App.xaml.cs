@@ -203,6 +203,7 @@ namespace KingsDamageMeter
                     straionpath = straionpath.Substring(0, straionpath.Length - 9);
                     string strsystemcfg = straionpath + "\\system.cfg";
                     string strtemp = straionpath + "\\temp.txt";
+                    string strtemp2 = straionpath + "\\temp2.txt";
 
                     Cfgenc enc = new Cfgenc();
                     if (enc.CfgEncoding(strsystemcfg, strtemp)) //  제대로 인코딩/디코딩 됬으면
@@ -215,9 +216,22 @@ namespace KingsDamageMeter
                     {
                         File.Delete(strsystemcfg);  //  디코딩이 끝나면 system.cfg파일 삭제
                     }
-                    FileStream fs = new FileStream(strtemp, FileMode.Append);
-                    StreamWriter writer = new StreamWriter(fs, System.Text.Encoding.ASCII);
-
+                    StreamReader sr = new StreamReader(strtemp);
+                    FileStream fs = new FileStream(strtemp2, FileMode.Append);
+                    StreamWriter writer = new StreamWriter(fs, System.Text.Encoding.ASCII);                    
+                    string temp_line;
+                    while ((temp_line = sr.ReadLine()) != null)
+                    {
+                        if (temp_line.Contains("g_chatlog") | temp_line.Contains("g_open_aion_web") |
+                            temp_line.Contains("log_Verbosity") | temp_line.Contains("log_FileVerbosity"))
+                        {
+                        }
+                        else
+                        {
+                            writer.Write(temp_line);
+                            writer.WriteLine();
+                        }
+                    }                    
                     writer.Write("g_chatlog = \"0\"");
                     writer.WriteLine();
                     writer.Write("g_open_aion_web = \"1\"");
@@ -228,7 +242,8 @@ namespace KingsDamageMeter
                     writer.WriteLine();
                     writer.Close();
                     fs.Close();
-                    if (enc.CfgEncoding(strtemp, strsystemcfg)) //  제대로 인코딩/디코딩 됬으면
+                    sr.Close();
+                    if (enc.CfgEncoding(strtemp2, strsystemcfg)) //  제대로 인코딩/디코딩 됬으면
                     {
                     }
                     else
@@ -237,6 +252,7 @@ namespace KingsDamageMeter
                     if (File.Exists(strtemp))
                     {
                         File.Delete(strtemp);
+                        File.Delete(strtemp2);
                     }
                 }
                 catch (Exception e1)
