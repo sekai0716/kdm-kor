@@ -54,7 +54,7 @@
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="YouAlias" Type="System.String" Scope="User">
-      <Value Profile="(Default)">당신</Value>
+      <Value Profile="(Default)">내 캐릭터</Value>
     </Setting>
     <Setting Name="IsChatlogOff" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
