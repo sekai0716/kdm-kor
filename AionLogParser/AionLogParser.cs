@@ -627,9 +627,9 @@ namespace KingsDamageMeter
                     int damage = matches[0].Groups[_DamageGroupName].Value.GetDigits();
 
                     if (skill.Contains(" 효과")) skill = skill.Substring(0, skill.IndexOf(" 효과"));
-                    if (name.Trim().Length == 0) name = Settings.Default.YouAlias;
                     if (name.Contains(" "))
                     {
+                        if (name.Trim().Length == 0) name = Settings.Default.YouAlias;
                         if (_Pets.ContainsKey(skill + name))
                         {   // 덫 스킬(폭발의 덫)
                             name = _Pets[skill + name].Split('^')[0];
@@ -665,6 +665,7 @@ namespace KingsDamageMeter
                     }
                     else
                     {
+                        if (name.Trim().Length == 0) name = Settings.Default.YouAlias;
                         if (SkillDamageInflicted != null)
                         {
                             debugprint += "유저:[[" + name + "]], 타겟 [[" + target +

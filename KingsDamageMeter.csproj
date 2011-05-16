@@ -248,6 +248,7 @@
       <DependentUpon>WindowMainRes.resx</DependentUpon>
     </Compile>
     <Compile Include="Properties\classINI.cs" />
+    <Compile Include="Settings.cs" />
     <Compile Include="WindowMain.xaml.cs">
       <DependentUpon>WindowMain.xaml</DependentUpon>
       <SubType>Code</SubType>
