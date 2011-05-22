@@ -252,4 +252,7 @@
   <data name="UpdateCheckHeader" xml:space="preserve">
     <value>자동 업데이트 체크</value>
   </data>
+  <data name="MacroClipboardCopy" xml:space="preserve">
+    <value>자동 추가 매크로 복사</value>
+  </data>
 </root>

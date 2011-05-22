@@ -106,6 +106,7 @@ namespace KingsDamageMeter
         private Regex _EffectDamageRegex;           // ex)호법성 자체 버프-바람의 약속
 
         // 기타
+        private Regex _SyncPartyMemberRegex;        // 매크로 파티원 싱크
         private Regex _CommonSummonedOffRegex;      // 정령해제
         private Regex _KickedFromGroupRegex;
         private Regex _JoinedGroupRegex;
@@ -240,6 +241,7 @@ namespace KingsDamageMeter
             _EffectRegex = new Regex(_TimestampRegex + Localization.Regex.EffectRegex, RegexOptions.Compiled);
             _EffectDamageRegex = new Regex(_TimestampRegex + Localization.Regex.EffectDamageRegex, RegexOptions.Compiled);            
             // 기타
+            _SyncPartyMemberRegex = new Regex(_TimestampRegex + Localization.Regex.SyncPartyMemberRegex, RegexOptions.Compiled);
             _CommonSummonedOffRegex = new Regex(_TimestampRegex + Localization.Regex.CommonSummonedOffRegex, RegexOptions.Compiled);
             _JoinedGroupRegex = new Regex(_TimestampRegex + Localization.Regex.JoinedGroupRegex, RegexOptions.Compiled);
             _LeftGroupRegex = new Regex(_TimestampRegex + Localization.Regex.LeftGroupRegex, RegexOptions.Compiled);
@@ -439,6 +441,177 @@ namespace KingsDamageMeter
 
             try
             {
+                // 파티원 매크로 싱크
+                matches = _SyncPartyMemberRegex.Matches(line);
+                if (matches.Count > 0)
+                {
+                    DateTime time = matches[0].Groups[_TimeGroupName].Value.GetTime(_TimeFormat);
+                    string name = matches[0].Groups[_NameGroupName].Value;
+                    string name1 = matches[0].Groups["name1"].Value;
+                    string name2 = matches[0].Groups["name2"].Value;
+                    string name3 = matches[0].Groups["name3"].Value;
+                    string name4 = matches[0].Groups["name4"].Value;
+                    string name5 = matches[0].Groups["name5"].Value;
+
+                    string pet1 = matches[0].Groups["pet1"].Value;
+                    string pet2 = matches[0].Groups["pet2"].Value;
+                    string pet3 = matches[0].Groups["pet3"].Value;
+                    string pet4 = matches[0].Groups["pet4"].Value;
+                    string pet5 = matches[0].Groups["pet5"].Value;
+
+                    //  파티원 이름 유무 체크
+                    if (name1 == "[%파티1]")
+                    {
+                        name1 = "";
+                    }
+                    if (name2 == "[%파티2]")
+                    {
+                        name2 = "";
+                    }
+                    if (name3 == "[%파티3]")
+                    {
+                        name3 = "";
+                    }
+                    if (name4 == "[%파티4]")
+                    {
+                        name4 = "";
+                    }
+                    if (name5 == "[%파티5]")
+                    {
+                        name5 = "";
+                    }
+                    if (pet1 == "[%파티1_펫]")
+                    {
+                        pet1 = "";
+                    }
+                    if (pet2 == "[%파티2_펫]")
+                    {
+                        pet2 = "";
+                    }
+                    if (pet3 == "[%파티3_펫]")
+                    {
+                        pet3 = "";
+                    }
+                    if (pet4 == "[%파티4_펫]")
+                    {
+                        pet4 = "";
+                    }
+                    if (pet5 == "[%파티5_펫]")
+                    {
+                        pet5 = "";
+                    }
+
+                    //  파티원 리셋
+                    if (PlayerLeftGroup != null)
+                    {
+                        PlayerLeftGroup(this, new PlayerEventArgs(time, "allreset"));
+                    }
+
+                    if (PlayerJoinedGroup != null)  //  파티원 추가
+                    {
+                        if (name1 != "")
+                        {
+                            PlayerJoinedGroup(this, new PlayerEventArgs(time, name1));
+                        }
+                        if (name2 != "")
+                        {
+                            PlayerJoinedGroup(this, new PlayerEventArgs(time, name2));
+                        }
+                        if (name3 != "")
+                        {
+                            PlayerJoinedGroup(this, new PlayerEventArgs(time, name3));
+                        }
+                        if (name4 != "")
+                        {
+                            PlayerJoinedGroup(this, new PlayerEventArgs(time, name4));
+                        }
+                        if (name5 != "")
+                        {
+                            PlayerJoinedGroup(this, new PlayerEventArgs(time, name5));
+                        }
+                    }
+
+                    //  펫 추가
+                    if (pet1 != "")
+                    {
+                        if (_Pets.ContainsKey(pet1))
+                        {
+                            if (!_Pets[pet1].Contains(name1))
+                            {
+                                _Pets[pet1] = name1 + "^" + time.ToString();
+                            }
+                        }
+                        else
+                        {
+                            _Pets.Add(pet1, name1 + "^" + time.ToString());
+                        }
+                    }
+
+                    if (pet2 != "")
+                    {
+                        if (_Pets.ContainsKey(pet2))
+                        {
+                            if (!_Pets[pet2].Contains(name2))
+                            {
+                                _Pets[pet2] = name2 + "^" + time.ToString();
+                            }
+                        }
+                        else
+                        {
+                            _Pets.Add(pet2, name2 + "^" + time.ToString());
+                        }
+                    }
+
+                    if (pet3 != "")
+                    {
+                        if (_Pets.ContainsKey(pet3))
+                        {
+                            if (!_Pets[pet3].Contains(name3))
+                            {
+                                _Pets[pet3] = name3 + "^" + time.ToString();
+                            }
+                        }
+                        else
+                        {
+                            _Pets.Add(pet3, name3 + "^" + time.ToString());
+                        }
+                    }
+
+                    if (pet4 != "")
+                    {
+                        if (_Pets.ContainsKey(pet4))
+                        {
+                            if (!_Pets[pet4].Contains(name4))
+                            {
+                                _Pets[pet4] = name4 + "^" + time.ToString();
+                            }
+                        }
+                        else
+                        {
+                            _Pets.Add(pet4, name4 + "^" + time.ToString());
+                        }
+                    }
+
+                    if (pet5 != "")
+                    {
+                        if (_Pets.ContainsKey(pet5))
+                        {
+                            if (!_Pets[pet5].Contains(name5))
+                            {
+                                _Pets[pet5] = name5 + "^" + time.ToString();
+                            }
+                        }
+                        else
+                        {
+                            _Pets.Add(pet5, name5 + "^" + time.ToString());
+                        }
+                    }
+
+                    debugprint += "유저1:[[" + name1 + "]], 펫1:[[" + pet1 + "]], 유저2:[[" + name2 + "]], 펫2:[[" + pet2 + "]], 유저3:[[" + name3 + "]], 펫3:[[" + pet3 + "]], 유저4:[[" + name4 + "]], 펫4:[[" + pet4 + "]], 유저5:[[" + name5 + "]], 펫5:[[" + pet5 + "]], 매크로 파티원 추가 - _SyncPartyMemberRegex";
+                    matched = true;
+                    return;
+                }
+
                 // 신석 대미지 추가
                 matches = _GodStoneAttrDamageRegex.Matches(line);
                 if (matches.Count > 0)

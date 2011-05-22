@@ -295,6 +295,15 @@ namespace KingsDamageMeter.Localization {
         }
         
         /// <summary>
+        ///   자동 추가 매크로 복사과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string MacroClipboardCopy {
+            get {
+                return ResourceManager.GetString("MacroClipboardCopy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   보여질 항목과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string MainViewMenuHeader {
