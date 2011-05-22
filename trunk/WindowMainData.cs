@@ -753,6 +753,11 @@ namespace KingsDamageMeter
                 return;
             }
 
+            if (name == "allreset") //  만약에 이름이 allreset이면 전부 초기화
+            {
+                Players.Clear();
+            }
+
             var player = Players.FirstOrDefault(o => o.PlayerName == name);
             if (player != null)
             {

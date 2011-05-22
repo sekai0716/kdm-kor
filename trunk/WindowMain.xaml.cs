@@ -377,6 +377,12 @@ namespace KingsDamageMeter
             }
         }
 
+        private void MainContextMacroClipboardCopy_Click(object sender, RoutedEventArgs e)  //  매크로 클립보드 복사 버튼
+        {
+            Clipboard.SetText("<SDM파티원추가> (m:[%파티1],p:[%파티1_펫]) (m:[%파티2],p:[%파티2_펫]) (m:[%파티3],p:[%파티3_펫]) (m:[%파티4],p:[%파티4_펫]) (m:[%파티5],p:[%파티5_펫])");
+            MessageBox.Show("클립보드로 복사가 완료되었습니다.", "매크로 복사");
+        }
+
         private void MainContextMenuGameStart_Click(object sender, RoutedEventArgs e) //  게임 시작 버튼
         {
             GameStartForm gamestartdlg;

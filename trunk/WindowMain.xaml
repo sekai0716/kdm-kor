@@ -143,6 +143,9 @@
                                                   Header="{LocText KingsDamageMeter:WindowMainRes:SetYouAliasMenuHeader}" 
                                                   Click="MainContextMenuSetYouAlias_Click" />
                                         <Separator />
+                                        <MenuItem Name="MacroClipboardCopy"
+                                                  Header="{LocText KingsDamageMeter:WindowMainRes:MacroClipboardCopy}"
+                                                  Click="MainContextMacroClipboardCopy_Click" />
                                         <MenuItem Name="GameStartHeader"
                                                   Header="{LocText KingsDamageMeter:WindowMainRes:GameStartHeader}"
                                                   Click="MainContextMenuGameStart_Click" />

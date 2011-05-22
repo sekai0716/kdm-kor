@@ -160,7 +160,7 @@ namespace KingsDamageMeter.Localization {
         }
         
         /// <summary>
-        ///   ((?&lt;name&gt;.+)[이가] )?(?&lt;effect&gt;.+)[을를] 사용해 (효과가 발생됐습니다|자신에게 영향을 줬습니다)\.과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   ((?&lt;name&gt;.+)[이가] )?(?&lt;skill&gt;.+)[을를] 사용해 ?(자신에게)?(?&lt;effect&gt;.+) (효과가 발생했습니다|효과가 발생됐습니다|자신에게 영향을 줬습니다)\.과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string EffectRegex {
             get {
@@ -205,7 +205,7 @@ namespace KingsDamageMeter.Localization {
         }
         
         /// <summary>
-        ///   (치명타! )?((?&lt;name&gt;.+)[이가] )?(?&lt;skill&gt;.+)[을를] 사용해 ((?&lt;target&gt;.+)에게 (?&lt;damage&gt;[^a-zA-Z]+)의 대미지를 줬습니다|(?&lt;target&gt;.+)에게 (?&lt;damage&gt;[^a-zA-Z]+)의 대미지를 주고 (?&lt;effect&gt;.+) 효과가 발생됐습니다|(?&lt;target&gt;.+)[이가] (?&lt;damage&gt;[^a-zA-Z]+)의 대미지를 (받고|입고) 일부 강화 마법이 제거됐습니다)\.과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   (치명타! )?((?&lt;name&gt;.+)[이가] )?(?&lt;skill&gt;.+)[을를] 사용해 ((?&lt;target&gt;.+)에게 (?&lt;damage&gt;[^a-zA-Z]+)의 대미지를 줬습니다|(?&lt;target&gt;.+)에게 (?&lt;damage&gt;[^a-zA-Z]+)의 대미지를 주고 (?&lt;effect&gt;.+) 효과가 발생[됐했]습니다|(?&lt;target&gt;.+)[이가] (?&lt;damage&gt;[^a-zA-Z]+)의 대미지를 (받고|입고) 일부 강화 마법이 제거됐습니다)\.과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string InflictedSkillRegex {
             get {
@@ -237,6 +237,15 @@ namespace KingsDamageMeter.Localization {
         internal static string LeftGroupRegex {
             get {
                 return ResourceManager.GetString("LeftGroupRegex", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   (?&lt;name&gt;.+): &lt;SDM파티원추가&gt; \(m:(?&lt;name1&gt;.+),p:(?&lt;pet1&gt;.+)\) \(m:(?&lt;name2&gt;.+),p:(?&lt;pet2&gt;.+)\) \(m:(?&lt;name3&gt;.+),p:(?&lt;pet3&gt;.+)\) \(m:(?&lt;name4&gt;.+),p:(?&lt;pet4&gt;.+)\) \(m:(?&lt;name5&gt;.+),p:(?&lt;pet5&gt;.+)\)과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string SyncPartyMemberRegex {
+            get {
+                return ResourceManager.GetString("SyncPartyMemberRegex", resourceCulture);
             }
         }
         
