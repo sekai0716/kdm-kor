@@ -81,10 +81,13 @@
       <Value Profile="(Default)">60</Value>
     </Setting>
     <Setting Name="WindowSkillListColumn4Width" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">60</Value>
+      <Value Profile="(Default)">65</Value>
     </Setting>
     <Setting Name="IsUpdateCheck" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="WindowSkillListColumn5Width" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">76</Value>
     </Setting>
   </Settings>
 </SettingsFile>

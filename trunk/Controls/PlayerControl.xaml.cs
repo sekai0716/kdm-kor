@@ -61,6 +61,7 @@ namespace KingsDamageMeter.Controls
             skilldlg.columnHeader2.Width = Settings.Default.WindowSkillListColumn2Width;
             skilldlg.columnHeader3.Width = Settings.Default.WindowSkillListColumn3Width;
             skilldlg.columnHeader4.Width = Settings.Default.WindowSkillListColumn4Width;
+            skilldlg.columnHeader5.Width = Settings.Default.WindowSkillListColumn5Width;
             skilldlg.Size = new System.Drawing.Size(Settings.Default.WindowSkillListWidth, Settings.Default.WindowSkillListHeight);
             skilldlg.Text = string.Format(SkillsFormRes.WindowTitle, ((Player)DataContext).PlayerName);
             skilldlg.Populate(((Player)DataContext).Skills, ((Player)DataContext).Damage);
