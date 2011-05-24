@@ -335,7 +335,7 @@ namespace KingsDamageMeter.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("60")]
+        [global::System.Configuration.DefaultSettingValueAttribute("65")]
         public int WindowSkillListColumn4Width {
             get {
                 return ((int)(this["WindowSkillListColumn4Width"]));
@@ -354,6 +354,18 @@ namespace KingsDamageMeter.Properties {
             }
             set {
                 this["IsUpdateCheck"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("76")]
+        public int WindowSkillListColumn5Width {
+            get {
+                return ((int)(this["WindowSkillListColumn5Width"]));
+            }
+            set {
+                this["WindowSkillListColumn5Width"] = value;
             }
         }
     }

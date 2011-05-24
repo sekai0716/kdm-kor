@@ -39,11 +39,12 @@ namespace KingsDamageMeter.Forms
             foreach (string skill in skills.Keys)
             {
                 ListViewItem item;
-                string[] info = new string[4];
+                string[] info = new string[5];
                 info[0] = skill;
                 info[1] = skills.Get(skill).DamageFormatted;
                 info[2] = GetPercent(skills.Get(skill).Damage, damage).ToString("0.0%");
                 info[3] = skills.Get(skill).UsesFormatted;
+                info[4] = (skills.Get(skill).Damage / skills.Get(skill).Uses).ToString();
                 item = new ListViewItem(info);
                 SkillList.Items.Add(item);
             }
@@ -101,6 +102,7 @@ namespace KingsDamageMeter.Forms
             Settings.Default.WindowSkillListColumn2Width = columnHeader2.Width;
             Settings.Default.WindowSkillListColumn3Width = columnHeader3.Width;
             Settings.Default.WindowSkillListColumn4Width = columnHeader4.Width;
+            Settings.Default.WindowSkillListColumn5Width = columnHeader5.Width;
         }
     }
 }

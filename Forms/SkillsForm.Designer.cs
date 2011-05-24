@@ -52,6 +52,7 @@ namespace KingsDamageMeter.Forms
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // SkillList
@@ -60,7 +61,8 @@ namespace KingsDamageMeter.Forms
             this.columnHeader1,
             this.columnHeader2,
             this.columnHeader3,
-            this.columnHeader4});
+            this.columnHeader4,
+            this.columnHeader5});
             this.SkillList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SkillList.FullRowSelect = true;
             this.SkillList.Location = new System.Drawing.Point(0, 0);
@@ -91,8 +93,14 @@ namespace KingsDamageMeter.Forms
             // 
             // columnHeader4
             // 
-            this.columnHeader4.Text = "사용률";
+            this.columnHeader4.Text = "사용 횟수";
             this.columnHeader4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.columnHeader4.Width = 65;
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "평균 대미지";
+            this.columnHeader5.Width = 76;
             // 
             // SkillsForm
             // 
@@ -116,5 +124,6 @@ namespace KingsDamageMeter.Forms
         public System.Windows.Forms.ColumnHeader columnHeader2;
         public System.Windows.Forms.ColumnHeader columnHeader3;
         public System.Windows.Forms.ColumnHeader columnHeader4;
+        public System.Windows.Forms.ColumnHeader columnHeader5;
     }
 }
